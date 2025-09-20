@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player_IdleState : EntityState
+public class Player_IdleState : Player_GroundedState
 {
     public Player_IdleState(Player player, StateMachine stateMachine, string stateName) 
         : base(player, stateMachine, stateName)
@@ -14,6 +14,13 @@ public class Player_IdleState : EntityState
         if (player.movementInput != Vector2.zero)
         {
             stateMachine.ChangeState(player.moveState);
+        }
+
+        if (player.inputSet.Player.Jump.WasPerformedThisFrame())
+        {
+            // Transition to jump state if implemented
+            // stateMachine.ChangeState(player.jumpState);
+            Debug.Log("Jump input detected, but jump state not implemented.");
         }
     }
 }
