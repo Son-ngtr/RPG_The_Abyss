@@ -16,11 +16,22 @@ public class Player : MonoBehaviour
 
     public Vector2 movementInput { get; private set; }
 
+    [Header("Collision Detection")]
+    [SerializeField] private float groundCheckDistance;
+    [SerializeField] private LayerMask groundLayer;
+    public bool isGrounded { get; private set; }
+
+
     [Header("Movement Parameters")]
     public float moveSpeed = 5f;
-    public float jumpForce = 12f;
+    public float jumpForce = 8f;
 
+    [Range(0, 1)]
+    public float inAirMoveMultiplier = 0.7f;
+    
     private bool isFacingRight = true;
+
+
 
     private void Awake()
     {
@@ -53,6 +64,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        HandleCollisionDetection();
         stateMachine.UpdateStateMachine();
     }
 
@@ -78,6 +90,17 @@ public class Player : MonoBehaviour
     {
         transform.Rotate(0f, 180f, 0f);
         isFacingRight = !isFacingRight;
+    }
+
+    private void HandleCollisionDetection()
+    {
+        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -groundCheckDistance));
     }
 
     private void OnDisable()

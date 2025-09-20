@@ -481,7 +481,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1b97022ee51a447ad9cea9de2074e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  groundCheckDistance: 1.38
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  moveSpeed: 8
+  jumpForce: 12
+  inAirMoveMultiplier: 0.8
 --- !u!4 &1530599159
 Transform:
   m_ObjectHideFlags: 0
@@ -532,8 +538,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.031027675, y: -0.26796365}
-  m_Size: {x: 0.79899144, y: 2.0887785}
+  m_Offset: {x: 0, y: -0.26796365}
+  m_Size: {x: 0.83064365, y: 2.0887785}
   m_Direction: 0
 --- !u!50 &1530599161
 Rigidbody2D:
@@ -548,9 +554,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 0.1
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3.4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -573,7 +579,7 @@ GameObject:
   - component: {fileID: 1958388003}
   - component: {fileID: 1958388002}
   - component: {fileID: 1958388001}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
