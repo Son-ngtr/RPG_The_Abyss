@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public Player_MoveState moveState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
     public Player_FallState fallState { get; private set; }
+    public Player_WallSlideState wallSlideState { get; private set; }
+    public PLayer_WallJumpState wallJumpState { get; private set; }
+    public Player_DashState dashState { get; private set; }
 
     public Vector2 movementInput { get; private set; }
 
@@ -20,16 +23,27 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask groundLayer;
     public bool isGrounded { get; private set; }
+    [SerializeField] private float wallCheckDistance;
+    public bool isTouchingWall { get; private set; }
 
 
     [Header("Movement Parameters")]
     public float moveSpeed = 5f;
     public float jumpForce = 8f;
+    public Vector2 wallJumpForce = new Vector2 (6f, 12f);
 
     [Range(0, 1)]
     public float inAirMoveMultiplier = 0.7f;
-    
+    [Range(0, 1)]
+    public float wallSlideSlowMultiplier = 0.3f;
+    [Space]
+    public float dashDuration = 0.25f;
+    public float dashSpeed = 20f;
+
+
+
     private bool isFacingRight = true;
+    public int facingDirection { get; set; } = 1;
 
 
 
@@ -45,6 +59,9 @@ public class Player : MonoBehaviour
         moveState = new Player_MoveState(this, stateMachine, "move");
         jumpState = new Player_JumpState(this, stateMachine, "jumpFall");
         fallState = new Player_FallState(this, stateMachine, "jumpFall");
+        wallSlideState = new Player_WallSlideState(this, stateMachine, "wallSlide");
+        wallJumpState = new PLayer_WallJumpState(this, stateMachine, "jumpFall");
+        dashState = new Player_DashState(this, stateMachine, "dash");
     }
 
     private void OnEnable()
@@ -86,21 +103,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         transform.Rotate(0f, 180f, 0f);
         isFacingRight = !isFacingRight;
+        facingDirection = facingDirection * -1;
     }
 
     private void HandleCollisionDetection()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
+        isTouchingWall = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, groundLayer);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -groundCheckDistance));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(wallCheckDistance * facingDirection, 0));
     }
 
     private void OnDisable()

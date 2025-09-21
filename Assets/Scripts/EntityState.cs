@@ -9,6 +9,7 @@ public abstract class EntityState
     protected Animator animator;
     protected Rigidbody2D rb;
     protected Player_InputSet input;
+    protected float stateTimer;
 
     // Constructor to initialize the state
     public EntityState(Player player, StateMachine stateMachine, string animBoolName)
@@ -22,17 +23,33 @@ public abstract class EntityState
         input = player.inputSet;
     }
 
-    public virtual void Enter() 
+    public virtual void Enter()
     {
         // Every time state is entered, enter will be called
         animator.SetBool(animBoolName, true);
     }
 
-    public virtual void Update() 
+    public virtual void Update()
     {
+        stateTimer -= Time.deltaTime;
         // Run the logic of the state
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
+
+        if (input.Player.Dash.WasCompletedThisFrame() && CanDash())
+        {
+            stateMachine.ChangeState(player.dashState);
+        }
     }
+
+    private bool CanDash()
+    {
+        if (player.isTouchingWall || stateMachine.currentState == player.dashState)
+        {
+            return false;
+        }
+
+        return true;
+    }   
 
     public virtual void Exit() 
     {
