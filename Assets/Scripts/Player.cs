@@ -16,10 +16,11 @@ public class Player : MonoBehaviour
     public Player_WallSlideState wallSlideState { get; private set; }
     public PLayer_WallJumpState wallJumpState { get; private set; }
     public Player_DashState dashState { get; private set; }
+    public Player_BasicAttackState basicAttackState { get; private set; }
 
     public Vector2 movementInput { get; private set; }
 
-    [Header("Collision Detection")]
+    [Header("COLLISION DETECTION")]
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask groundLayer;
     public bool isGrounded { get; private set; }
@@ -27,7 +28,11 @@ public class Player : MonoBehaviour
     public bool isTouchingWall { get; private set; }
 
 
-    [Header("Movement Parameters")]
+    [Header("ATTACK DETAILS")]
+    public Vector2 attackVelocity; //3 1.5
+    public float attackVelocityDuration = 0.1f;
+
+    [Header("MOVEMENT PARAMETERS")]
     public float moveSpeed = 5f;
     public float jumpForce = 8f;
     public Vector2 wallJumpForce = new Vector2 (6f, 12f);
@@ -62,6 +67,7 @@ public class Player : MonoBehaviour
         wallSlideState = new Player_WallSlideState(this, stateMachine, "wallSlide");
         wallJumpState = new PLayer_WallJumpState(this, stateMachine, "jumpFall");
         dashState = new Player_DashState(this, stateMachine, "dash");
+        basicAttackState = new Player_BasicAttackState(this, stateMachine, "basicAttack");
     }
 
     private void OnEnable()
@@ -83,6 +89,11 @@ public class Player : MonoBehaviour
     {
         HandleCollisionDetection();
         stateMachine.UpdateStateMachine();
+    }
+
+    public void CallAnimationTrigger()
+    {
+        stateMachine.currentState.CallAnimationTrigger();
     }
 
     public void SetVelocity(float xVelocity, float yVelocity)

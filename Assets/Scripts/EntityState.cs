@@ -10,6 +10,7 @@ public abstract class EntityState
     protected Rigidbody2D rb;
     protected Player_InputSet input;
     protected float stateTimer;
+    protected bool triggerCalled;
 
     // Constructor to initialize the state
     public EntityState(Player player, StateMachine stateMachine, string animBoolName)
@@ -27,6 +28,7 @@ public abstract class EntityState
     {
         // Every time state is entered, enter will be called
         animator.SetBool(animBoolName, true);
+        triggerCalled = false;
     }
 
     public virtual void Update()
@@ -50,6 +52,11 @@ public abstract class EntityState
 
         return true;
     }   
+
+    public void CallAnimationTrigger()
+    {
+        triggerCalled = true;
+    }
 
     public virtual void Exit() 
     {

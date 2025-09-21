@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 395300271}
   - component: {fileID: 395300273}
   - component: {fileID: 395300272}
+  - component: {fileID: 395300274}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -229,6 +230,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &395300274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395300270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50de9991bff0e9d44b5b1b43360fe2e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &445862468
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,51 +660,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445862469}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 34.234}
---- !u!1 &913078147
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 913078149}
-  - component: {fileID: 913078148}
-  m_Layer: 0
-  m_Name: TimerTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &913078148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913078147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39d839e045280c349bf23f0ff65f9737, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeDeltatime: 0
---- !u!4 &913078149
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913078147}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4667051, y: -0.9089889, z: -0.10078363}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495872437
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,11 +830,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   wallCheckDistance: 0.42
+  attackVelocity: {x: 3, y: 1.5}
+  attackVelocityDuration: 0.1
   moveSpeed: 8
   jumpForce: 12
   wallJumpForce: {x: 6, y: 12}
   inAirMoveMultiplier: 0.8
   wallSlideSlowMultiplier: 0.3
+  dashDuration: 0.25
+  dashSpeed: 20
 --- !u!4 &1530599159
 Transform:
   m_ObjectHideFlags: 0
@@ -1223,4 +1195,3 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1530599159}
   - {fileID: 445862469}
-  - {fileID: 913078149}
