@@ -4,15 +4,27 @@ public class Player_BasicAttackState : EntityState
 {
     private float attackVelocityTimer;
 
+    private const int firstComboIndex = 1; // Combo Index starts at 1, also used for the Animator
+    private int comboIndex = 1;
+    private int comboLimit = 3;
+
+    private float lastAttackTime;
+
     public Player_BasicAttackState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
+        if (comboLimit != player.attackVelocity.Length)
+        {
+            comboLimit = player.attackVelocity.Length;
+        }
     }
 
     public override void Enter()
     {
         base.Enter();
+        ResetComboIndexIfNeeded();
 
-        SetAttackVelocity();
+        animator.SetInteger("basicAtkIndex", comboIndex);
+        ApplyAttackVelocity();
     }
 
     public override void Update()
@@ -36,9 +48,32 @@ public class Player_BasicAttackState : EntityState
 
     }
 
-    private void SetAttackVelocity()
+    private void ApplyAttackVelocity()
     {
+        Vector2 attackVelocity = player.attackVelocity[comboIndex - 1];
+
         attackVelocityTimer = player.attackVelocityDuration;
-        player.SetVelocity(player.attackVelocity.x * player.facingDirection, player.attackVelocity.y);
+        player.SetVelocity(attackVelocity.x * player.facingDirection, attackVelocity.y);
+    }
+
+    private void ResetComboIndexIfNeeded()
+    {
+        if (Time.time > lastAttackTime + player.comboResetTimer)
+        {
+            comboIndex = firstComboIndex;
+        }
+
+        if (comboIndex > comboLimit)
+        {
+            comboIndex = firstComboIndex;
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+
+        comboIndex++;
+        lastAttackTime = Time.time;
     }
 }

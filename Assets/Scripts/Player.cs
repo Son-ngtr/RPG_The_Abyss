@@ -29,8 +29,9 @@ public class Player : MonoBehaviour
 
 
     [Header("ATTACK DETAILS")]
-    public Vector2 attackVelocity; //3 1.5
+    public Vector2[] attackVelocity; //3 1.5
     public float attackVelocityDuration = 0.1f;
+    public float comboResetTimer = 1f;
 
     [Header("MOVEMENT PARAMETERS")]
     public float moveSpeed = 5f;
