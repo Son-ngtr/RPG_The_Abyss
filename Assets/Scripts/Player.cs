@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -17,21 +18,27 @@ public class Player : MonoBehaviour
     public PLayer_WallJumpState wallJumpState { get; private set; }
     public Player_DashState dashState { get; private set; }
     public Player_BasicAttackState basicAttackState { get; private set; }
+    public Player_JumpAttackState jumpAttackState { get; private set; }
 
     public Vector2 movementInput { get; private set; }
 
     [Header("COLLISION DETECTION")]
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private LayerMask groundLayer;
-    public bool isGrounded { get; private set; }
     [SerializeField] private float wallCheckDistance;
+    [SerializeField] private Transform primaryWallCheck;
+    [SerializeField] private Transform secondaryWallCheck;
+
+    public bool isGrounded { get; private set; }
     public bool isTouchingWall { get; private set; }
 
 
     [Header("ATTACK DETAILS")]
     public Vector2[] attackVelocity; //3 1.5
+    public Vector2 jumpAttackVelocity;
     public float attackVelocityDuration = 0.1f;
     public float comboResetTimer = 1f;
+    private Coroutine queuedAttackCo;
 
     [Header("MOVEMENT PARAMETERS")]
     public float moveSpeed = 5f;
@@ -69,6 +76,7 @@ public class Player : MonoBehaviour
         wallJumpState = new PLayer_WallJumpState(this, stateMachine, "jumpFall");
         dashState = new Player_DashState(this, stateMachine, "dash");
         basicAttackState = new Player_BasicAttackState(this, stateMachine, "basicAttack");
+        jumpAttackState = new Player_JumpAttackState(this, stateMachine, "jumpAttack");
     }
 
     private void OnEnable()
@@ -90,6 +98,24 @@ public class Player : MonoBehaviour
     {
         HandleCollisionDetection();
         stateMachine.UpdateStateMachine();
+    }
+
+    public void EnterAttackStateWithDelay()
+    {
+        if (queuedAttackCo != null)
+        {
+            StopCoroutine(queuedAttackCo);
+        }
+        queuedAttackCo = StartCoroutine(EnterAttackStateWithDelayCo());
+    }
+
+    // Cant not change state in the same frame as another state change
+    // So we wait until end of frame to change to attack state
+    // This prevents skipping animations when chaining attacks which can cause paused animations
+    private IEnumerator EnterAttackStateWithDelayCo()
+    {
+        yield return new WaitForEndOfFrame();
+        stateMachine.ChangeState(basicAttackState);
     }
 
     public void CallAnimationTrigger()
@@ -125,14 +151,16 @@ public class Player : MonoBehaviour
     private void HandleCollisionDetection()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
-        isTouchingWall = Physics2D.Raycast(transform.position, Vector2.right * facingDirection, wallCheckDistance, groundLayer);
+        isTouchingWall = Physics2D.Raycast(primaryWallCheck.position, Vector2.right * facingDirection, wallCheckDistance, groundLayer)
+                        && Physics2D.Raycast(secondaryWallCheck.position, Vector2.right * facingDirection, wallCheckDistance, groundLayer);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -groundCheckDistance));
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(wallCheckDistance * facingDirection, 0));
+        Gizmos.DrawLine(primaryWallCheck.position, primaryWallCheck.position + new Vector3(wallCheckDistance * facingDirection, 0));
+        Gizmos.DrawLine(secondaryWallCheck.position, secondaryWallCheck.position + new Vector3(wallCheckDistance * facingDirection, 0));
     }
 
     private void OnDisable()
