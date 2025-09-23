@@ -23,16 +23,10 @@ public class Player_IdleState : Player_GroundedState
             return;
         }
 
-        if (player.movementInput != Vector2.zero)
+        if (player.movementInput.x != 0f)
         {
             stateMachine.ChangeState(player.moveState);
         }
 
-        if (player.inputSet.Player.Jump.WasPerformedThisFrame())
-        {
-            // Transition to jump state if implemented
-            // stateMachine.ChangeState(player.jumpState);
-            Debug.Log("Jump input detected, but jump state not implemented.");
-        }
     }
 }
