@@ -1,27 +1,21 @@
 using UnityEngine;
+using UnityEngine.Windows;
 
-// EntityState is Responsible for managing the different states of an entity
 public abstract class EntityState
 {
-    protected Player player;
     protected StateMachine stateMachine;
     protected string animBoolName;
+
     protected Animator animator;
     protected Rigidbody2D rb;
-    protected Player_InputSet input;
+
     protected float stateTimer;
     protected bool triggerCalled;
 
-    // Constructor to initialize the state
-    public EntityState(Player player, StateMachine stateMachine, string animBoolName)
+    public EntityState(StateMachine stateMachine, string animBoolName)
     {
-        this.player = player;
         this.stateMachine = stateMachine;
         this.animBoolName = animBoolName;
-
-        animator = player.animator;
-        rb = player.rb;
-        input = player.inputSet;
     }
 
     public virtual void Enter()
@@ -33,32 +27,15 @@ public abstract class EntityState
 
     public virtual void Update()
     {
-        stateTimer -= Time.deltaTime;
-        // Run the logic of the state
-        animator.SetFloat("yVelocity", rb.linearVelocity.y);
-
-        if (input.Player.Dash.WasCompletedThisFrame() && CanDash())
-        {
-            stateMachine.ChangeState(player.dashState);
-        }
+        stateTimer -= Time.deltaTime;        
     }
-
-    private bool CanDash()
-    {
-        if (player.isTouchingWall || stateMachine.currentState == player.dashState)
-        {
-            return false;
-        }
-
-        return true;
-    }   
 
     public void CallAnimationTrigger()
     {
         triggerCalled = true;
     }
 
-    public virtual void Exit() 
+    public virtual void Exit()
     {
         // Called when exiting the state and changeing to another state
         animator.SetBool(animBoolName, false);
