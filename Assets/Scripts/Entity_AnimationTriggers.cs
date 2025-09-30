@@ -1,18 +1,18 @@
 using UnityEngine;
 
-public class Player_AnimationTriggers : MonoBehaviour
+public class Entity_AnimationTriggers : MonoBehaviour
 {
 
-    private Player player;
+    private Entity entity;
 
     private void Awake()
     {
-        player = GetComponentInParent<Player>();
+        entity = GetComponentInParent<Entity>();
     }
 
     private void CurrentStateTrigger()
     {
         // access the Player component and call a method to signal that the attack is over
-        player.CallAnimationTrigger();
+        entity.CurrentStateAnimationTrigger();
     }
 }

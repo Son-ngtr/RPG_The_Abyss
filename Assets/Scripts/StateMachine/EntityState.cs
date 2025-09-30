@@ -27,10 +27,11 @@ public abstract class EntityState
 
     public virtual void Update()
     {
-        stateTimer -= Time.deltaTime;        
+        stateTimer -= Time.deltaTime;      
+        UpdateAnimationParameters();
     }
 
-    public void CallAnimationTrigger()
+    public void AnimationTrigger()
     {
         triggerCalled = true;
     }
@@ -39,5 +40,10 @@ public abstract class EntityState
     {
         // Called when exiting the state and changeing to another state
         animator.SetBool(animBoolName, false);
+    }
+
+    public virtual void UpdateAnimationParameters()
+    {
+        // Used to update any parameters in the animator that are not handled by the state machine
     }
 }
