@@ -286,8 +286,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb29cf3bc8a9f5840bc556e6bfab4650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  currentHp: 0
+  maxHp: 100
   isDead: 0
+  knockbackForce: {x: 1.5, y: 2.5}
+  heavyKnockbackForce: {x: 7, y: 7}
+  knockbackDuration: 0.2
+  heavyKnockbackDuration: 0.5
+  heavyDamageThreshold: 0.3
 --- !u!114 &27402828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6435,8 +6441,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89969fe79b677b242a5cb17c1299f6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  currentHp: 0
+  maxHp: 100
   isDead: 0
+  knockbackForce: {x: 1.5, y: 2.5}
+  heavyKnockbackForce: {x: 7, y: 7}
+  knockbackDuration: 0.2
+  heavyKnockbackDuration: 0.5
+  heavyDamageThreshold: 0.3
 --- !u!1 &1580700756
 GameObject:
   m_ObjectHideFlags: 0
