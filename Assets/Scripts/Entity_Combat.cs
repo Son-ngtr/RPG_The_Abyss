@@ -13,9 +13,9 @@ public class Entity_Combat : MonoBehaviour
     {
         foreach (var target in GetDetectedColliders())
         {
-            Debug.Log("Hit " + target.name);
-            Entity_Health targetHealth = target.GetComponent<Entity_Health>();
-            targetHealth?.TakeDamage(damage, transform);
+            // Try to get IDamageable component from the target
+            IDamageable damageable = target.GetComponent<IDamageable>();
+            damageable?.TakeDamage(damage, transform);
         }
     }
 
