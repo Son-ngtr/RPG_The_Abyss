@@ -8,6 +8,7 @@ public class Enemy : Entity
     public Enemy_AttackState attackState;
     public Enemy_BattleState battleState;
     public Enemy_DeadState deadState;
+    public Enemy_StunnedState stunnedState;
 
     [Header("BATTLE DETAILS")]
     public float battleMoveSpeed = 3f;
@@ -22,11 +23,18 @@ public class Enemy : Entity
     [Range(0f, 2f)]
     public float moveAnimSpeedMultiplier = 1f;
 
+    [Header("STUNNED DETAILS")]
+    public float stunnedDuration = 1f;
+    public Vector2 stunnedVelocity = new Vector2 (7f, 7f);
+    protected bool canBeStunned;
+
     [Header("PLAYER DETECTION")]
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private Transform playerCheck;
     [SerializeField] private float playerCheckDistance = 10f;
     public Transform player { get; private set; }
+
+    public void EnableCounterWindow(bool enable) => canBeStunned = enable;
 
     private void OnEnable()
     {
