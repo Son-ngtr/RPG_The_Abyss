@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Enemy_Skeleton : Enemy, ICounterable
 {
+    public bool CanBeCountered { get => canBeStunned; }
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,7 +23,7 @@ public class Enemy_Skeleton : Enemy, ICounterable
 
     public void HandleCounter()
     {
-        if (!canBeStunned)
+        if (CanBeCountered == false)
         {
             return;
         }

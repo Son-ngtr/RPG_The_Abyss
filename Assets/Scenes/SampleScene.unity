@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2229aea32784645409f403d9717a26f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 25
   targetCheck: {fileID: 1377948090}
   targetCheckRadius: 1
   whatIsTarget:
@@ -6676,7 +6676,7 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 256
-  counterDuration: 0.2
+  counterRecovery: 0.25
 --- !u!1 &1580700756
 GameObject:
   m_ObjectHideFlags: 0

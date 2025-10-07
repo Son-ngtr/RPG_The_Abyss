@@ -13,21 +13,17 @@ public class Player_CounterAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        counteredSomebody = false;
-        animator.SetBool("counterAttackPerformed", false);
 
-        stateTimer = combat.GetCounterDuration();
+        stateTimer = combat.GetCounterRecoveryDuration();
+        counteredSomebody = combat.CounterAttackPerformed();
+        animator.SetBool("counterAttackPerformed", counteredSomebody);
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (combat.CounterAttackPerformed())
-        {
-            counteredSomebody = true;
-            animator.SetBool("counterAttackPerformed", true);
-        }
+        player.SetVelocity(0, rb.linearVelocity.y);
 
         if (triggerCalled)
         {
