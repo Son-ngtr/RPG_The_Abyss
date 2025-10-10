@@ -20,7 +20,7 @@ public class Player_JumpAttackState : PlayerState
     {
         base.Update();
 
-        if (player.isGrounded && !touchedGround)
+        if (player.isGrounded && touchedGround == false)
         {
             touchedGround = true;
             animator.SetTrigger("jumpAttackTrigger");
