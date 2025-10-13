@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class Entity_Combat : MonoBehaviour
 {
-    public float damage = 50f;
+    private Entity_VFX vfx;
+    public float damage = 25f;
 
     [Header("TARGET DETECTION")]
     [SerializeField] private Transform targetCheck;
     [SerializeField] private float targetCheckRadius = 1;
     [SerializeField] private LayerMask whatIsTarget;
+
+    private void Awake()
+    {
+        vfx = GetComponent<Entity_VFX>();
+    }
 
     public void PerformAttack()
     {
@@ -15,7 +21,12 @@ public class Entity_Combat : MonoBehaviour
         {
             // Try to get IDamageable component from the target
             IDamageable damageable = target.GetComponent<IDamageable>();
-            damageable?.TakeDamage(damage, transform);
+            if (damageable == null)
+            {
+                continue;
+            }
+            damageable.TakeDamage(damage, transform);
+            vfx.CreateOnHitVfx(target.transform);
         }
     }
 
