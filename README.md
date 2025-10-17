@@ -128,12 +128,25 @@ Assets/
 - [x] Character sprite integration
 
 ### 🔄 In Development
+
+#### Short-term Goals
 - [ ] Enemy AI systems
 - [ ] Level design & environments
 - [ ] Combat expansion (combos, special abilities)
 - [ ] Audio integration
 - [ ] UI/HUD systems
 - [ ] Save/Load functionality
+- [ ] Stat system
+- [ ] Skill tree system
+- [ ] UI improvements & polish
+
+#### Long-term Goals
+- [ ] Inventory system
+- [ ] Equipment & item system
+- [ ] Crafting system
+- [ ] Storage system
+- [ ] Shop system
+- [ ] Loot system
 
 ### 🎯 Future Plans
 - [ ] Multiple character classes
