@@ -6,6 +6,7 @@ public class Entity_Health : MonoBehaviour, IDamageable
     private Slider healthBar;
     private Entity_VFX entityVFX;
     private Entity entity;
+    private Entity_Stats stats;
 
     [SerializeField] private float currentHp;
     [SerializeField] protected float maxHp = 100f;
@@ -24,9 +25,10 @@ public class Entity_Health : MonoBehaviour, IDamageable
     {
         entityVFX = GetComponent<Entity_VFX>();
         entity = GetComponent<Entity>();
+        stats = GetComponent<Entity_Stats>();
         healthBar = GetComponentInChildren<Slider>();
 
-        currentHp = maxHp;
+        currentHp = stats.GetMaxHealth();
         UpdateHealthBar();
     }
 
@@ -63,7 +65,7 @@ public class Entity_Health : MonoBehaviour, IDamageable
 
     private float CalculateDuration(float damage) => IsHeavyDamage(damage) ? heavyKnockbackDuration : knockbackDuration;
 
-    private bool IsHeavyDamage(float damage) => damage / maxHp > heavyDamageThreshold;
+    private bool IsHeavyDamage(float damage) => damage / stats.GetMaxHealth() > heavyDamageThreshold;
 
     private void UpdateHealthBar()
     {
@@ -71,7 +73,7 @@ public class Entity_Health : MonoBehaviour, IDamageable
         {
             return;
         }
-        healthBar.value = currentHp/maxHp;
+        healthBar.value = currentHp/stats.GetMaxHealth();
     }
 
     private void Die()
