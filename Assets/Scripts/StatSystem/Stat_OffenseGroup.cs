@@ -6,7 +6,7 @@ public class Stat_OffenseGroup
 {
     // Physical Attack Power
     public Stat damage;
-    public Stat critRate;
+    public Stat critChance;
     public Stat critDamage;
 
     // Elemental Attack Power

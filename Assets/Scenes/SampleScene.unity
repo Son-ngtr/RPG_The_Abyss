@@ -274,7 +274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2229aea32784645409f403d9717a26f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
   targetCheck: {fileID: 1377948090}
   targetCheckRadius: 1
   whatIsTarget:
@@ -316,6 +315,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.15
   hitVfxColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
   hitVfx: {fileID: 145976760859148160, guid: 88bd4b8a03c910c458449a00cfcd7806, type: 3}
+  critHitVfx: {fileID: 1583416317780123555, guid: 9c5a28e53f0f94d4b87817a6e927919e, type: 3}
   attackAlert: {fileID: 358571860}
 --- !u!114 &27402829
 MonoBehaviour:
@@ -343,7 +343,7 @@ MonoBehaviour:
   offense:
     damage:
       baseValue: 0
-    critRate:
+    critChance:
       baseValue: 0
     critDamage:
       baseValue: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
     armor:
       baseValue: 0
     evasion:
-      baseValue: 100
+      baseValue: 0
     fireResist:
       baseValue: 0
     iceResist:
@@ -7666,6 +7666,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.15
   hitVfxColor: {r: 1, g: 1, b: 1, a: 1}
   hitVfx: {fileID: 0}
+  critHitVfx: {fileID: 0}
 --- !u!1 &1377948089
 GameObject:
   m_ObjectHideFlags: 0
@@ -7929,6 +7930,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.15
   hitVfxColor: {r: 0.5754717, g: 0, b: 0.37557578, a: 1}
   hitVfx: {fileID: 145976760859148160, guid: 88bd4b8a03c910c458449a00cfcd7806, type: 3}
+  critHitVfx: {fileID: 1583416317780123555, guid: 9c5a28e53f0f94d4b87817a6e927919e, type: 3}
 --- !u!114 &1530599164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7961,7 +7963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617f4ec6225e9f14794bfd7f3f900458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
   targetCheck: {fileID: 970948813}
   targetCheckRadius: 1
   whatIsTarget:
@@ -7993,11 +7994,11 @@ MonoBehaviour:
       baseValue: 7
   offense:
     damage:
-      baseValue: 0
-    critRate:
-      baseValue: 0
+      baseValue: 10
+    critChance:
+      baseValue: 50
     critDamage:
-      baseValue: 0
+      baseValue: 250
     fireDamage:
       baseValue: 0
     iceDamage:
