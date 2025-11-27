@@ -340,6 +340,30 @@ MonoBehaviour:
       baseValue: 0
     vitality:
       baseValue: 0
+  offense:
+    damage:
+      baseValue: 0
+    critRate:
+      baseValue: 0
+    critDamage:
+      baseValue: 0
+    fireDamage:
+      baseValue: 0
+    iceDamage:
+      baseValue: 0
+    lightningDamage:
+      baseValue: 0
+  defend:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 100
+    fireResist:
+      baseValue: 0
+    iceResist:
+      baseValue: 0
+    lightningResist:
+      baseValue: 0
 --- !u!1 &55617182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,7 +1359,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.023318, y: 0.83430654, z: 30.886824}
+  m_LocalPosition: {x: -2.0395615, y: 0.83430654, z: 30.886824}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7967,6 +7991,30 @@ MonoBehaviour:
       baseValue: 0
     vitality:
       baseValue: 7
+  offense:
+    damage:
+      baseValue: 0
+    critRate:
+      baseValue: 0
+    critDamage:
+      baseValue: 0
+    fireDamage:
+      baseValue: 0
+    iceDamage:
+      baseValue: 0
+    lightningDamage:
+      baseValue: 0
+  defend:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 100
+    fireResist:
+      baseValue: 0
+    iceResist:
+      baseValue: 0
+    lightningResist:
+      baseValue: 0
 --- !u!1 &1580700756
 GameObject:
   m_ObjectHideFlags: 0
