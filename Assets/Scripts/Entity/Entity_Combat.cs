@@ -27,9 +27,11 @@ public class Entity_Combat : MonoBehaviour
                 continue;
             }
 
+            float elementalDamage = stats.GetElementalDamage(out ElementType element);
+
             bool isCritical; // This will be set by GetPhysicalDamage method
             float damage = stats.GetPhysicalDamage(out isCritical);
-            bool targetGotHit = damageable.TakeDamage(damage, transform);
+            bool targetGotHit = damageable.TakeDamage(damage, elementalDamage, element, transform);
 
             if (targetGotHit)
             {
