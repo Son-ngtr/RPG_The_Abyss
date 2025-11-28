@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class Entity_Stats : MonoBehaviour
 {
-    public Stat_ResourceGroup resources;
+    public Stat_SetupSO defaultStatSetup;
+
     public Stat_MajorGroup major;
+    public Stat_ResourceGroup resources;
     public Stat_OffenseGroup offense;
     public Stat_DefenseGroup defend;
 
@@ -15,7 +17,6 @@ public class Entity_Stats : MonoBehaviour
 
         float bonusElementalDamage = major.intelligence.GetValue() * 1f; // Each point in intelligence gives 1 elemental damage
 
-        // Bug: When 2 or more ele the same -- dont give dam 
         float highestElementalDamage = fireDamage;
         element = ElementType.Fire;
 
@@ -37,11 +38,11 @@ public class Entity_Stats : MonoBehaviour
             return 0;
         }
 
-        float bonusFire = (fireDamage == highestElementalDamage) ? 0 : fireDamage * 0.5f;
-        float bonusIce = (iceDamage == highestElementalDamage) ? 0 : iceDamage * 0.5f;
-        float bonusLightning = (lightningDamage == highestElementalDamage) ? 0 : lightningDamage * 0.5f;
-        float weakerElementalDamage = bonusFire + bonusIce + bonusLightning;
+        float bonusFire = (element == ElementType.Fire) ? 0 : fireDamage * 0.5f;
+        float bonusIce = (element == ElementType.Ice) ? 0 : iceDamage * 0.5f;
+        float bonusLightning = (element == ElementType.Lightning) ? 0 : lightningDamage * 0.5f;
 
+        float weakerElementalDamage = bonusFire + bonusIce + bonusLightning;
         float finalElementalDamage = highestElementalDamage + weakerElementalDamage + bonusElementalDamage;
 
         return finalElementalDamage * scaleFactor;
@@ -169,5 +170,46 @@ public class Entity_Stats : MonoBehaviour
             StatType.LightningResistance => defend.lightningResist,
             _ => null,
         };
+    }
+
+    [ContextMenu("Update Default Stats Setup")]
+    public void ApplyDefaultStatsSetup()
+    {
+        if (defaultStatSetup == null)
+        {
+            Debug.Log("No default stat setup assigned");
+            return;
+        }
+
+        // Major Stats
+        major.strength.SetBaseValue(defaultStatSetup.strength);
+        major.agility.SetBaseValue(defaultStatSetup.agility);
+        major.intelligence.SetBaseValue(defaultStatSetup.intelligence);
+        major.vitality.SetBaseValue(defaultStatSetup.vitality);
+
+        // Resources
+        resources.maxHealth.SetBaseValue(defaultStatSetup.maxHealth);
+        resources.healthRegen.SetBaseValue(defaultStatSetup.healthRegen);
+
+        // Offense - Physical Damage
+        offense.attackSpeed.SetBaseValue(defaultStatSetup.attackSpeed);
+        offense.damage.SetBaseValue(defaultStatSetup.damage);
+        offense.critChance.SetBaseValue(defaultStatSetup.critChance);
+        offense.critDamage.SetBaseValue(defaultStatSetup.critDamage);
+        offense.armorReduction.SetBaseValue(defaultStatSetup.armorReduction);
+
+        // Offense - Elemental Damage
+        offense.fireDamage.SetBaseValue(defaultStatSetup.fireDamage);
+        offense.iceDamage.SetBaseValue(defaultStatSetup.iceDamage);
+        offense.lightningDamage.SetBaseValue(defaultStatSetup.lightningDamage);
+
+        // Defense - Physical Damage
+        defend.armor.SetBaseValue(defaultStatSetup.armor);
+        defend.evasion.SetBaseValue(defaultStatSetup.evasion);
+
+        // Defense - Elemental Damage
+        defend.fireResist.SetBaseValue(defaultStatSetup.fireResistance);
+        defend.iceResist.SetBaseValue(defaultStatSetup.iceResistance);
+        defend.lightningResist.SetBaseValue(defaultStatSetup.lightningResistance);
     }
 }

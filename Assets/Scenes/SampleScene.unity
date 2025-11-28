@@ -339,13 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0dc2db21e3df84ca65dbe25a1e70f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Stats
-  resources:
-    maxHealth:
-      baseValue: 1000
-      modifiers: []
-    healthRegen:
-      baseValue: 0
-      modifiers: []
+  defaultStatSetup: {fileID: 11400000, guid: 6c52808038a8c874c9932a06aad13f54, type: 2}
   major:
     strength:
       baseValue: 0
@@ -359,18 +353,25 @@ MonoBehaviour:
     vitality:
       baseValue: 0
       modifiers: []
+  resources:
+    maxHealth:
+      baseValue: 100
+      modifiers: []
+    healthRegen:
+      baseValue: 0
+      modifiers: []
   offense:
     attackSpeed:
       baseValue: 1
       modifiers: []
     damage:
-      baseValue: 150
+      baseValue: 10
       modifiers: []
     critChance:
       baseValue: 0
       modifiers: []
     critDamage:
-      baseValue: 0
+      baseValue: 150
       modifiers: []
     armorReduction:
       baseValue: 0
@@ -7903,13 +7904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0dc2db21e3df84ca65dbe25a1e70f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Stats
-  resources:
-    maxHealth:
-      baseValue: 2000
-      modifiers: []
-    healthRegen:
-      baseValue: 60
-      modifiers: []
+  defaultStatSetup: {fileID: 11400000, guid: 8c0e887a9d40c364c9093b564f06f94b, type: 2}
   major:
     strength:
       baseValue: 0
@@ -7922,6 +7917,13 @@ MonoBehaviour:
       modifiers: []
     vitality:
       baseValue: 0
+      modifiers: []
+  resources:
+    maxHealth:
+      baseValue: 2000
+      modifiers: []
+    healthRegen:
+      baseValue: 60
       modifiers: []
   offense:
     attackSpeed:
