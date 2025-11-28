@@ -17,11 +17,56 @@ public class Entity_VFX : MonoBehaviour
     [SerializeField] private GameObject hitVfx;
     [SerializeField] private GameObject critHitVfx;
 
+    [Header("Element Colors")]
+    [SerializeField] private Color chillVfx = Color.cyan;
+    private Color originalHitVfxColor;
+
     private void Awake()
     {
         entity = GetComponent<Entity>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
+        originalHitVfxColor = hitVfxColor;
+    }
+
+    public void PlayOnStatusVfx(float duration, ElementType element)
+    {
+        switch(element)
+        {
+            case ElementType.Fire:
+                StartCoroutine(PlayStatusVfxCo(duration, Color.red));
+                break;
+            case ElementType.Ice:
+                StartCoroutine(PlayStatusVfxCo(duration, chillVfx));
+                break;
+            case ElementType.Lightning:
+                StartCoroutine(PlayStatusVfxCo(duration, Color.yellow));
+                break;
+            default:
+                break;
+        }
+    }
+
+    private IEnumerator PlayStatusVfxCo(float duration, Color effectColor)
+    {
+        float tickInterval = 0.2f;
+        float timeHasPassed = 0f;
+
+        Color lightColor = effectColor * 1.2f;
+        Color darkColor = effectColor * 7.8f;
+
+        bool toggle = false;
+
+        while (timeHasPassed < duration)
+        {
+            spriteRenderer.color = toggle ? lightColor : darkColor;
+            toggle = !toggle;
+
+            yield return new WaitForSeconds(tickInterval);
+            timeHasPassed += tickInterval;
+        }
+
+        spriteRenderer.color = Color.white;
     }
 
     public void CreateOnHitVfx(Transform target, bool isCrit)
@@ -36,6 +81,25 @@ public class Entity_VFX : MonoBehaviour
         if (entity.facingDirection == -1 && isCrit)
         {
             vfx.transform.Rotate(0, 180, 0);
+        }
+    }
+
+    public void UpdateOnHitVfxColor(ElementType element)
+    {
+        switch (element)
+        {
+            case ElementType.Fire:
+                hitVfxColor = Color.red;
+                break;
+            case ElementType.Ice:
+                hitVfxColor = chillVfx;
+                break;
+            case ElementType.Lightning:
+                hitVfxColor = Color.yellow;
+                break;
+            default:
+                hitVfxColor = originalHitVfxColor;
+                break;
         }
     }
 
