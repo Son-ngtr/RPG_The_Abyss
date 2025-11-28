@@ -283,6 +283,8 @@ MonoBehaviour:
   defaultDuration: 3
   chillSlowMultiplier: 0.5
   electrifyChargeBuildup: 0.4
+  fireScale: 0.8
+  lightningScale: 2.5
 --- !u!114 &27402827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,9 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb29cf3bc8a9f5840bc556e6bfab4650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 0
-  maxHp: 200
+  currentHealth: 0
   isDead: 0
+  regenInterval: 1
+  canRegenHealth: 1
   knockbackForce: {x: 1.5, y: 2.5}
   heavyKnockbackForce: {x: 7, y: 7}
   knockbackDuration: 0.2
@@ -336,8 +339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0dc2db21e3df84ca65dbe25a1e70f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Stats
-  maxHealth:
-    baseValue: 10000
+  resources:
+    maxHealth:
+      baseValue: 1000
+    healthRegen:
+      baseValue: 0
   major:
     strength:
       baseValue: 0
@@ -348,6 +354,8 @@ MonoBehaviour:
     vitality:
       baseValue: 0
   offense:
+    attackSpeed:
+      baseValue: 1
     damage:
       baseValue: 150
     critChance:
@@ -7974,9 +7982,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89969fe79b677b242a5cb17c1299f6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHp: 0
-  maxHp: 100
+  currentHealth: 0
   isDead: 0
+  regenInterval: 1
+  canRegenHealth: 1
   knockbackForce: {x: 1.5, y: 2.5}
   heavyKnockbackForce: {x: 7, y: 7}
   knockbackDuration: 0.2
@@ -8002,6 +8011,8 @@ MonoBehaviour:
   defaultDuration: 3
   chillSlowMultiplier: 0.5
   electrifyChargeBuildup: 0.4
+  fireScale: 0.8
+  lightningScale: 2.5
   counterRecovery: 0.25
 --- !u!114 &1530599166
 MonoBehaviour:
@@ -8015,8 +8026,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d0dc2db21e3df84ca65dbe25a1e70f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entity_Stats
-  maxHealth:
-    baseValue: 10000
+  resources:
+    maxHealth:
+      baseValue: 2000
+    healthRegen:
+      baseValue: 60
   major:
     strength:
       baseValue: 0
@@ -8027,6 +8041,8 @@ MonoBehaviour:
     vitality:
       baseValue: 0
   offense:
+    attackSpeed:
+      baseValue: 1
     damage:
       baseValue: 10
     critChance:

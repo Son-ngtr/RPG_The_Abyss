@@ -67,7 +67,7 @@ public class Entity_StatusHandler : MonoBehaviour
         for (int i = 0; i < tickCount; i++)
         {
             // Reduce Health of Entity
-            entityHealth.ReduceHp(damegePerTick);
+            entityHealth.ReduceHeath(damegePerTick);
             yield return new WaitForSeconds(tickInterval);
         }
 
@@ -118,7 +118,7 @@ public class Entity_StatusHandler : MonoBehaviour
     private void DoLightningStrike(float damage)
     {
         Instantiate(lightingStrikeVfx, transform.position, Quaternion.identity);
-        entityHealth.ReduceHp(damage);
+        entityHealth.ReduceHeath(damage);
     }
 
 
