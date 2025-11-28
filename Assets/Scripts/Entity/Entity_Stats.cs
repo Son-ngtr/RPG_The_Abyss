@@ -138,4 +138,36 @@ public class Entity_Stats : MonoBehaviour
 
         return finalEvasion;
     }
+
+    public Stat GetStatByType(StatType statType)
+    {
+        return statType switch
+        {
+            // Resources
+            StatType.MaxHealth => resources.maxHealth,
+            StatType.HealthRegen => resources.healthRegen,
+            // Major Stats
+            StatType.Strength => major.strength,
+            StatType.Agility => major.agility,
+            StatType.Intelligence => major.intelligence,
+            StatType.Vitality => major.vitality,
+            // Offense Stats
+            StatType.AttackSpeed => offense.attackSpeed,
+            StatType.Damage => offense.damage,
+            StatType.CritChance => offense.critChance,
+            StatType.CritPower => offense.critDamage,
+            StatType.ArmorReduction => offense.armorReduction,
+
+            StatType.FireDamage => offense.fireDamage,
+            StatType.IceDamage => offense.iceDamage,
+            StatType.LightningDamage => offense.lightningDamage,
+            // Defense Stats
+            StatType.Armor => defend.armor,
+            StatType.Evasion => defend.evasion,
+            StatType.FireResistance => defend.fireResist,
+            StatType.IceResistance => defend.iceResist,
+            StatType.LightningResistance => defend.lightningResist,
+            _ => null,
+        };
+    }
 }
