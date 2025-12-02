@@ -151,28 +151,6 @@ public partial class @Player_InputSet: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""3b243be4-b9e5-4897-ae01-865c0e26b3c3"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""23d54f1e-dbe5-43fa-a65c-41444a618f75"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""left"",
                     ""id"": ""03cd44f0-61c0-487f-81d5-edbe51b6210d"",
                     ""path"": ""<Keyboard>/a"",
