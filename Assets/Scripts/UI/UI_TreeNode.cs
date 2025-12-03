@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    private UI ui;
+    private RectTransform rectTransform;
+
     [SerializeField] private Skill_DataSO skillData;
     [SerializeField] private string skillName;
 
@@ -29,6 +32,9 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Awake()
     {
+        ui = GetComponentInParent<UI>();
+        rectTransform = GetComponent<RectTransform>();
+
         UpdateIconColor(GetColorByHex(lockedColorHex));
     }
 
@@ -76,6 +82,8 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        ui.skillToolTip.ShowToolTip(true, rectTransform, skillData);
+
         if (isUnlocked == false)
         {
             UpdateIconColor(Color.white * 0.9f);   
@@ -85,6 +93,8 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        ui.skillToolTip.ShowToolTip(false, rectTransform);
+
         if (isUnlocked == false)
         {
             UpdateIconColor(lastIconColor);            
