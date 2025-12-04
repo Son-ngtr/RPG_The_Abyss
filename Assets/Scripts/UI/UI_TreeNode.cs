@@ -8,6 +8,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private UI ui;
     private RectTransform rectTransform;
     private UI_SkillTree skillTree;
+    private UI_TreeConnectionHandler connectionHandler;
 
     [Header("UNLOCK DETAILS")]
     public UI_TreeNode[] neededNodes;
@@ -41,16 +42,32 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         ui = GetComponentInParent<UI>();
         rectTransform = GetComponent<RectTransform>();
         skillTree = GetComponentInParent<UI_SkillTree>();
+        connectionHandler = GetComponent<UI_TreeConnectionHandler>();
 
         UpdateIconColor(GetColorByHex(lockedColorHex));
+    }
+
+    public void Refund()
+    {
+        if (isUnlocked == true)
+            skillTree.AddSkillPoints(skillData.cost);
+
+        isUnlocked = false;
+        isLocked = false;
+        UpdateIconColor(GetColorByHex(lockedColorHex));
+
+        connectionHandler.UnlockConnectionImage(false);
+
+        // skill mng and reset skill
     }
 
     private void Unlock()
     {
         isUnlocked = true;
         UpdateIconColor(Color.white);
-        skillTree.RemoveSkillPoint(skillData.cost);
         LockConflictNodes();
+        skillTree.RemoveSkillPoint(skillData.cost);
+        connectionHandler.UnlockConnectionImage(true);
 
         // Find player mng skill --> unlock skill
     }
@@ -113,8 +130,9 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             Unlock();
             Debug.Log("Unlock skill");
         }
-        else
+        else if (isLocked)
         {
+            ui.skillToolTip.LockedSkillEffect();
             Debug.Log("Cannot unlock skill");
         }
     }
@@ -123,22 +141,21 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         ui.skillToolTip.ShowToolTip(true, rectTransform, this);
 
-        if (isUnlocked == false)
-        {
-            UpdateIconColor(Color.white * 0.9f);   
-        }
-        Debug.Log("Pointer entered the UI_TreeNode.");
+        if (isUnlocked || isLocked)
+            return;
+
+        Color color = Color.white * 0.9f; color.a = 1f;
+        UpdateIconColor(color);   
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ui.skillToolTip.ShowToolTip(false, rectTransform);
 
-        if (isUnlocked == false)
-        {
-            UpdateIconColor(lastIconColor);            
-        }
-        Debug.Log("Pointer exited the UI_TreeNode.");
+        if (isUnlocked || isLocked)
+            return;
+
+        UpdateIconColor(lastIconColor);            
     }
 
     private Color GetColorByHex(string hex)

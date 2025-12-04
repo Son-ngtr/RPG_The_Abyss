@@ -1,9 +1,11 @@
+using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
 
 public class UI_SkillToolTip : UI_ToolTip
 {
+    private UI ui;
     private UI_SkillTree skillTree;
 
     [SerializeField] private TextMeshProUGUI skillName;
@@ -17,10 +19,13 @@ public class UI_SkillToolTip : UI_ToolTip
     [SerializeField] Color exampleColor;
     [SerializeField] private string lockedSkillText = "You've taken a different path - this skill is now locked.";
 
+    private Coroutine textEffectCo;
+
     protected override void Awake()
     {
         base.Awake();
-        skillTree = GetComponentInParent<UI_SkillTree>();
+        ui = GetComponentInParent<UI>();
+        skillTree = ui.GetComponentInChildren<UI_SkillTree>();
     }
 
     public override void ShowToolTip(bool show, RectTransform targetRect)
@@ -44,6 +49,28 @@ public class UI_SkillToolTip : UI_ToolTip
         string requirements = node.isLocked ? skillLockedText : GetRequirements(node.skillData.cost, node.neededNodes, node.conflictNodes);
 
         skillRequirements.text = requirements;
+    }
+
+    public void LockedSkillEffect()
+    {
+        if (textEffectCo != null)
+        {
+            StopCoroutine(textEffectCo);
+        }
+
+        textEffectCo = StartCoroutine(TextBlinkEffectCo(skillRequirements, 0.15f, 3));
+    }
+
+    private IEnumerator TextBlinkEffectCo(TextMeshProUGUI text, float blinkInterval, int blinkCount)
+    {
+        for (int i = 0; i < blinkCount; i++)
+        {
+            text.text = GetColoredText(unmetConditionHex, lockedSkillText);
+            yield return new WaitForSeconds(blinkInterval);
+
+            text.text = GetColoredText(importantInfoHex, lockedSkillText);
+            yield return new WaitForSeconds(blinkInterval);
+        }
     }
 
     private string GetRequirements(int skillCost, UI_TreeNode[] neededNodes, UI_TreeNode[] conflictNodes)
@@ -76,4 +103,10 @@ public class UI_SkillToolTip : UI_ToolTip
         }
         return sb.ToString();
     }
+
+    private string GetColoredText(string colorHex, string text)
+    {
+        return $"<color={colorHex}>{text}</color>";
+    }
+
 }
