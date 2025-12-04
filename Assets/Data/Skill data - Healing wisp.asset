@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce01c107f70f8c243bf23b8a1f25d828, type: 3}
   m_Name: Skill data - Healing wisp
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
-  cost: 2
+  cost: 1
   displayName: Healing wisp
   description: When the echo dies from enemy attack, it releases a healing wisp that
     moves toward you and heals on contact.

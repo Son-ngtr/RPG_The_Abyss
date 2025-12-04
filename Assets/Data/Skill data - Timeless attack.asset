@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce01c107f70f8c243bf23b8a1f25d828, type: 3}
-  m_Name: Skill data - Time echo
+  m_Name: Skill data - Timeless attack
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
-  cost: 1
-  displayName: Time echo
-  description: 'Create a time echo (clone) of yourself.
-
-    The echo distracts enemies.'
-  icon: {fileID: -1754244098, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  cost: 2
+  displayName: Timeless attack
+  description: The Time echo can perform 1 attack.
+  icon: {fileID: 409199846, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
