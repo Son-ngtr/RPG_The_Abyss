@@ -25,7 +25,7 @@ public class UI_SkillToolTip : UI_ToolTip
     {
         base.Awake();
         ui = GetComponentInParent<UI>();
-        skillTree = ui.GetComponentInChildren<UI_SkillTree>();
+        skillTree = ui.GetComponentInChildren<UI_SkillTree>(true);
     }
 
     public override void ShowToolTip(bool show, RectTransform targetRect)
@@ -45,7 +45,7 @@ public class UI_SkillToolTip : UI_ToolTip
         skillName.text = node.skillData.name;
         skillDescription.text = node.skillData.description;
 
-        string skillLockedText = $"<color={importantInfoHex}>{lockedSkillText}</color>";
+        string skillLockedText = GetColoredText(importantInfoHex, lockedSkillText);
         string requirements = node.isLocked ? skillLockedText : GetRequirements(node.skillData.cost, node.neededNodes, node.conflictNodes);
 
         skillRequirements.text = requirements;
@@ -81,13 +81,20 @@ public class UI_SkillToolTip : UI_ToolTip
         string costColor = skillTree.EnoughSkillPoints(skillCost)
             ? metConditionHex
             : unmetConditionHex;
-        sb.AppendLine($" - <color={costColor}>{skillCost} skill point(s)</color>");
+        string costText = $"- {skillCost} skill point(s)";
+        string finalCostText = GetColoredText(costColor, costText);
+
+        sb.AppendLine(finalCostText);
+
         foreach (var neededNode in neededNodes)
         {
             string nodeColor = neededNode.isUnlocked
                 ? metConditionHex
                 : unmetConditionHex;
-            sb.AppendLine($" - <color={nodeColor}>{neededNode.skillData.displayName}</color>");
+            string nodeText = $"- {neededNode.skillData.displayName}";
+            string finalNodeText = GetColoredText(nodeColor, nodeText);
+
+            sb.AppendLine(finalNodeText);
         }
 
         if (conflictNodes.Length <= 0)
@@ -96,17 +103,16 @@ public class UI_SkillToolTip : UI_ToolTip
         }
 
         sb.AppendLine();
-        sb.AppendLine($"<color={importantInfoHex}>Locks out: </color>");
+        string locksOutText = $"Locks out: ";
+        string finalLocksOutText = GetColoredText(importantInfoHex, locksOutText);
+        sb.AppendLine(finalLocksOutText);
+
         foreach (var conflictNode in conflictNodes)
         {
-            sb.AppendLine($" - <color={importantInfoHex}>{conflictNode.skillData.displayName}</color>");
+            string nodeText = $"- {conflictNode.skillData.displayName}";
+            string finalNodeText = GetColoredText(importantInfoHex, nodeText);
+            sb.AppendLine(finalNodeText);
         }
         return sb.ToString();
     }
-
-    private string GetColoredText(string colorHex, string text)
-    {
-        return $"<color={colorHex}>{text}</color>";
-    }
-
 }

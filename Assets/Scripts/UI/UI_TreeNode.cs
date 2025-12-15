@@ -22,7 +22,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private Image skillIcon;
     [SerializeField] private int skillCost;
     [SerializeField] private string lockedColorHex = "#939393";
-    private Color lastIconColor;
+    private UnityEngine.Color lastIconColor;
 
     private void OnValidate()
     {
@@ -141,21 +141,24 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         ui.skillToolTip.ShowToolTip(true, rectTransform, this);
 
-        if (isUnlocked || isLocked)
-            return;
-
-        Color color = Color.white * 0.9f; color.a = 1f;
-        UpdateIconColor(color);   
+        if (isUnlocked == false || isLocked == false)
+            ToggleNodeHighLight(true); 
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         ui.skillToolTip.ShowToolTip(false, rectTransform);
 
-        if (isUnlocked || isLocked)
-            return;
+        if (isUnlocked == false || isLocked == false)
+            ToggleNodeHighLight(false);           
+    }
 
-        UpdateIconColor(lastIconColor);            
+    private void ToggleNodeHighLight(bool highlight)
+    {
+        Color highlightColor = Color.white * 0.9f; highlightColor.a = 1f;
+        Color colorToApply = highlight ? highlightColor : lastIconColor;
+
+        UpdateIconColor(colorToApply);
     }
 
     private Color GetColorByHex(string hex)
@@ -166,5 +169,17 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             return color;
         }
         return Color.white; // Default color if parsing fails
+    }
+
+    private void OnDisable()
+    {
+        if (isLocked)
+        {
+            UpdateIconColor(GetColorByHex(lockedColorHex));
+        }
+        if (isUnlocked)
+        {
+            UpdateIconColor(Color.white);
+        }
     }
 }
