@@ -64,7 +64,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
 
             detail.childNode.SetPosition(targetPosition);
             detail.childNode.SetConnectionImage(connectionImage);
-            detail.childNode.transform.SetAsLastSibling();
+            // detail.childNode.transform.SetAsLastSibling(); --> Not working properly, need to be reworked.
         }
     }
 
