@@ -5,7 +5,7 @@ public abstract class PlayerState : EntityState
 {
     protected Player player;
     protected Player_InputSet input;
-    protected Player_SkillManager skills;
+    protected Player_SkillManager skillManager;
     
     // Constructor to initialize the state
     public PlayerState(Player player, StateMachine stateMachine, string animBoolName) : base(stateMachine, animBoolName)
@@ -16,7 +16,7 @@ public abstract class PlayerState : EntityState
         rb = player.rb;
         input = player.inputSet;
         stats = player.stats;
-        skills = player.skillManager;
+        skillManager = player.skillManager;
     }
 
     public override void Update()
@@ -25,7 +25,7 @@ public abstract class PlayerState : EntityState
 
         if (input.Player.Dash.WasCompletedThisFrame() && CanDash())
         {
-            skills.dash.SetSkillOnCoolDown();
+            skillManager.dash.SetSkillOnCoolDown();
             stateMachine.ChangeState(player.dashState);
         }
     }
@@ -38,7 +38,7 @@ public abstract class PlayerState : EntityState
     
     private bool CanDash()
     {
-        if (skills.dash.CanUseSkill() == false)
+        if (skillManager.dash.CanUseSkill() == false)
         {
             return false;
         }

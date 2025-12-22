@@ -2,5 +2,40 @@ using UnityEngine;
 
 public class Skill_Dash : Skill_Base
 {
-    
+
+    public void OnStartEffect()
+    {
+        if (Unlocked(SkillUpgradeType.Dash_CloneOnStash) || Unlocked(SkillUpgradeType.Dash_CloneOnStartAndArrival))
+        {
+            CreateClone();
+        }
+
+        if (Unlocked(SkillUpgradeType.Dash_ShardOnStart) || Unlocked(SkillUpgradeType.Dash_ShardOnStartAndArrival))
+        {
+            CreateShard();
+        }
+    }
+
+    public void OnEndEffect()
+    {
+        if (Unlocked(SkillUpgradeType.Dash_CloneOnStartAndArrival))
+        {
+            CreateClone();
+        }
+
+        if (Unlocked(SkillUpgradeType.Dash_ShardOnStartAndArrival))
+        {
+            CreateShard();
+        }
+    }
+
+    private void CreateShard()
+    {
+        Debug.Log("Dash Time shard Skill Used");
+    }
+
+    private void CreateClone()
+    {
+        Debug.Log("Dash Time echo Skill Used");
+    }
 }

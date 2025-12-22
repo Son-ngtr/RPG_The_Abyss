@@ -5,11 +5,18 @@ public class Skill_DataSO : ScriptableObject
 {
     public int cost;
     public SkillType skillType;
-    public SkillUpgradeType upgradeType;
+    public UpgradeData upgradeData;
 
     [Header("SKILL DESCRIPTION")]
     public string displayName;
     [TextArea(4, 10)]
     public string description;
     public Sprite icon;
+}
+
+[System.Serializable]
+public class UpgradeData
+{
+    public SkillUpgradeType upgradeType;
+    public float coolDown;
 }

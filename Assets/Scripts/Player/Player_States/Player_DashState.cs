@@ -1,4 +1,4 @@
-using UnityEngine;
+    using UnityEngine;
 
 public class Player_DashState : PlayerState
 {
@@ -12,6 +12,9 @@ public class Player_DashState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        skillManager.dash.OnStartEffect();
+        player.vfx.DoImageEchoEffect(player.dashDuration);
 
         dashDirection = player.movementInput.x != 0 ? (int)player.movementInput.x : player.facingDirection; ;
         stateTimer = player.dashDuration;
@@ -60,6 +63,9 @@ public class Player_DashState : PlayerState
     public override void Exit()
     {
         base.Exit();
+
+        skillManager.dash.OnEndEffect();
+
         player.SetVelocity(0f, 0f);
         rb.gravityScale = originalGravityScale;
     }
