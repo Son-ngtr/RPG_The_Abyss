@@ -9332,6 +9332,71 @@ Transform:
   - {fileID: 1606902914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1078278688
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1730264045916405054, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1730264045916405054, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0991573
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4159725
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.90121186
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6030903440633930275, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884134271100068758, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_Name
+      value: Enemy_Skeleton
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
 --- !u!1 &1079229600
 GameObject:
   m_ObjectHideFlags: 0
@@ -9998,6 +10063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1223157016}
   - component: {fileID: 1223157017}
+  - component: {fileID: 1223157018}
   m_Layer: 7
   m_Name: Skills_Holder
   m_TagString: Untagged
@@ -10035,6 +10101,23 @@ MonoBehaviour:
   skillType: 0
   upgradeType: 0
   cooldown: 3
+--- !u!114 &1223157018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223157015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02b9a1af772653b409dae1fe09fbabab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Skill_Shard
+  skillType: 0
+  upgradeType: 0
+  cooldown: 1
+  shardPrefab: {fileID: 5284931793353451397, guid: 619f151a52edabd47a35514cb2be623c, type: 3}
+  detonationTime: 2
 --- !u!1 &1235503209
 GameObject:
   m_ObjectHideFlags: 0
@@ -15182,3 +15265,4 @@ SceneRoots:
   - {fileID: 1917240169}
   - {fileID: 717792306}
   - {fileID: 528837008}
+  - {fileID: 1078278688}
