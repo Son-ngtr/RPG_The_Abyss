@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 [Serializable]
 public class UI_TreeConnectDetails
@@ -21,21 +22,6 @@ public class UI_TreeConnectionHandler : MonoBehaviour
     private Color originalColor;
     private RectTransform rect => GetComponent<RectTransform>();
 
-    private void OnValidate()
-    {
-        if (connectionDetails.Length <= 0)
-        {
-            return;
-        }
-
-        if (connectionDetails.Length != connections.Length)
-        {
-            Debug.Log("Amount of details need to be the same as connections. -" + gameObject.name);
-            return;
-        }
-
-        UpdateConnection();
-    }
 
     private void Awake()
     {
@@ -43,6 +29,21 @@ public class UI_TreeConnectionHandler : MonoBehaviour
         {
             originalColor = connectionImage.color;
         }
+    }
+
+    public UI_TreeNode[] GetChildNodes()
+    {
+        List<UI_TreeNode> childrenToReturn = new List<UI_TreeNode>();
+
+        foreach (var node in connectionDetails)
+        {
+            if (node.childNode != null)
+            {
+                childrenToReturn.Add(node.childNode.GetComponent<UI_TreeNode>());
+            }
+        }
+
+        return childrenToReturn.ToArray();
     }
 
     public void UpdateConnection()
@@ -64,7 +65,7 @@ public class UI_TreeConnectionHandler : MonoBehaviour
 
             detail.childNode.SetPosition(targetPosition);
             detail.childNode.SetConnectionImage(connectionImage);
-            // detail.childNode.transform.SetAsLastSibling(); --> Not working properly, need to be reworked.
+            detail.childNode.transform.SetAsLastSibling();
         }
     }
 
@@ -95,4 +96,19 @@ public class UI_TreeConnectionHandler : MonoBehaviour
     public void SetConnectionImage(Image image) => connectionImage = image;
 
     public void SetPosition(Vector2 position) => rect.anchoredPosition = position;
+    private void OnValidate()
+    {
+        if (connectionDetails.Length <= 0)
+        {
+            return;
+        }
+
+        if (connectionDetails.Length != connections.Length)
+        {
+            Debug.Log("Amount of details need to be the same as connections. -" + gameObject.name);
+            return;
+        }
+
+        UpdateConnection();
+    }
 }

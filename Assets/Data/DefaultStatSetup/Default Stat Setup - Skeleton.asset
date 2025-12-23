@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90533c826629464d9dbff3158402d5a, type: 3}
   m_Name: Default Stat Setup - Skeleton
   m_EditorClassIdentifier: Assembly-CSharp::Stat_SetupSO
+  strength: 0
+  agility: 0
+  intelligence: 0
+  vitality: 0
   maxHealth: 100
   healthRegen: 0
   attackSpeed: 1

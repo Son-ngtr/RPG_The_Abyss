@@ -83,7 +83,7 @@ public class Player : Entity
         inputSet.Player.Movement.canceled += ctx => movementInput = Vector2.zero;
 
         inputSet.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
-        inputSet.Player.Spell.performed += ctx => skillManager.shard.CreateShard();
+        inputSet.Player.Spell.performed += ctx => skillManager.shard.TryUseSkill();
     }
 
     protected override void Start()
