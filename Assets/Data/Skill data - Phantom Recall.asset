@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce01c107f70f8c243bf23b8a1f25d828, type: 3}
+  m_Name: Skill data - Phantom Recall
+  m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
+  cost: 2
+  unLockedByDefault: 0
+  skillType: 2
+  upgradeData:
+    upgradeType: 9
+    coolDown: 3
+  displayName: Phantom Recall
+  description: Press skill button again, to change places with shard you created.
+  icon: {fileID: -849303963, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}

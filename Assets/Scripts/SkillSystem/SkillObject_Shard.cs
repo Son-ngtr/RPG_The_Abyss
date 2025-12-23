@@ -8,6 +8,8 @@ public class SkillObject_Shard : SkillObject_Base
     private Transform target;
     private float speed;
 
+    public event Action OnExplore;
+
     private void Update()
     {
         if (target == null)
@@ -39,11 +41,12 @@ public class SkillObject_Shard : SkillObject_Base
         Explore();
     }
 
-    private void Explore()
+    public void Explore()
     {
         DamageEnemiesInRadius(transform, checkRadius);
         Instantiate(vfxPrefab, transform.position, Quaternion.identity);
 
+        OnExplore?.Invoke();
         Destroy(gameObject);
     }
 }
