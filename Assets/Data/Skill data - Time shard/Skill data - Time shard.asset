@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce01c107f70f8c243bf23b8a1f25d828, type: 3}
   m_Name: Skill data - Time shard
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
+  displayName: Time shard
+  description: 'Create a time shard filled with elemental magic.
+
+    The shard explodes
+    when touched by an enemy or when time goes up.'
+  icon: {fileID: 1720882019, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   cost: 0
-  unLockedByDefault: 1
+  unLockedByDefault: 0
   skillType: 2
   upgradeData:
     upgradeType: 6
-    coolDown: 4
+    coolDown: 1
     damageScaleData:
       physical: 0
       elemental: 1.5
@@ -28,9 +34,3 @@ MonoBehaviour:
       shockDuration: 3
       shockDamageScale: 1
       shockCharge: 0.4
-  displayName: Time shard
-  description: 'Create a time shard filled with elemental magic.
-
-    The shard explodes
-    when touched by an enemy or when time goes up.'
-  icon: {fileID: 1720882019, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}

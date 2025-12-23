@@ -3313,9 +3313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_TreeNode
   neededNodes:
   - {fileID: 1897146000}
+  - {fileID: 818115726}
   conflictNodes:
   - {fileID: 1796080946}
-  - {fileID: 15906906}
   isUnlocked: 0
   isLocked: 0
   skillData: {fileID: 11400000, guid: de71336288b2c0d4099d8e87f4ccae51, type: 2}
@@ -11134,6 +11134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 7884134271100068758, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8468535838490895594, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: offense.damage.baseValue
       value: 100
@@ -12226,16 +12230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skill_Dash
   player: {fileID: 0}
-  damageScaleData:
-    physical: 1
-    elemental: 1
-    chillDuration: 3
-    chillSlowMultiplier: 0.2
-    burnDuration: 3
-    burnDamageScale: 1
-    shockDuration: 3
-    shockDamageScale: 1
-    shockCharge: 0.4
   skillType: 0
   upgradeType: 0
   cooldown: 3
@@ -12252,16 +12246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skill_Shard
   player: {fileID: 0}
-  damageScaleData:
-    physical: 1
-    elemental: 1
-    chillDuration: 3
-    chillSlowMultiplier: 0.2
-    burnDuration: 3
-    burnDamageScale: 1
-    shockDuration: 3
-    shockDamageScale: 1
-    shockCharge: 0.4
   skillType: 0
   upgradeType: 0
   cooldown: 1
@@ -14238,7 +14222,7 @@ MonoBehaviour:
   critHitVfx: {fileID: 1583416317780123555, guid: 9c5a28e53f0f94d4b87817a6e927919e, type: 3}
   chillVfx: {r: 0, g: 1, b: 1, a: 1}
   burnVfx: {r: 1, g: 0, b: 0, a: 1}
-  electrifyVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  shockVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   imageEchoInterval: 0.05
   imageEchoPrefab: {fileID: 2316805213232757537, guid: 608859a148b71e64babcff378f7689fd, type: 3}
 --- !u!1 &1541109893

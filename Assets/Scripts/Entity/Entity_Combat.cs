@@ -5,20 +5,12 @@ public class Entity_Combat : MonoBehaviour
     private Entity_VFX vfx;
     private Entity_Stats stats;
 
-    public DamageScaleData basicAttackScale;
+    public DamageScaleData basicAttackScale; // All kind of attack scales can be defined here (physic, burn, chill, shock, etc.)
 
     [Header("TARGET DETECTION")]
     [SerializeField] private Transform targetCheck;
     [SerializeField] private float targetCheckRadius = 1;
     [SerializeField] private LayerMask whatIsTarget;
-
-    [Header("STATUS EFFECT DETAILS")]
-    [SerializeField] private float defaultDuration = 3f;
-    [SerializeField] private float chillSlowMultiplier = 0.5f;
-    [SerializeField] private float electrifyChargeBuildup = 0.4f;
-    [Space]
-    [SerializeField] private float fireScale = 0.8f;
-    [SerializeField] private float lightningScale = 2.5f;
 
     private void Awake()
     {
@@ -37,22 +29,25 @@ public class Entity_Combat : MonoBehaviour
                 continue;
             }
 
-            ElementalEffectData effectData = new ElementalEffectData(stats, basicAttackScale);
 
-            float elementalDamage = stats.GetElementalDamage(out ElementType element, 0.6f);
+            AttackData attackData = stats.GetAttackData(basicAttackScale);
+            Entity_StatusHandler statusHandler = target.GetComponent<Entity_StatusHandler>();
 
-            bool isCritical; // This will be set by GetPhysicalDamage method
-            float damage = stats.GetPhysicalDamage(out isCritical);
-            bool targetGotHit = damageable.TakeDamage(damage, elementalDamage, element, transform);
+
+            float physicalDamage = attackData.physicalDamage;
+            float elementalDamage = attackData.elementalDamage;
+            ElementType element = attackData.element;
+
+            bool targetGotHit = damageable.TakeDamage(physicalDamage, elementalDamage, element, transform);
 
             if (element != ElementType.None)
             {
-                target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(element, effectData); 
+                statusHandler?.ApplyStatusEffect(element, attackData.effectData); 
             }
 
             if (targetGotHit)
             {
-                vfx.CreateOnHitVfx(target.transform, isCritical, element);   
+                vfx.CreateOnHitVfx(target.transform, attackData.isCrit, element);   
             }
         }
     }

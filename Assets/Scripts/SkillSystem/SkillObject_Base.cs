@@ -21,16 +21,19 @@ public class SkillObject_Base : MonoBehaviour
                 continue;
             }
 
-            ElementalEffectData effectData = new ElementalEffectData(playerStats, damageScaleData);
 
-            float physicalDamage = playerStats.GetPhysicalDamage(out bool isCrit, damageScaleData.physical);
-            float elementalDamage = playerStats.GetElementalDamage(out ElementType element, damageScaleData.elemental);
+            AttackData attackData = playerStats.GetAttackData(damageScaleData);
+            Entity_StatusHandler statusHandler = target.GetComponent<Entity_StatusHandler>();
+
+            float physicalDamage = attackData.physicalDamage;
+            float elementalDamage = attackData.elementalDamage;
+            ElementType element = attackData.element;
 
             damageable.TakeDamage(physicalDamage, elementalDamage, element, transform);
 
             if (element != ElementType.None)
             {
-                target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(element, effectData);
+                statusHandler?.ApplyStatusEffect(element, attackData.effectData);
             }
 
 

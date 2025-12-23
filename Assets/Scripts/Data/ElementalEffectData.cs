@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[System.Serializable]
 public class ElementalEffectData
 {
     public float chillDuration;
