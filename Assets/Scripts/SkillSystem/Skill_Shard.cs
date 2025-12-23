@@ -47,6 +47,15 @@ public class Skill_Shard : Skill_Base
         }
     }
 
+    public void CreateRawShard()
+    {
+        bool canMove = Unlocked(SkillUpgradeType.Shard_MoveToEnemy) || Unlocked(SkillUpgradeType.Shard_MultiCast);
+
+        GameObject shard = Instantiate(shardPrefab, transform.position, Quaternion.identity);
+
+        shard.GetComponent<SkillObject_Shard>().SetupShard(this, detonationTime, canMove, shardMoveSpeed);
+    }
+
     public override void TryUseSkill()
     {
         if (CanUseSkill() == false)

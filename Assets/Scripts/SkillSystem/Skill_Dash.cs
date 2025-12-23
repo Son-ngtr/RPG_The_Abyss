@@ -31,7 +31,7 @@ public class Skill_Dash : Skill_Base
 
     private void CreateShard()
     {
-        Debug.Log("Dash Time shard Skill Used");
+        skillManager.shard.CreateRawShard();
     }
 
     private void CreateClone()

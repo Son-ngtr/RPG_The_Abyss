@@ -39,6 +39,20 @@ public class SkillObject_Shard : SkillObject_Base
         Invoke(nameof(Explore), detinationTime);
     }
 
+    public void SetupShard(Skill_Shard shardManager, float detinationTime, bool canMove, float shardSpeed)
+    {
+        this.shardManager = shardManager;
+        playerStats = shardManager.player.stats;
+        damageScaleData = shardManager.damageScaleData;
+
+        Invoke(nameof(Explore), detinationTime);
+
+        if (canMove)
+        {
+            MoveTowardsClosestTarget(shardSpeed);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Enemy>() == null)
@@ -52,7 +66,8 @@ public class SkillObject_Shard : SkillObject_Base
     public void Explore()
     {
         DamageEnemiesInRadius(transform, checkRadius);
-        Instantiate(vfxPrefab, transform.position, Quaternion.identity);
+        GameObject vfx = Instantiate(vfxPrefab, transform.position, Quaternion.identity);
+        vfx.GetComponentInChildren<SpriteRenderer>().color = shardManager.player.vfx.GetElementColor(usedElement);
 
         OnExplore?.Invoke();
         Destroy(gameObject);

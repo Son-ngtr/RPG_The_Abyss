@@ -20,7 +20,7 @@ public class Entity_VFX : MonoBehaviour
     [Header("Element Colors")]
     [SerializeField] private Color chillVfx = Color.cyan;
     [SerializeField] private Color burnVfx = Color.red;
-    [SerializeField] private Color electrifyVfx = Color.yellow;
+    [SerializeField] private Color shockVfx = Color.yellow;
     private Color originalHitVfxColor;
     private Coroutine statusVfxCo;
 
@@ -43,7 +43,7 @@ public class Entity_VFX : MonoBehaviour
                 StartCoroutine(PlayStatusVfxCo(duration, chillVfx));
                 break;
             case ElementType.Lightning:
-                StartCoroutine(PlayStatusVfxCo(duration, electrifyVfx));
+                StartCoroutine(PlayStatusVfxCo(duration, shockVfx));
                 break;
             default:
                 break;
@@ -80,13 +80,13 @@ public class Entity_VFX : MonoBehaviour
         spriteRenderer.color = Color.white;
     }
 
-    public void CreateOnHitVfx(Transform target, bool isCrit)
+    public void CreateOnHitVfx(Transform target, bool isCrit, ElementType element)
     {
         GameObject hitPrefab = isCrit ? critHitVfx : hitVfx;
         GameObject vfx = Instantiate(hitPrefab, target.position, Quaternion.identity);
         if (isCrit == false)
         {
-            vfx.GetComponentInChildren<SpriteRenderer>().color = hitVfxColor;
+            vfx.GetComponentInChildren<SpriteRenderer>().color = GetElementColor(element);
         }
 
         if (entity.facingDirection == -1 && isCrit)
@@ -95,22 +95,18 @@ public class Entity_VFX : MonoBehaviour
         }
     }
 
-    public void UpdateOnHitVfxColor(ElementType element)
+    public Color GetElementColor(ElementType element)
     {
         switch (element)
         {
             case ElementType.Fire:
-                hitVfxColor = Color.red;
-                break;
+                return burnVfx;
             case ElementType.Ice:
-                hitVfxColor = chillVfx;
-                break;
+                return chillVfx;
             case ElementType.Lightning:
-                hitVfxColor = Color.yellow;
-                break;
+                return shockVfx;
             default:
-                hitVfxColor = originalHitVfxColor;
-                break;
+                return Color.white;
         }
     }
 

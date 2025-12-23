@@ -8,6 +8,7 @@ public class SkillObject_Base : MonoBehaviour
 
     protected Entity_Stats playerStats;
     protected DamageScaleData damageScaleData;
+    protected ElementType usedElement;
 
     protected void DamageEnemiesInRadius(Transform transform, float radius)
     {
@@ -31,6 +32,9 @@ public class SkillObject_Base : MonoBehaviour
             {
                 target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(element, effectData);
             }
+
+
+            usedElement = element; // Store the used element for potential later use
         }
     }
 

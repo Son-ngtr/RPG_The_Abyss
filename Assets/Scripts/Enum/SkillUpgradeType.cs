@@ -2,6 +2,9 @@ using UnityEngine;
 
 public enum SkillUpgradeType
 {
+    // KHI DUNG THI THEM BIEN VAO CUOI, NEU KHONG SE BI LOI DO EDITOR SU DUNG BIEN ENUM THEO THU TU :)))
+        // Gia su khi them bien None vao thi bien su dung dash on stash se thanh dash ...
+
     None,
 
     // ------- Dash Tree -------
