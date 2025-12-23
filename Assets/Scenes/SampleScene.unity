@@ -837,7 +837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -245.71973, y: -494.2198}
+  m_AnchoredPosition: {x: -245.71973, y: -495.2198}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &102488855
@@ -4605,7 +4605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -488.00024}
+  m_AnchoredPosition: {x: 0, y: -489.00024}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &793610914
@@ -11128,7 +11128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6162754959280904015, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: currentHealth
-      value: 10000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7884134271100068758, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: m_Name
@@ -12226,6 +12226,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skill_Dash
   player: {fileID: 0}
+  damageScaleData:
+    physical: 1
+    elemental: 1
+    chillDuration: 3
+    chillSlowMultiplier: 0.2
+    burnDuration: 3
+    burnDamageScale: 1
+    shockDuration: 3
+    shockDamageScale: 1
+    shockCharge: 0.4
   skillType: 0
   upgradeType: 0
   cooldown: 3
@@ -12242,6 +12252,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skill_Shard
   player: {fileID: 0}
+  damageScaleData:
+    physical: 1
+    elemental: 1
+    chillDuration: 3
+    chillSlowMultiplier: 0.2
+    burnDuration: 3
+    burnDamageScale: 1
+    shockDuration: 3
+    shockDamageScale: 1
+    shockCharge: 0.4
   skillType: 0
   upgradeType: 0
   cooldown: 1
@@ -14077,6 +14097,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617f4ec6225e9f14794bfd7f3f900458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicAttackScale:
+    physical: 1
+    elemental: 0.4
+    chillDuration: 3
+    chillSlowMultiplier: 0.2
+    burnDuration: 3
+    burnDamageScale: 1
+    shockDuration: 3
+    shockDamageScale: 1
+    shockCharge: 0.4
   targetCheck: {fileID: 970948813}
   targetCheckRadius: 1
   whatIsTarget:
@@ -14116,7 +14146,7 @@ MonoBehaviour:
       modifiers: []
   resources:
     maxHealth:
-      baseValue: 2000
+      baseValue: 1000
       modifiers: []
     healthRegen:
       baseValue: 0
@@ -14144,7 +14174,7 @@ MonoBehaviour:
       baseValue: 20
       modifiers: []
     lightningDamage:
-      baseValue: 10
+      baseValue: 30
       modifiers: []
   defend:
     armor:
@@ -15567,8 +15597,8 @@ RectTransform:
   - {fileID: 818115727}
   - {fileID: 1592170419}
   - {fileID: 828932987}
-  - {fileID: 102488854}
   - {fileID: 793610913}
+  - {fileID: 102488854}
   m_Father: {fileID: 1888761088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

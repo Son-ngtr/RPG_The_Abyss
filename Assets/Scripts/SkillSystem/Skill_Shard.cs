@@ -37,7 +37,9 @@ public class Skill_Shard : Skill_Base
 
         GameObject shard = Instantiate(shardPrefab, transform.position, Quaternion.identity);
         currentShard = shard.GetComponent<SkillObject_Shard>();
-        currentShard.SetupShard(currentDetonationTime);
+
+        // Setup shard with this manager, when create shard, it can access to player STATS and DamagescaleData
+        currentShard.SetupShard(this);
 
         if (Unlocked(SkillUpgradeType.Shard_Teleport) || Unlocked(SkillUpgradeType.Shard_TeleportHpRewind))
         {

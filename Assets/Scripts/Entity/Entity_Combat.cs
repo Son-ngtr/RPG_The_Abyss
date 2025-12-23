@@ -5,6 +5,8 @@ public class Entity_Combat : MonoBehaviour
     private Entity_VFX vfx;
     private Entity_Stats stats;
 
+    public DamageScaleData basicAttackScale;
+
     [Header("TARGET DETECTION")]
     [SerializeField] private Transform targetCheck;
     [SerializeField] private float targetCheckRadius = 1;
@@ -35,7 +37,9 @@ public class Entity_Combat : MonoBehaviour
                 continue;
             }
 
-            float elementalDamage = stats.GetElementalDamage(out ElementType element);
+            ElementalEffectData effectData = new ElementalEffectData(stats, basicAttackScale);
+
+            float elementalDamage = stats.GetElementalDamage(out ElementType element, 0.6f);
 
             bool isCritical; // This will be set by GetPhysicalDamage method
             float damage = stats.GetPhysicalDamage(out isCritical);
@@ -43,7 +47,7 @@ public class Entity_Combat : MonoBehaviour
 
             if (element != ElementType.None)
             {
-                ApplyStatusEffect(target.transform, element);
+                target.GetComponent<Entity_StatusHandler>().ApplyStatusEffect(element, effectData); 
             }
 
             if (targetGotHit)
@@ -54,7 +58,7 @@ public class Entity_Combat : MonoBehaviour
         }
     }
 
-    public void ApplyStatusEffect(Transform target, ElementType element, float scaleFactor = 1f)
+    /*public void ApplyStatusEffect(Transform target, ElementType element, float scaleFactor = 1f)
     {
         Entity_StatusHandler statusHandler = target.GetComponent<Entity_StatusHandler>();
 
@@ -90,7 +94,7 @@ public class Entity_Combat : MonoBehaviour
             default:
                 break;
         }
-    }
+    }*/
 
     public Collider2D[] GetDetectedColliders()
     {

@@ -9,6 +9,7 @@ public class SkillObject_Shard : SkillObject_Base
     private float speed;
 
     public event Action OnExplore;
+    private Skill_Shard shardManager;
 
     private void Update()
     {
@@ -26,8 +27,15 @@ public class SkillObject_Shard : SkillObject_Base
         this.speed = moveSpeed;
     }
 
-    public void SetupShard(float detinationTime)
+    public void SetupShard(Skill_Shard shardManager)
     {
+        this.shardManager = shardManager;
+
+        playerStats = shardManager.player.stats;
+        damageScaleData = shardManager.damageScaleData;
+
+        float detinationTime = shardManager.GetDetonateTime();
+
         Invoke(nameof(Explore), detinationTime);
     }
 
