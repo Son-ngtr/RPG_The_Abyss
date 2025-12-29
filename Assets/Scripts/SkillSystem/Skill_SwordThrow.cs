@@ -5,14 +5,18 @@ using UnityEngine;
 
 public class Skill_SwordThrow : Skill_Base
 {
+    private SkillObject_Sword currentSword;
+
+    [Header("Regular Sword Upgrade")]
     [Range(0f, 10f)]
     [SerializeField] private float throwForce = 6f;
-    [SerializeField] private float swordGravity = 3.5f;
+    [SerializeField] private GameObject swordPrefab;
 
     [Header("TRAJECTORY SETTINGS")]
     [SerializeField] private GameObject predictionDotPrefab;
     [SerializeField] private int numberOfPredictionDots = 20;
     [SerializeField] private float predictionDotSpacing = 0.05f;
+    private float swordGravity;
     private Transform[] dots;
     private Vector2 confirmedDirection;
 
@@ -20,13 +24,31 @@ public class Skill_SwordThrow : Skill_Base
     {
         base.Awake();
 
+        swordGravity = swordPrefab.GetComponent<Rigidbody2D>().gravityScale;
         dots = GenerateDots();
+    }
+
+    public override bool CanUseSkill()
+    {
+        if (currentSword != null)
+        {
+            currentSword.GetSwordBacktoPlayer();
+            return false;
+        }
+
+        return base.CanUseSkill();
     }
 
     public void ThrowSword()
     {
-        Debug.Log("Throwing sword in direction: " + confirmedDirection);
+        // Instantiate the sword at the position of the first dot in the predicted trajectory
+        GameObject newSword = Instantiate(swordPrefab, dots[1].position, Quaternion.identity);
+
+        currentSword = newSword.GetComponent<SkillObject_Sword>();
+        currentSword.SetupSword(this, GetThrowPower());
     }
+
+    private Vector2 GetThrowPower() => confirmedDirection * throwForce * 10f;
 
     public void PredictTrajectory(Vector2 direction)
     {
