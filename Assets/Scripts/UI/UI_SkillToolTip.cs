@@ -37,6 +37,11 @@ public class UI_SkillToolTip : UI_ToolTip
     {
         base.ShowToolTip(show, targetRect);
 
+        if (textEffectCo != null)
+        {
+            StopCoroutine(textEffectCo);
+        }
+
         if (show == false)
         {
             return;

@@ -111,7 +111,7 @@ public class Entity : MonoBehaviour
 
     public void HandleFlip(float xVelocity)
     {
-        if (xVelocity > 0 && !isFacingRight)
+        if (xVelocity > 0 && isFacingRight == false)
         {
             Flip();
         }

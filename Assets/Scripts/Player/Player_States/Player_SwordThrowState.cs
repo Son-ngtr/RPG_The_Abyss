@@ -1,0 +1,60 @@
+using UnityEngine;
+
+public class Player_SwordThrowState : PlayerState
+{
+    private Camera mainCamera;
+
+    public Player_SwordThrowState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
+    {
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        if (mainCamera != Camera.main)
+        {
+            mainCamera = Camera.main;
+        }
+    }
+
+    public override void Update()
+    {
+        base.Update();
+
+        Vector2 directionToMouse = DirectionToMouse();
+
+        player.SetVelocity(0, rb.linearVelocity.y);
+        player.HandleFlip(directionToMouse.x);
+
+
+        if (input.Player.Attack.WasPressedThisFrame())
+        {
+            animator.SetBool("swordThrowPerformed", true);
+
+            // skillManager.swordThrow.UseSwordThrow();
+        }
+
+        if (input.Player.Attack.WasReleasedThisFrame() || triggerCalled)
+        {
+            stateMachine.ChangeState(player.idleState);
+        }
+    }
+
+    private Vector2 DirectionToMouse()
+    {
+        Vector2 playerPosition = player.transform.position;
+        Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(player.mousePosition);
+        
+        Vector2 direction = mouseWorldPosition - playerPosition;
+
+        return direction.normalized;
+    }
+
+
+    public override void Exit()
+    {
+        base.Exit();
+        animator.SetBool("swordThrowPerformed", false);
+    }
+}

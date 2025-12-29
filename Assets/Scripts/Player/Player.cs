@@ -11,6 +11,9 @@ public class Player : Entity
     public Player_InputSet inputSet { get; private set; }
     public Player_SkillManager skillManager { get; private set; }
     public Player_VFX vfx { get; private set; }
+    public Entity_Health health { get; private set; }
+    public Entity_StatusHandler statusHandler { get; private set; }
+
 
     #region State Variables
 
@@ -25,6 +28,7 @@ public class Player : Entity
     public Player_JumpAttackState jumpAttackState { get; private set; }
     public Player_DeadState deadState { get; private set; }
     public Player_CounterAttackState counterAttackState { get; private set; }
+    public Player_SwordThrowState swordThrowState { get; private set; }
 
     #endregion
 
@@ -49,16 +53,20 @@ public class Player : Entity
     public float dashSpeed = 20f;
 
     public Vector2 movementInput { get; private set; }
+    public Vector2 mousePosition { get; private set; }
 
 
     protected override void Awake()
     {
         base.Awake();
 
-        ui = FindAnyObjectByType<UI>();
         inputSet = new Player_InputSet();
-        skillManager = GetComponent<Player_SkillManager>();
+
+        ui = FindAnyObjectByType<UI>();
         vfx = GetComponent<Player_VFX>();
+        health = GetComponent<Entity_Health>();
+        skillManager = GetComponent<Player_SkillManager>();
+        statusHandler = GetComponent<Entity_StatusHandler>();
 
         idleState = new Player_IdleState(this, stateMachine, "idle");
         moveState = new Player_MoveState(this, stateMachine, "move");
@@ -71,18 +79,22 @@ public class Player : Entity
         jumpAttackState = new Player_JumpAttackState(this, stateMachine, "jumpAttack");
         deadState = new Player_DeadState(this, stateMachine, "dead");
         counterAttackState = new Player_CounterAttackState(this, stateMachine, "counterAttack");
+        swordThrowState = new Player_SwordThrowState(this, stateMachine, "swordThrow");
     }
 
     private void OnEnable()
     {
         inputSet.Enable();
 
-        // Subscribe to input events
+        // Capture mouse position
+        inputSet.Player.Mouse.performed += ctx => mousePosition = ctx.ReadValue<Vector2>();
+        // Capture movement input
         inputSet.Player.Movement.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         // When movement is canceled, set movementInput to zero
         inputSet.Player.Movement.canceled += ctx => movementInput = Vector2.zero;
-
+        // UI Inputs
         inputSet.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
+        // Skill Inputs
         inputSet.Player.Spell.performed += ctx => skillManager.shard.TryUseSkill();
     }
 
