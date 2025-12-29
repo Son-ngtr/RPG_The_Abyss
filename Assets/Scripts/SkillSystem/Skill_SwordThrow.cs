@@ -1,5 +1,8 @@
 using UnityEngine;
 
+// PredictTrajectory --> Update the positions of the trajectory dots based on the current aiming direction
+// ConfirmTrajectory --> Store the final aiming direction when the player confirms the throw --> used when actually throwing the sword
+
 public class Skill_SwordThrow : Skill_Base
 {
     [Range(0f, 10f)]
