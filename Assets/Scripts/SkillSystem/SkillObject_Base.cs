@@ -9,10 +9,17 @@ public class SkillObject_Base : MonoBehaviour
     [SerializeField] protected Transform targetCheck;
     [SerializeField] protected float checkRadius;
 
+
+    protected Animator animator;
     protected Entity_Stats playerStats;
     protected DamageScaleData damageScaleData;
     protected ElementType usedElement;
     protected bool targetGotHit;
+
+    protected virtual void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     protected void DamageEnemiesInRadius(Transform transform, float radius)
     {

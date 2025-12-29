@@ -2624,8 +2624,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_TreeNode
   neededNodes:
+  - {fileID: 1634998119}
+  conflictNodes:
+  - {fileID: 849637205}
   - {fileID: 1315051563}
-  conflictNodes: []
   isUnlocked: 0
   isLocked: 0
   skillData: {fileID: 11400000, guid: bff9157c009b5a144b1fed430f5ea0ba, type: 2}
@@ -4477,7 +4479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -849303963, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  m_Sprite: {fileID: 2000633614, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6563,7 +6565,7 @@ GameObject:
   - component: {fileID: 849637205}
   - component: {fileID: 849637206}
   m_Layer: 5
-  m_Name: UI_TreeNode - Irritated shard
+  m_Name: UI_TreeNode - The Bulletsword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6583,11 +6585,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_TreeNode
   neededNodes:
   - {fileID: 1634998119}
-  conflictNodes: []
+  conflictNodes:
+  - {fileID: 1315051563}
+  - {fileID: 363595136}
   isUnlocked: 0
   isLocked: 0
-  skillData: {fileID: 11400000, guid: 423ee0ca5cfedcd4da8f6cb6e04c6fd1, type: 2}
-  skillName: Irritated shard
+  skillData: {fileID: 11400000, guid: 6c50a43725a27e3499839a46bb15defc, type: 2}
+  skillName: The Bulletsword
   skillIcon: {fileID: 1779146626}
   skillCost: 2
   lockedColorHex: '#939393'
@@ -14051,10 +14055,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skill_SwordThrow
   player: {fileID: 0}
   skillType: 3
-  upgradeType: 11
+  upgradeType: 12
   cooldown: 0
-  throwForce: 2
+  throwForce: 5
   swordPrefab: {fileID: 7887289685702174468, guid: 3426367f417fea948a4a01972202ff6b, type: 3}
+  pierceSwordPrefab: {fileID: 8350568217092845861, guid: be8a05ab654d90147b25b066825e2a38, type: 3}
+  pierceAmount: 2
+  spinSwordPrefab: {fileID: 1202915352385418468, guid: 5b20f4a4ba8a09b418282f6d48449658, type: 3}
+  maxDistance: 7
+  attackPerSecond: 6
+  maxSpinDuration: 3
   predictionDotPrefab: {fileID: 5788190855352131326, guid: f7528fee9cfdbb2489909242badc7eeb, type: 3}
   numberOfPredictionDots: 20
   predictionDotSpacing: 0.05
@@ -14964,7 +14974,7 @@ GameObject:
   - component: {fileID: 1315051563}
   - component: {fileID: 1315051564}
   m_Layer: 5
-  m_Name: UI_TreeNode - Phantom Recall
+  m_Name: UI_TreeNode - The Chainsaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14984,11 +14994,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI_TreeNode
   neededNodes:
   - {fileID: 1634998119}
-  conflictNodes: []
+  conflictNodes:
+  - {fileID: 849637205}
+  - {fileID: 363595136}
   isUnlocked: 0
   isLocked: 0
-  skillData: {fileID: 11400000, guid: be3451078ca0cdd4599607c0c1bf1bbf, type: 2}
-  skillName: Phantom Recall
+  skillData: {fileID: 11400000, guid: e4b1e6eb7c87301498f779ed8f6f78e1, type: 2}
+  skillName: The Chainsaw
   skillIcon: {fileID: 591444101}
   skillCost: 2
   lockedColorHex: '#939393'
@@ -18030,7 +18042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1626641954, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  m_Sprite: {fileID: -1900281173, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19515,6 +19527,7 @@ MonoBehaviour:
   - {fileID: 594327402}
   - {fileID: 1897146001}
   - {fileID: 818115728}
+  - {fileID: 1634998120}
 --- !u!1 &1894888124
 GameObject:
   m_ObjectHideFlags: 0

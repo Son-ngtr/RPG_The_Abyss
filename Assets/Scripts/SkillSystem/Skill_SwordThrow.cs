@@ -7,10 +7,20 @@ public class Skill_SwordThrow : Skill_Base
 {
     private SkillObject_Sword currentSword;
 
-    [Header("Regular Sword Upgrade")]
+    [Header("REGULAR SWORD UPGRADE")]
     [Range(0f, 10f)]
     [SerializeField] private float throwForce = 6f;
     [SerializeField] private GameObject swordPrefab;
+
+    [Header("PIERCE SWORD UPGRADE")]
+    [SerializeField] private GameObject pierceSwordPrefab;
+    public int pierceAmount = 2;
+
+    [Header("SPIN SWORD UPGRADE")]
+    [SerializeField] private GameObject spinSwordPrefab;
+    public int maxDistance = 7;
+    public float attackPerSecond = 6;
+    public float maxSpinDuration = 3f;
 
     [Header("TRAJECTORY SETTINGS")]
     [SerializeField] private GameObject predictionDotPrefab;
@@ -41,11 +51,30 @@ public class Skill_SwordThrow : Skill_Base
 
     public void ThrowSword()
     {
+        GameObject currentSwordPrefab = GetSwordPrefab();
         // Instantiate the sword at the position of the first dot in the predicted trajectory
-        GameObject newSword = Instantiate(swordPrefab, dots[1].position, Quaternion.identity);
+        GameObject newSword = Instantiate(currentSwordPrefab, dots[1].position, Quaternion.identity);
 
         currentSword = newSword.GetComponent<SkillObject_Sword>();
         currentSword.SetupSword(this, GetThrowPower());
+    }
+
+    private GameObject GetSwordPrefab()
+    {
+        switch(upgradeType)
+        {
+            case SkillUpgradeType.SwordThrow:
+                return swordPrefab;
+
+            case SkillUpgradeType.SwordThrow_Pierce:
+                return pierceSwordPrefab;
+
+            case SkillUpgradeType.SwordThrow_Spin:
+                return spinSwordPrefab;
+
+            default:
+                return null;
+        }
     }
 
     private Vector2 GetThrowPower() => confirmedDirection * throwForce * 10f;
