@@ -20,4 +20,10 @@ public enum SkillUpgradeType
     Shard_MultiCast,               // Shard ability have up to N casts, and you can cast in a row
     Shard_Teleport,                 // You can press button again, to change places with shard you created
     Shard_TeleportHpRewind,          // When you coming back to shard, you get same hp % as you had when you created shard
+
+    // ------- Sword Tree -------
+    SwordThrow,                     // Throw a sword that damage enemies on its way
+    SwordThrow_Spin,                // The sword will spin, dealing damage to all enemies it passes through
+    SwordThrow_Pierce,              // The sword pierces through enemies, hitting multiple targets in a line
+    SwordThrow_Bounce,              // The sword bounces off walls and can hit enemies multiple times
 }

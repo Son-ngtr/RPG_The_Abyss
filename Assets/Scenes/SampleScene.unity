@@ -2383,9 +2383,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 395300270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50de9991bff0e9d44b5b1b43360fe2e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 648003835184c494da549312d14dec3d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_AnimationTriggers
 --- !u!1 &454624712
 GameObject:
   m_ObjectHideFlags: 0
@@ -12195,6 +12195,7 @@ GameObject:
   - component: {fileID: 1223157016}
   - component: {fileID: 1223157017}
   - component: {fileID: 1223157018}
+  - component: {fileID: 1223157019}
   m_Layer: 7
   m_Name: Skills_Holder
   m_TagString: Untagged
@@ -12257,6 +12258,27 @@ MonoBehaviour:
   isRecharging: 0
   shardExistDuration: 10
   savedHealthPercent: 0
+--- !u!114 &1223157019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223157015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0117ccb7fc8bf40bbfe8b06eb30ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Skill_SwordThrow
+  player: {fileID: 0}
+  skillType: 3
+  upgradeType: 0
+  cooldown: 0
+  throwForce: 6
+  swordGravity: 3.5
+  predictionDotPrefab: {fileID: 5788190855352131326, guid: f7528fee9cfdbb2489909242badc7eeb, type: 3}
+  numberOfPredictionDots: 20
+  predictionDotSpacing: 0.05
 --- !u!1 &1235503209
 GameObject:
   m_ObjectHideFlags: 0
@@ -14096,11 +14118,6 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 256
-  defaultDuration: 3
-  chillSlowMultiplier: 0.5
-  electrifyChargeBuildup: 0.4
-  fireScale: 0.8
-  lightningScale: 2.5
   counterRecovery: 0.25
 --- !u!114 &1530599166
 MonoBehaviour:
