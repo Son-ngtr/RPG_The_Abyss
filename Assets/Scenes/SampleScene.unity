@@ -2601,15 +2601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec526e012b8ad24b8db802d42eb525e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_TreeConnectionHandler
-  connectionDetails:
-  - childNode: {fileID: 0}
-    direction: 0
-    length: 219
-    rotation: 0
-  - childNode: {fileID: 0}
-    direction: 0
-    length: 350
-    rotation: 0
+  connectionDetails: []
   connections: []
 --- !u!114 &363595136
 MonoBehaviour:
@@ -6785,15 +6777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec526e012b8ad24b8db802d42eb525e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_TreeConnectionHandler
-  connectionDetails:
-  - childNode: {fileID: 0}
-    direction: 0
-    length: 252
-    rotation: 0
-  - childNode: {fileID: 0}
-    direction: 0
-    length: 350
-    rotation: 0
+  connectionDetails: []
   connections: []
 --- !u!224 &849637207
 RectTransform:
@@ -15208,15 +15192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec526e012b8ad24b8db802d42eb525e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_TreeConnectionHandler
-  connectionDetails:
-  - childNode: {fileID: 0}
-    direction: 0
-    length: 252
-    rotation: 0
-  - childNode: {fileID: 0}
-    direction: 0
-    length: 350
-    rotation: 0
+  connectionDetails: []
   connections: []
 --- !u!224 &1315051565
 RectTransform:
@@ -18276,8 +18252,8 @@ RectTransform:
   - {fileID: 818115727}
   - {fileID: 1592170419}
   - {fileID: 828932987}
-  - {fileID: 102488854}
   - {fileID: 793610913}
+  - {fileID: 102488854}
   m_Father: {fileID: 1888761088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 // THE SWORD can collider with ground and enemies
@@ -48,6 +48,14 @@ public class SkillObject_Sword : SkillObject_Base
             return; 
         }
 
+        rb.linearVelocity = Vector2.zero;     // Dừng velocity physics ngay lập tức
+        rb.angularVelocity = 0f;
+        // Tính hướng bay về player hiện tại
+        Vector2 directionToPlayer = -1*(playerTransform.position - transform.position).normalized;
+        if (directionToPlayer != Vector2.zero)
+        {
+            transform.right = directionToPlayer;
+        }
         transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, comebackSpeed * Time.deltaTime);
 
         if (distanceToPlayer < 0.5f)
