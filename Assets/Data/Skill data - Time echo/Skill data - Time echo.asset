@@ -12,9 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce01c107f70f8c243bf23b8a1f25d828, type: 3}
   m_Name: Skill data - Time echo
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
-  cost: 1
   displayName: Time echo
   description: 'Create a time echo (clone) of yourself.
 
     The echo distracts enemies.'
   icon: {fileID: -1754244098, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  cost: 1
+  unLockedByDefault: 0
+  skillType: 1
+  upgradeData:
+    upgradeType: 15
+    coolDown: 0
+    damageScaleData:
+      physical: 1
+      elemental: 1
+      chillDuration: 3
+      chillSlowMultiplier: 0.2
+      burnDuration: 3
+      burnDamageScale: 1
+      shockDuration: 3
+      shockDamageScale: 1
+      shockCharge: 0.4
