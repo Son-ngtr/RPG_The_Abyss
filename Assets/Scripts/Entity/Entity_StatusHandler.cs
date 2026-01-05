@@ -24,6 +24,13 @@ public class Entity_StatusHandler : MonoBehaviour
         entityHealth = GetComponent<Entity_Health>();
     }
 
+    public void RemoveAllNegativeEffects()
+    {
+        StopAllCoroutines();
+        currentEffect = ElementType.None;
+        entityVfx.StopAllVfx();
+    }
+
 
     public void ApplyStatusEffect(ElementType element, ElementalEffectData effectData)
     {
@@ -43,7 +50,7 @@ public class Entity_StatusHandler : MonoBehaviour
 
 
     // CHILL EFFECT
-    public void ApllyChillEffect(float duration, float slowMultiplier)
+    private void ApllyChillEffect(float duration, float slowMultiplier)
     {
         float iceResistance = entityStats.GetElementalResistance(ElementType.Ice);
         float finalDuration = duration * (1 - iceResistance);
@@ -63,7 +70,7 @@ public class Entity_StatusHandler : MonoBehaviour
 
 
     // BURN EFFECT
-    public void ApplyBurnEffect(float duration, float fireDamage)
+    private void ApplyBurnEffect(float duration, float fireDamage)
     {
         float fireResistance = entityStats.GetElementalResistance(ElementType.Fire);
         float finalDamage = fireDamage * (1 - fireResistance);
@@ -94,7 +101,7 @@ public class Entity_StatusHandler : MonoBehaviour
 
 
     // SHOCK EFFECT
-    public void ApplyShockEffect(float duration, float damage, float charge)
+    private void ApplyShockEffect(float duration, float damage, float charge)
     {
         // Build up charge of electricity
             // if charged enough, lightning strikes and deals damage

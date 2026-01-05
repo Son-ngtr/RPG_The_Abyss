@@ -2,9 +2,18 @@ using UnityEngine;
 
 public class SkillObject_TimeEcho : SkillObject_Base
 {
+    [SerializeField] private float wispMoveSpeed = 15f;
     [SerializeField] private GameObject onDeathVfx;
     [SerializeField] private LayerMask whatIsGround;
+    private bool shoudMoveToPlayer = false;
+
+    private Transform playerTransform;
     private Skill_TimeEcho echoManager;
+    private TrailRenderer wispTrail;
+    private Entity_Health playerHealth;
+    private SkillObject_Health echoHealth;
+    private Player_SkillManager skillManager;
+    private Entity_StatusHandler statusHandler;
 
     public int maxAttacks {  get; private set; }
 
@@ -13,19 +22,59 @@ public class SkillObject_TimeEcho : SkillObject_Base
         this.echoManager = manager;
         playerStats = echoManager.player.stats; 
         damageScaleData = echoManager.damageScaleData;
-
         maxAttacks = echoManager.GetMaxAttacks();
-        FlipToTarget();
-        animator.SetBool("canAttack", maxAttacks > 0);
-
+        playerTransform = echoManager.transform.root;
+        playerHealth = echoManager.player.health;
+        skillManager = echoManager.skillManager;
+        statusHandler = echoManager.player.statusHandler;
 
         Invoke(nameof(HandleDeath), echoManager.GetEchoDuration());
+        FlipToTarget();
+
+        // echo wisp skill
+        echoHealth = GetComponent<SkillObject_Health>();
+        wispTrail = GetComponentInChildren<TrailRenderer>();
+        wispTrail.gameObject.SetActive(false);
+
+        animator.SetBool("canAttack", maxAttacks > 0);
     }
 
     private void Update()
     {
-        animator.SetFloat("yVelocity", rb.linearVelocity.y);
-        StopHorizontalMovement();
+        if (shoudMoveToPlayer)
+        {
+            HandleWispMovement();
+        }
+        else
+        {
+            animator.SetFloat("yVelocity", rb.linearVelocity.y);
+            StopHorizontalMovement();
+        }
+    }
+
+    private void HandleWispMovement()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, wispMoveSpeed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, playerTransform.position) < 0.5f)
+        {
+            HandlePlayerTouch();
+            Destroy(gameObject);
+        }
+    }
+
+    private void HandlePlayerTouch()
+    {
+        float healAmount = echoHealth.lastDamageTaken * echoManager.GetPercentOfDamageHealed();
+        playerHealth.IncreaseHealth(healAmount);
+
+        float amountInSeconds = echoManager.GetCooldownReducedInSeconds();
+        skillManager.ReduceAllSkillCooldownBy(amountInSeconds);
+
+        if (echoManager.CanRemoveNegativeEffects())
+        {
+            statusHandler.RemoveAllNegativeEffects();
+        }
     }
 
     private void FlipToTarget()
@@ -59,7 +108,23 @@ public class SkillObject_TimeEcho : SkillObject_Base
     public void HandleDeath()
     {
         Instantiate(onDeathVfx, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+
+        if (echoManager.ShouldBeWisp())
+        {
+            TurnIntoWisp();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void TurnIntoWisp()
+    {
+        shoudMoveToPlayer = true;
+        animator.gameObject.SetActive(false);
+        wispTrail.gameObject.SetActive(true);
+        rb.simulated = false;
     }
 
     private void StopHorizontalMovement()
