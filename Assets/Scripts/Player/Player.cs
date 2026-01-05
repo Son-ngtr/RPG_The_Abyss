@@ -96,6 +96,7 @@ public class Player : Entity
         inputSet.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
         // Skill Inputs
         inputSet.Player.Spell.performed += ctx => skillManager.shard.TryUseSkill();
+        inputSet.Player.Spell.performed += ctx => skillManager.timeEcho.TryUseSkill();
     }
 
     protected override void Start()
