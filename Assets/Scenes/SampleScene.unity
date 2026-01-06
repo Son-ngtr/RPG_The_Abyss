@@ -7007,9 +7007,9 @@ RectTransform:
   m_Children:
   - {fileID: 1897146002}
   - {fileID: 1551987633}
-  - {fileID: 15906904}
   - {fileID: 551321028}
   - {fileID: 1796080948}
+  - {fileID: 15906904}
   m_Father: {fileID: 1888761088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -14785,7 +14785,7 @@ MonoBehaviour:
   skillData: {fileID: 11400000, guid: fa145a55ebe5fb541b3ba5b860de9385, type: 2}
   skillName: Healing wisp
   skillIcon: {fileID: 1860861238}
-  skillCost: 1
+  skillCost: 3
   lockedColorHex: '#939393'
 --- !u!1 &1223157015
 GameObject:
@@ -14800,6 +14800,7 @@ GameObject:
   - component: {fileID: 1223157018}
   - component: {fileID: 1223157019}
   - component: {fileID: 1223157020}
+  - component: {fileID: 1223157021}
   m_Layer: 7
   m_Name: Skills_Holder
   m_TagString: Untagged
@@ -14851,7 +14852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Skill_Shard
   player: {fileID: 0}
-  skillType: 0
+  skillType: 2
   upgradeType: 0
   cooldown: 1
   shardPrefab: {fileID: 5284931793353451397, guid: 619f151a52edabd47a35514cb2be623c, type: 3}
@@ -14917,6 +14918,22 @@ MonoBehaviour:
   duplicateChance: 0.8
   damagePercentHealed: 0.3
   cooldownReducedInSeconds: 0
+--- !u!114 &1223157021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223157015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52b1ad1ea2ae1940a4f02dd123e5dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Skill_DomainExpansion
+  player: {fileID: 0}
+  skillType: 4
+  upgradeType: 22
+  cooldown: 0
 --- !u!1 &1235503209
 GameObject:
   m_ObjectHideFlags: 0
@@ -16996,6 +17013,8 @@ MonoBehaviour:
   jumpAttackVelocity: {x: 5, y: -6}
   attackVelocityDuration: 0.1
   comboResetTimer: 1
+  riseSpeed: 25
+  riseMaxDistance: 3
   moveSpeed: 8
   jumpForce: 12
   wallJumpForce: {x: 6, y: 12}
@@ -18922,9 +18941,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 818115727}
+  - {fileID: 793610913}
   - {fileID: 1592170419}
   - {fileID: 828932987}
-  - {fileID: 793610913}
   - {fileID: 102488854}
   m_Father: {fileID: 1888761088}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21180,7 +21199,7 @@ GameObject:
   - component: {fileID: 1929478515}
   - component: {fileID: 1929478514}
   m_Layer: 5
-  m_Name: UI_TreeNode - Cleanse
+  m_Name: UI_TreeNode - Cleanse wisp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21252,7 +21271,7 @@ MonoBehaviour:
   isUnlocked: 0
   isLocked: 0
   skillData: {fileID: 11400000, guid: b38e8d32524ba9546bf18902a13de036, type: 2}
-  skillName: Cleanse
+  skillName: Cleanse wisp
   skillIcon: {fileID: 1322318507}
   skillCost: 3
   lockedColorHex: '#939393'

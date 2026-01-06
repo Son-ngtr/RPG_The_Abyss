@@ -36,4 +36,9 @@ public enum SkillUpgradeType
     TimeEcho_Healwisp,              // The time echo releases healing wisps upon expiration
     TimeEcho_Cleansewisp,           // Removes negative status effects from the player when the time echo expires
     TimeEcho_Cooldownwisp,          // Reduces skill cooldowns when the time echo expires
+
+    // ------- Domain Expansion -------
+    Domain_SlowingDown,             // Create an area, slow enemy
+    Domain_EchoSpam,                // Cant move, spam enemy with time echo
+    Domain_ShardSpam                // Cant move, spam enemy with time shard
 }
