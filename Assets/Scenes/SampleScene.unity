@@ -14934,6 +14934,13 @@ MonoBehaviour:
   skillType: 4
   upgradeType: 22
   cooldown: 0
+  domainPrefab: {fileID: 9137695560243410493, guid: 8613b9e662a835542abba66dfee21f12, type: 3}
+  slowdownPercent: 0.8
+  slowdownDomainDuration: 5
+  spellCastingDomainDuration: 8
+  spellCastingDomainSlowdown: 1
+  maxDomainSize: 10
+  expendSpeed: 3
 --- !u!1 &1235503209
 GameObject:
   m_ObjectHideFlags: 0
@@ -17212,7 +17219,7 @@ MonoBehaviour:
       baseValue: 20
       modifiers: []
     lightningDamage:
-      baseValue: 30
+      baseValue: 0
       modifiers: []
   defend:
     armor:
