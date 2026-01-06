@@ -17,7 +17,7 @@ public class Inventory_Item
 
         modifiers = EquimentData()?.modifiers; // Check if item is equiment (contain modifiers)
 
-        itemID = itemData.itemName + Guid.NewGuid();
+        itemID = itemData.itemName + " - " + Guid.NewGuid(); // Use to specific what item, so when add or remove 1 item, it wont affect the effect of item with the same name
     }
 
     public void AddModifiers(Entity_Stats playerStats)

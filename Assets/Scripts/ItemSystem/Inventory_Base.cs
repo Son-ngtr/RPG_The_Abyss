@@ -19,14 +19,32 @@ public class Inventory_Base : MonoBehaviour
 
     public bool CanAddItem() => itemList.Count < maxInventorySize;
 
+    public Inventory_Item StackableItem(Inventory_Item itemToAdd)
+    {
+        List<Inventory_Item> stackableItems = itemList.FindAll(item => item.itemData == itemToAdd.itemData);
+
+        foreach (var stackableItem in stackableItems)
+        {
+            if (stackableItem.CanAddStack())
+            {
+                return stackableItem;
+            }
+        }
+
+        return null;
+    }
+
     public void AddItem(Inventory_Item itemToAdd)
     {
         // Everytime we try to add item --> search item in inventory, and if it can stack or not
             // --> then in each case, we increase stack or add item
-        Inventory_Item itemInInventory = FindItem(itemToAdd.itemData);
-        if (itemInInventory != null && itemInInventory.CanAddStack())
+        //Inventory_Item itemInInventory = FindItem(itemToAdd.itemData);
+
+        var existingStackable = StackableItem(itemToAdd);
+
+        if (existingStackable != null)
         {
-            itemInInventory.AddStack();
+            existingStackable.AddStack();
         }
         else
         {
