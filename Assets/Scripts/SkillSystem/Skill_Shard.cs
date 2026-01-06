@@ -47,13 +47,22 @@ public class Skill_Shard : Skill_Base
         }
     }
 
-    public void CreateRawShard()
+    public void CreateRawShard(Transform target = null, bool shardsCanMove = false)
     {
-        bool canMove = Unlocked(SkillUpgradeType.Shard_MoveToEnemy) || Unlocked(SkillUpgradeType.Shard_MultiCast);
+        // Check if shards can move
+            // When unlock skill that can move to enemy
+            // Or when casting domain shard skill
+        bool unlockedShardState = Unlocked(SkillUpgradeType.Shard_MoveToEnemy) || Unlocked(SkillUpgradeType.Shard_MultiCast);
+        bool canMove = shardsCanMove == false ? unlockedShardState : shardsCanMove;
+
 
         GameObject shard = Instantiate(shardPrefab, transform.position, Quaternion.identity);
+        shard.GetComponent<SkillObject_Shard>().SetupShard(this, detonationTime, canMove, shardMoveSpeed, target);
+    }
 
-        shard.GetComponent<SkillObject_Shard>().SetupShard(this, detonationTime, canMove, shardMoveSpeed);
+    public void CreateDomainShard(Transform target)
+    {
+
     }
 
     public override void TryUseSkill()

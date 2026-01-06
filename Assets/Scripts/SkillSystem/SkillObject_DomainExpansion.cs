@@ -43,10 +43,15 @@ public class SkillObject_DomainExpansion : SkillObject_Base
 
         if (isShrinking && sizeDifference < 0.1f)
         {
-            Destroy(gameObject);
+            TerminateDomain();
         }
     }
 
+    private void TerminateDomain()
+    {
+        domainManager.ClearTargets();
+        Destroy(gameObject);
+    }
 
     private void ShrinkDomain()
     {
@@ -63,6 +68,7 @@ public class SkillObject_DomainExpansion : SkillObject_Base
             return;
         }
 
+        domainManager.AddTarget(enemy);
         enemy.SlowDownEntity(duration, slowDownPercent, true);
     }
 
