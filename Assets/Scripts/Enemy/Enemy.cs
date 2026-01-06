@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    public Enemy_Health health {  get; private set; }
+
     // States for all enemies to access easily and switch between them in their own scripts like Enemy_Skeleton.cs
     public Enemy_IdleState idleState;
     public Enemy_MoveState moveState;
@@ -36,6 +38,14 @@ public class Enemy : Entity
     public Transform player { get; private set; }
 
     public float activeSlowMultiplier { get; private set; } = 1f;
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        health = GetComponent<Enemy_Health>();
+    }
 
     public float GetMoveSpeed() => moveSpeed * activeSlowMultiplier;
     public float GetBattleMoveSpeed() => battleMoveSpeed * activeSlowMultiplier;

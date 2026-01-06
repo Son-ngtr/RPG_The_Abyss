@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce01c107f70f8c243bf23b8a1f25d828, type: 3}
   m_Name: Skill data - Echos of the past
   m_EditorClassIdentifier: Assembly-CSharp::Skill_DataSO
-  displayName: 
-  description: 
-  icon: {fileID: 0}
-  cost: 0
+  displayName: Echos of the past
+  description: Each enemy trapped in time warp will be targeted by time echos.
+  icon: {fileID: 1598329994, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  cost: 4
   unLockedByDefault: 0
-  skillType: 0
+  skillType: 4
   upgradeData:
-    upgradeType: 0
-    coolDown: 0
+    upgradeType: 23
+    coolDown: 120
     damageScaleData:
       physical: 1
       elemental: 1

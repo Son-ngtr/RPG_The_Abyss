@@ -10,12 +10,18 @@ public class Skill_DomainExpansion : Skill_Base
     [SerializeField] private float slowdownPercent = 0.8f;
     [SerializeField] private float slowdownDomainDuration = 5f;
 
-    [Header("SPELL CAST UPGRAFE")]
-    [SerializeField] private int spellsToCast = 10;
-    [SerializeField] private float spellCastingDomainDuration = 8f;
-    [SerializeField] private float spellCastingDomainSlowdown = 1f;
+    [Header("SHARD CAST UPGRAFE")]
+    [SerializeField] private int shardsToCast = 10;
+    [SerializeField] private float shardCastDomainDuration = 8f;
+    [SerializeField] private float shardCastDomainSlowdown = 1f;
     private float spellCastTimer;
     private float spellsPerSecond;
+
+    [Header("TIME ECHO CAST UPGRAFE")]
+    [SerializeField] private int echosToCast = 10;
+    [SerializeField] private float echoCastDomainDuration = 8f;
+    [SerializeField] private float echoCastDomainSlowdown = 1f;
+    [SerializeField] private float healthToRestoreWithEcho = 0.05f;
 
     [Header("DOMAIN DETAILS")]
     public float maxDomainSize = 10f;
@@ -28,7 +34,7 @@ public class Skill_DomainExpansion : Skill_Base
 
     public void CreateDomain()
     {
-        spellsPerSecond = spellsToCast / GetDomainDuration();
+        spellsPerSecond = GetSpellsToCast() / GetDomainDuration();
 
         GameObject domain = Instantiate(domainPrefab, transform.position, Quaternion.identity);
         domain.GetComponent<SkillObject_DomainExpansion>().SetupDomain(this);
@@ -55,7 +61,7 @@ public class Skill_DomainExpansion : Skill_Base
     {
         if (upgradeType == SkillUpgradeType.Domain_EchoSpam)
         {
-            Vector3 offset = Random.value < 0.5f ? new Vector2(1,0) : new Vector2(-1,0);
+            Vector3 offset = Random.value < 0.5f ? new Vector2(1, 0) : new Vector2(-1, 0);
 
             skillManager.timeEcho.CreateTimeEcho(target.position + offset);
         }
@@ -68,21 +74,17 @@ public class Skill_DomainExpansion : Skill_Base
 
     private Transform FindTargetInDomain()
     {
+        // Make sure when target is selected, it's not null or dead
+        trappedTargets.RemoveAll(target => target != null || target.health.isDead);
+
         if (trappedTargets.Count == 0)
         {
             return null;
         }
 
-        int RandomIndex = Random.Range(0, trappedTargets.Count);
-        Transform target = trappedTargets[RandomIndex].transform;
+        int RamdomIndex = Random.Range(0, trappedTargets.Count);
 
-        if (target == null)
-        {
-            trappedTargets.RemoveAt(RandomIndex);
-            return null;
-        }
-
-        return target;
+        return trappedTargets[RamdomIndex].transform;
     }
 
     public float GetDomainDuration()
@@ -91,10 +93,16 @@ public class Skill_DomainExpansion : Skill_Base
         {
             return slowdownDomainDuration;
         }
-        else
+        else if (upgradeType == SkillUpgradeType.Domain_ShardSpam)
         {
-            return spellCastingDomainDuration;
+            return shardCastDomainSlowdown;
         }
+        else if (upgradeType == SkillUpgradeType.Domain_EchoSpam)
+        {
+            return echoCastDomainSlowdown;
+        }
+
+        return 0;
     }
 
     public float GetSlowPercentage()
@@ -103,10 +111,30 @@ public class Skill_DomainExpansion : Skill_Base
         {
             return slowdownPercent;
         }
-        else
+        else if (upgradeType == SkillUpgradeType.Domain_ShardSpam)
         {
-            return spellCastingDomainSlowdown;
+            return shardCastDomainDuration;
         }
+        else if (upgradeType == SkillUpgradeType.Domain_EchoSpam)
+        {
+            return echoCastDomainDuration;
+        }
+
+        return 0;
+    }
+
+    private int GetSpellsToCast()
+    {
+        if (upgradeType == SkillUpgradeType.Domain_ShardSpam)
+        {
+            return shardsToCast;
+        }
+        else if (upgradeType == SkillUpgradeType.Domain_EchoSpam)
+        {
+            return echosToCast;
+        }
+
+        return 0;
     }
 
     // Defy just cast spell or enter state then cast spell
