@@ -51,12 +51,14 @@ public class Inventory_Player : Inventory_Base
 
     public void UnequipItem(Inventory_Item itemToUnequip)
     {
+        // Check if there is space in inventory
         if (CanAddItem() == false)
         {
             Debug.Log("No space!");
             return;
         }
 
+        // Find the slot that has this item and clear it
         foreach (var slot in equipList)
         {
             if (slot.equipedItem == itemToUnequip)

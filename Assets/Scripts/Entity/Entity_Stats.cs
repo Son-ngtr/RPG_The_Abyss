@@ -81,23 +81,22 @@ public class Entity_Stats : MonoBehaviour
 
     public float GetPhysicalDamage(out bool isCriticalHit, float scaleFactor = 1f)
     {
-        float baseDamage = offense.damage.GetValue();
-        float bonusDamage = major.strength.GetValue() * 1f;
-        float totalBaseDamage = baseDamage + bonusDamage;
-
-        float baseCritChance = offense.critChance.GetValue();
-        float bonusCritChance = major.agility.GetValue() * 0.3f; // Each point in agility gives 0.3% crit chance (+0.3% per AGI)
-        float critChance = baseCritChance + bonusCritChance;
-
-        float baseCritDamage = offense.critDamage.GetValue();
-        float bonusCritDamage = major.strength.GetValue() * 0.5f; // Each point in strength gives 0.5% crit damage (+0.5% per STR)
-        float critDamage = (baseCritDamage + bonusCritDamage) / 100;
+        float baseDamage = GetBaseDamage();
+        float critChance = GetCritChance();
+        float critDamage = GetCritDamage() / 100;
 
         isCriticalHit = Random.Range(1, 100) < critChance;
-        float finalDamage = isCriticalHit ? totalBaseDamage * critDamage : totalBaseDamage;
+        float finalDamage = isCriticalHit ? baseDamage * critDamage : baseDamage;
 
         return finalDamage * scaleFactor;
     }
+
+    // Each point in strength gives 1 damage 
+    public float GetBaseDamage() => offense.damage.GetValue() + major.strength.GetValue() * 1f;
+    // Each point in agility gives 0.3% crit chance
+    public float GetCritChance() => offense.critChance.GetValue() + major.agility.GetValue() * 0.3f;
+    // Each point in strength gives 0.5% crit damage
+    public float GetCritDamage() => offense.critDamage.GetValue() + major.strength.GetValue() * 0.5f; 
 
     public float GetArmorReduction()
     {
@@ -108,9 +107,7 @@ public class Entity_Stats : MonoBehaviour
 
     public float GetArmorMitigation(float armorReduction)
     {
-        float armorValue = defend.armor.GetValue();
-        float bonusArmor = major.vitality.GetValue() * 1f; // Each point in vitality gives 1 armor
-        float totalArmor = armorValue + bonusArmor;
+        float totalArmor = GetBaseArmor();
 
         float reductionMultiplier = Mathf.Clamp(1 - armorReduction, 0, 1);
         float effectiveArmor = totalArmor * reductionMultiplier;
@@ -121,6 +118,8 @@ public class Entity_Stats : MonoBehaviour
         float finalMitigation = Mathf.Clamp(mitigation, 0, mitigationCap);
         return finalMitigation;
     }
+
+    public float GetBaseArmor() => defend.armor.GetValue() + major.vitality.GetValue() * 1f; // Each point in vitality gives 1 armor
 
     public float GetMaxHealth()
     {
