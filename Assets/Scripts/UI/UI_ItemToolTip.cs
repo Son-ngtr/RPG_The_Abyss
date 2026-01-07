@@ -12,7 +12,7 @@ public class UI_ItemToolTip : UI_ToolTip
     {
         base.ShowToolTip(show, targetRect);
 
-        itemName.text = itemToShow.itemData.name;
+        itemName.text = itemToShow.itemData.itemName;
         itemType.text = itemToShow.itemData.itemType.ToString();
         itemInfo.text = GetItemInfo(itemToShow);
     }
@@ -23,6 +23,11 @@ public class UI_ItemToolTip : UI_ToolTip
         if (item.itemData.itemType == ItemType.Material)
         {
             return "Used for Crafting";
+        }
+
+        if (item.itemData.itemType == ItemType.Comsumable)
+        {
+            return item.itemData.itemEffect.effectDescription;
         }
 
         StringBuilder stringBuilder = new StringBuilder();
