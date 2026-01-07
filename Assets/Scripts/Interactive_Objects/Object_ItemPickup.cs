@@ -33,7 +33,7 @@ public class Object_ItemPickup : MonoBehaviour
             return;
         }
 
-        bool canAddItem = inventory.CanAddItem() || inventory.StackableItem(itemToAdd) != null;
+        bool canAddItem = inventory.CanAddItem() || inventory.FindStackable(itemToAdd) != null;
 
         if (canAddItem)
         {

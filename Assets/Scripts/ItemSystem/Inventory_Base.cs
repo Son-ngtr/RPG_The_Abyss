@@ -19,7 +19,7 @@ public class Inventory_Base : MonoBehaviour
 
     public bool CanAddItem() => itemList.Count < maxInventorySize;
 
-    public Inventory_Item StackableItem(Inventory_Item itemToAdd)
+    public Inventory_Item FindStackable(Inventory_Item itemToAdd)
     {
         List<Inventory_Item> stackableItems = itemList.FindAll(item => item.itemData == itemToAdd.itemData);
 
@@ -40,7 +40,7 @@ public class Inventory_Base : MonoBehaviour
             // --> then in each case, we increase stack or add item
         //Inventory_Item itemInInventory = FindItem(itemToAdd.itemData);
 
-        var existingStackable = StackableItem(itemToAdd);
+        var existingStackable = FindStackable(itemToAdd);
 
         if (existingStackable != null)
         {

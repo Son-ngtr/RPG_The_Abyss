@@ -16,7 +16,7 @@ MonoBehaviour:
   agility: 0
   intelligence: 0
   vitality: 0
-  maxHealth: 100
+  maxHealth: 1000
   healthRegen: 0
   attackSpeed: 1
   damage: 10
