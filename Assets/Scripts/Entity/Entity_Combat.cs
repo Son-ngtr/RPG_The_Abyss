@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Entity_Combat : MonoBehaviour
 {
+    // EVENT FOR UNIQUE ITEMS
+    public event Action<float> OnDoingPhysicalDamage;
+
     private Entity_VFX vfx;
     private Entity_Stats stats;
 
@@ -47,6 +51,9 @@ public class Entity_Combat : MonoBehaviour
 
             if (targetGotHit)
             {
+                // Invoke event for unique items that react on dealing physical damage
+                OnDoingPhysicalDamage?.Invoke(physicalDamage);
+
                 vfx.CreateOnHitVfx(target.transform, attackData.isCrit, element);   
             }
         }

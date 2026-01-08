@@ -41,6 +41,13 @@ public class UI_ItemToolTip : UI_ToolTip
             stringBuilder.AppendLine("+ " + modValue + " " + modType);
         }
 
+        if (item.itemEffect != null)
+        {
+            stringBuilder.AppendLine("");
+            stringBuilder.AppendLine("Unique Effect:");
+            stringBuilder.AppendLine(item.itemEffect.effectDescription);
+        }
+
         return stringBuilder.ToString();
     }
 

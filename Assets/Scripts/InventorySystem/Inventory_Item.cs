@@ -40,6 +40,16 @@ public class Inventory_Item
         }
     }
 
+    public void AddItemEffect(Player player)
+    {
+        itemEffect?.SubScribeToPlayerEvents(player);
+    }
+
+    public void RemoveItemEffect(Player player)
+    {
+        itemEffect?.UnSubScribeToPlayerEvents(player);
+    }
+
     private EquipmentDataSO EquimentData()
     {
         if (itemData is EquipmentDataSO equiment)

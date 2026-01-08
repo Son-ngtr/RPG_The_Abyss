@@ -16,7 +16,7 @@ MonoBehaviour:
   itemIcon: {fileID: 964983541, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   itemType: 2
   maxStackSize: 1
-  itemEffect: {fileID: 0}
+  itemEffect: {fileID: 11400000, guid: 56c4a861f85bd4b4bac4713fe7269fcf, type: 2}
   modifiers:
   - statType: 0
     value: 250
