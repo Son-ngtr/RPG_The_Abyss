@@ -109,6 +109,9 @@ public class Player : Entity
         inputSet.Player.Spell.performed += ctx => skillManager.shard.TryUseSkill();
         inputSet.Player.Spell.performed += ctx => skillManager.timeEcho.TryUseSkill();
 
+        // Interaction Input
+        inputSet.Player.Interact.performed += ctx => TryInteract();
+
     }
 
     protected override void Start()
@@ -181,6 +184,38 @@ public class Player : Entity
 
         OnPlayerDeath?.Invoke();
         stateMachine.ChangeState(deadState);
+    }
+
+
+    private void TryInteract()
+    {
+        // Find closest interactable object within range and interact with it
+        Transform clostest = null;
+        float closestDistance = Mathf.Infinity;
+        Collider2D[] objectsAround = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+
+        foreach (var target in objectsAround)
+        {
+            IInteractable interactable = target.GetComponent<IInteractable>();
+            if (interactable == null)
+            {
+                continue;
+            }
+
+            float distance = Vector2.Distance(transform.position, target.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                clostest = target.transform;
+            }
+
+            if (clostest == null)
+            {
+                return;
+            }
+
+            clostest.GetComponent<IInteractable>().Interact();
+        }
     }
 
     private void OnDisable()
