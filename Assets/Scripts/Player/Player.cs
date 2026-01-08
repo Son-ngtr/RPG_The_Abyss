@@ -98,11 +98,15 @@ public class Player : Entity
         inputSet.Player.Movement.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
         // When movement is canceled, set movementInput to zero
         inputSet.Player.Movement.canceled += ctx => movementInput = Vector2.zero;
+
         // UI Inputs
         inputSet.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
+        inputSet.Player.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
+
         // Skill Inputs
         inputSet.Player.Spell.performed += ctx => skillManager.shard.TryUseSkill();
         inputSet.Player.Spell.performed += ctx => skillManager.timeEcho.TryUseSkill();
+
     }
 
     protected override void Start()
