@@ -192,7 +192,7 @@ public class Player : Entity
         // Find closest interactable object within range and interact with it
         Transform clostest = null;
         float closestDistance = Mathf.Infinity;
-        Collider2D[] objectsAround = Physics2D.OverlapCircleAll(transform.position, 1.5f);
+        Collider2D[] objectsAround = Physics2D.OverlapCircleAll(transform.position, 1f);
 
         foreach (var target in objectsAround)
         {

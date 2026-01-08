@@ -6,12 +6,14 @@ public class Inventory_Player : Inventory_Base
 {
     private Player player;
     public List<Inventory_EquipmentSlot> equipList;
+    public Inventory_Storage storage { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
 
         player = GetComponent<Player>();
+        storage = FindFirstObjectByType<Inventory_Storage>();
     }
 
     public void TryEquipItem(Inventory_Item item)
@@ -51,7 +53,7 @@ public class Inventory_Player : Inventory_Base
 
         player.health.SetHealthToPercent(savedHealthPercent);
 
-        RemoveItem(itemToEquip);
+        RemoveOneItem(itemToEquip);
     }
 
 
@@ -59,7 +61,7 @@ public class Inventory_Player : Inventory_Base
     {
         // Check if there is space in inventory
             // Check if we are replacing item ON STEP 2 of TryEquipItem --> so the logic can continue
-        if (CanAddItem() == false && replacingItem == false)
+        if (CanAddItem(itemToUnequip) == false && replacingItem == false)
         {
             Debug.Log("No space!");
             return;

@@ -7,7 +7,8 @@ public class Object_ItemPickup : MonoBehaviour
     [SerializeField] private ItemDataSO itemData;
 
     private Inventory_Item itemToAdd;
-    private Inventory_Base inventory;
+    private Inventory_Player inventory;
+    private Inventory_Storage storage;
 
     private void Awake()
     {
@@ -24,18 +25,22 @@ public class Object_ItemPickup : MonoBehaviour
         gameObject.name = "Object_ItemPickup - " + itemData.itemName;
     }
 
+    // When player collides with the item pickup
+        // Add to storage if material
+        // Otherwise add to player inventory
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        inventory = collision.GetComponent<Inventory_Base>();
+        inventory = collision.GetComponent<Inventory_Player>();
+        storage = inventory.storage;
 
-        if (inventory == null)
+        if (itemData.itemType == ItemType.Material)
         {
+            storage.AddMaterialToStash(itemToAdd);
+            Destroy(gameObject);
             return;
         }
 
-        bool canAddItem = inventory.CanAddItem() || inventory.FindStackable(itemToAdd) != null;
-
-        if (canAddItem)
+        if (inventory.CanAddItem(itemToAdd))
         {
             inventory.AddItem(itemToAdd);
             Destroy(gameObject);
