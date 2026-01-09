@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5521e2f9de734a44a78713868e89225, type: 3}
-  m_Name: Material data - Animal leather
+  m_Name: Material data - Wooden Log
   m_EditorClassIdentifier: Assembly-CSharp::ItemDataSO
   itemPrice: 100
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 10
-  itemName: Animal Leather
-  itemIcon: {fileID: -1388766842, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  itemName: Wooden Log
+  itemIcon: {fileID: -1007557208, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   itemType: 0
-  maxStackSize: 2
+  maxStackSize: 5
   itemEffect: {fileID: 0}
   craftRecipe: []

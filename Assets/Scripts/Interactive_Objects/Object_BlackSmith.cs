@@ -6,6 +6,8 @@ public class Object_BlackSmith : Object_NPC, IInteractable
     private Inventory_Player inventory;
     private Inventory_Storage storage;
 
+    private bool switchBlackSmithUI = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -18,9 +20,21 @@ public class Object_BlackSmith : Object_NPC, IInteractable
 
     public void Interact()
     {
+        SwitchStorageAndCraftUI();
+        if (switchBlackSmithUI == false)
+        {
+            ui.SwitchOffAllToolTips();
+            ui.storageUI.gameObject.SetActive(false);
+            ui.craftUI.gameObject.SetActive(false);
+            return;
+        }
+
         Debug.Log("Interacting with BlackSmith");
-        ui.storageUI.SetupStorage(inventory, storage);
+        ui.storageUI.SetupStorage(storage);
+        ui.craftUI.SetupCraftUI(storage);
+
         ui.storageUI.gameObject.SetActive(true);
+        //ui.craftUI.gameObject.SetActive(true);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -38,5 +52,11 @@ public class Object_BlackSmith : Object_NPC, IInteractable
 
         ui.SwitchOffAllToolTips();
         ui.storageUI.gameObject.SetActive(false);
+        ui.craftUI.gameObject.SetActive(false);
+    }
+
+    private void SwitchStorageAndCraftUI()
+    {
+        switchBlackSmithUI = !switchBlackSmithUI;
     }
 }

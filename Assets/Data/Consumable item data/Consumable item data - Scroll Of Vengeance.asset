@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c31b92d758d8fff41b56a7c4a2e9dad1, type: 3}
   m_Name: Consumable item data - Scroll Of Vengeance
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItemDataSO
+  itemPrice: 100
+  minStackSizeAtShop: 1
+  maxStackSizeAtShop: 2
   itemName: Scroll Of Vengeance
   itemIcon: {fileID: -1866746487, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   itemType: 4
   maxStackSize: 5
   itemEffect: {fileID: 11400000, guid: 1720e9d13095c3240bc13144e3df115c, type: 2}
+  craftRecipe: []

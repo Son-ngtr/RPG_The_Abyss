@@ -4,6 +4,8 @@ using UnityEngine;
 // INVENTORY OF PLAYER
 public class Inventory_Player : Inventory_Base
 {
+    public int gold = 10000;
+
     private Player player;
     public List<Inventory_EquipmentSlot> equipList;
     public Inventory_Storage storage { get; private set; }

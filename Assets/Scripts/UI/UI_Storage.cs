@@ -9,11 +9,18 @@ public class UI_Storage : MonoBehaviour
     [SerializeField] private UI_ItemSlotParent storageParent;
     [SerializeField] private UI_ItemSlotParent materialStashParent;
 
-    public void SetupStorage(Inventory_Player inventory, Inventory_Storage storage)
+
+    private void OnEnable()
+    {
+        UpdateUI();
+    }
+
+
+    public void SetupStorage(Inventory_Storage storage)
     {
         this.storage = storage;
-        this.inventory = inventory;
-        
+        inventory = storage.playerInventory;
+
         storage.OnInventoryChange += UpdateUI;
         UpdateUI();
 
@@ -28,6 +35,11 @@ public class UI_Storage : MonoBehaviour
 
     private void UpdateUI()
     {
+        if (storage == null)
+        {
+            return;
+        }
+
         // Update the UI elements to reflect the current state of the storage inventory
         // This could involve refreshing item slots, updating counts, etc.
         inventoryParent.UpdateSlots(inventory.itemList);

@@ -93,7 +93,7 @@ public class Inventory_Base : MonoBehaviour
         }
         else
         {
-            itemList.Remove(itemInInventory);
+            itemList.Remove(itemToRemove);
         }
 
         OnInventoryChange?.Invoke();
