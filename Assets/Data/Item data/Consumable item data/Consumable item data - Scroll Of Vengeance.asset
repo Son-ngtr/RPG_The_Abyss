@@ -10,10 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c31b92d758d8fff41b56a7c4a2e9dad1, type: 3}
-  m_Name: Consumable item data - Book of Knowlegde
+  m_Name: Consumable item data - Scroll Of Vengeance
   m_EditorClassIdentifier: Assembly-CSharp::ConsumableItemDataSO
-  itemName: Book of Knowledge
-  itemIcon: {fileID: 89571794, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  itemPrice: 100
+  minStackSizeAtShop: 1
+  maxStackSizeAtShop: 2
+  itemRarity: 749
+  dropChance: 25.2
+  maxDropChance: 65
+  itemName: Scroll Of Vengeance
+  itemIcon: {fileID: -1866746487, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   itemType: 4
-  maxStackSize: 20
-  itemEffect: {fileID: 11400000, guid: f50cb75d5f0fcbe4894b61b0cd9b705d, type: 2}
+  maxStackSize: 5
+  itemEffect: {fileID: 11400000, guid: 1720e9d13095c3240bc13144e3df115c, type: 2}
+  craftRecipe: []

@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory_Storage : Inventory_Base
@@ -7,9 +8,19 @@ public class Inventory_Storage : Inventory_Base
     public Inventory_Player playerInventory { get; private set; }
     public List<Inventory_Item> materialStash;
 
+    public void CraftItem(Inventory_Item itemToCraft)
+    {
+        ComsumeMaterials(itemToCraft);
+        playerInventory.AddItem(itemToCraft);
+    }
+
+    public bool CanCraftItem(Inventory_Item itemToCraft)
+    {
+        return HasEnoughMaterials(itemToCraft) && playerInventory.CanAddItem(itemToCraft);
+    }
 
     // Comsume Meterials in all place that can stoge item (1. Inventory 2. Storage 3. Material Stash)
-    public void ComsumeMaterials(Inventory_Item itemToCraft)
+    private void ComsumeMaterials(Inventory_Item itemToCraft)
     {
         foreach (var requiredItem in itemToCraft.itemData.craftRecipe)
         {
@@ -120,10 +131,12 @@ public class Inventory_Storage : Inventory_Base
         }
         else
         {
-            materialStash.Add(itemToAdd);
+            var newItemToAdd = new Inventory_Item(itemToAdd.itemData);
+            materialStash.Add(newItemToAdd);
         }
 
         TriggerUpdateUi();
+        materialStash = materialStash.OrderBy(item => item.itemData.name).ToList();
     }
 
     public Inventory_Item stackableInStash(Inventory_Item itemToAdd)

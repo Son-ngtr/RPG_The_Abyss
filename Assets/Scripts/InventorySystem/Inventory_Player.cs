@@ -20,7 +20,7 @@ public class Inventory_Player : Inventory_Base
 
     public void TryEquipItem(Inventory_Item item)
     {
-        Inventory_Item inventoryItem = FindItem(item.itemData);
+        Inventory_Item inventoryItem = FindItem(item);
 
         // Every Equipment Items Hast slotType === itemType
             // For example: itemtype weapon will only be used in slot weapon

@@ -15,6 +15,9 @@ MonoBehaviour:
   itemPrice: 100
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 10
+  itemRarity: 661
+  dropChance: 34
+  maxDropChance: 52
   itemName: Baguete
   itemIcon: {fileID: 425931877, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   itemType: 0

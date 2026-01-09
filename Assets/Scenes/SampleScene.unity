@@ -3131,7 +3131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 937ea14067f02d44ebb490cda68df658, type: 2}
+  sr: {fileID: 80201357}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &80423047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3432,7 +3436,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 86b51e9d9d470aa41beec38f33b286f3, type: 2}
+  sr: {fileID: 90511412}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!4 &90511414
 Transform:
   m_ObjectHideFlags: 0
@@ -6680,7 +6688,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 3cc7a3e9a8ff28748b9fd6318ea77e7c, type: 2}
+  sr: {fileID: 161592965}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!4 &161592967
 Transform:
   m_ObjectHideFlags: 0
@@ -13071,7 +13083,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 86b51e9d9d470aa41beec38f33b286f3, type: 2}
+  sr: {fileID: 357345676}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!4 &357345678
 Transform:
   m_ObjectHideFlags: 0
@@ -13490,7 +13506,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 3cc7a3e9a8ff28748b9fd6318ea77e7c, type: 2}
+  sr: {fileID: 364979554}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!4 &364979556
 Transform:
   m_ObjectHideFlags: 0
@@ -15978,6 +15998,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461213361}
   m_CullTransparentMesh: 1
+--- !u!1001 &463265400
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 541262374170623903, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_Name
+      value: Object_Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5888295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2298508
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179332418806459772, guid: 83c92547711d429499db74509168e765, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 541262374170623903, guid: 83c92547711d429499db74509168e765, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463265402}
+  m_SourcePrefab: {fileID: 100100000, guid: 83c92547711d429499db74509168e765, type: 3}
+--- !u!1 &463265401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 541262374170623903, guid: 83c92547711d429499db74509168e765, type: 3}
+  m_PrefabInstance: {fileID: 463265400}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &463265402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463265401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be49876c7da2064dbef3b3d956b52af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity_DropManager
+  itemDropPrefab: {fileID: 5645093172542982848, guid: 0da8dd624352c4246ba1823171f555d0, type: 3}
+  dropData: {fileID: 11400000, guid: 429f35d8f5f14a1428a2ba9e54d77060, type: 2}
+  maxRarityAmount: 1600
+  maxItemDrops: 7
 --- !u!1 &471026866
 GameObject:
   m_ObjectHideFlags: 0
@@ -22013,7 +22114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 9a79d2c1ab5ba1d48a4c380228ca8c80, type: 2}
+  sr: {fileID: 619270552}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!4 &619270554
 Transform:
   m_ObjectHideFlags: 0
@@ -22413,7 +22518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 0f4b7d816597d6f4f9a10116ea7c949d, type: 2}
+  sr: {fileID: 623638970}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &631217743
 GameObject:
   m_ObjectHideFlags: 0
@@ -26724,7 +26833,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: a91a73a9dfb0c6f4ebe824fe711d8af2, type: 2}
+  sr: {fileID: 739993394}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &742697510
 GameObject:
   m_ObjectHideFlags: 0
@@ -27165,7 +27278,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 937ea14067f02d44ebb490cda68df658, type: 2}
+  sr: {fileID: 744307454}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &746751696
 GameObject:
   m_ObjectHideFlags: 0
@@ -39857,7 +39974,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 6477bbc9094b8fa48915222e677b368c, type: 2}
+  sr: {fileID: 896546364}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &897580282
 GameObject:
   m_ObjectHideFlags: 0
@@ -42391,7 +42512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 9c47dfa3cf8071a4e89d052b0f89de1f, type: 2}
+  sr: {fileID: 1012502575}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &1014348211
 GameObject:
   m_ObjectHideFlags: 0
@@ -48025,7 +48150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 86b51e9d9d470aa41beec38f33b286f3, type: 2}
+  sr: {fileID: 1155573681}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &1155583984
 GameObject:
   m_ObjectHideFlags: 0
@@ -48419,7 +48548,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 0abcba261b17408429237697b06147f9, type: 2}
+  sr: {fileID: 1165451037}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &1169100924
 GameObject:
   m_ObjectHideFlags: 0
@@ -51739,7 +51872,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: deb0d351dbef0fd409d3dfbc231952e2, type: 2}
+  sr: {fileID: 1257813963}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!4 &1257813965
 Transform:
   m_ObjectHideFlags: 0
@@ -53555,7 +53692,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 6477bbc9094b8fa48915222e677b368c, type: 2}
+  sr: {fileID: 1296613166}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &1296787176
 GameObject:
   m_ObjectHideFlags: 0
@@ -55707,7 +55848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 9a79d2c1ab5ba1d48a4c380228ca8c80, type: 2}
+  sr: {fileID: 1345281182}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!4 &1345281184
 Transform:
   m_ObjectHideFlags: 0
@@ -56573,7 +56718,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 0abcba261b17408429237697b06147f9, type: 2}
+  sr: {fileID: 1361579622}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &1362229338
 GameObject:
   m_ObjectHideFlags: 0
@@ -62492,7 +62641,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 9c47dfa3cf8071a4e89d052b0f89de1f, type: 2}
+  sr: {fileID: 1555498278}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &1565399533
 GameObject:
   m_ObjectHideFlags: 0
@@ -64435,7 +64588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1626562724
 Transform:
   m_ObjectHideFlags: 0
@@ -65994,7 +66147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: 9c47dfa3cf8071a4e89d052b0f89de1f, type: 2}
+  sr: {fileID: 1690433984}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &1691466871
 GameObject:
   m_ObjectHideFlags: 0
@@ -79541,7 +79698,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: cd173e14f2470ee4cad86afaa071adb2, type: 2}
+  sr: {fileID: 2102804791}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!4 &2102804793
 Transform:
   m_ObjectHideFlags: 0
@@ -79707,7 +79868,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: a91a73a9dfb0c6f4ebe824fe711d8af2, type: 2}
+  sr: {fileID: 2105643767}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &2111132075
 GameObject:
   m_ObjectHideFlags: 0
@@ -79994,7 +80159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: d800bbbe255ee96448d45731697f08f6, type: 2}
+  sr: {fileID: 2111759369}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &2112281346
 GameObject:
   m_ObjectHideFlags: 0
@@ -80756,7 +80925,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81bb6563dc926ae47a9f61ffecab4f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Object_ItemPickup
+  dropForce: {x: 3, y: 10}
   itemData: {fileID: 11400000, guid: a91a73a9dfb0c6f4ebe824fe711d8af2, type: 2}
+  sr: {fileID: 2130517169}
+  rb: {fileID: 0}
+  col: {fileID: 0}
 --- !u!1 &2136298009
 GameObject:
   m_ObjectHideFlags: 0
@@ -81959,3 +82132,4 @@ SceneRoots:
   - {fileID: 857984774}
   - {fileID: 1157260174}
   - {fileID: 1521672949}
+  - {fileID: 463265400}

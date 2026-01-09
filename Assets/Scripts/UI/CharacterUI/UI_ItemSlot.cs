@@ -29,18 +29,27 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
             return;
         }
 
-        if (itemInSlot.itemData.itemType == ItemType.Comsumable)
-        {
-            if (itemInSlot.itemEffect.CanBeUsed() == false)
-            {
-                return;
-            }
+        bool alternativeInput = Input.GetKey(KeyCode.LeftControl);
 
-            playerInventory.TryUseItem(itemInSlot);
+        if (alternativeInput)
+        {
+            playerInventory.RemoveOneItem(itemInSlot);
         }
         else
         {
-            playerInventory.TryEquipItem(itemInSlot);
+            if (itemInSlot.itemData.itemType == ItemType.Comsumable)
+            {
+                if (itemInSlot.itemEffect.CanBeUsed() == false)
+                {
+                    return;
+                }
+
+                playerInventory.TryUseItem(itemInSlot);
+            }
+            else
+            {
+                playerInventory.TryEquipItem(itemInSlot);
+            }
         }
 
 
