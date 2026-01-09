@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
+    #region UI COMPONENTS
     public UI_SkillToolTip skillToolTip { get; private set; }
     public UI_ItemToolTip itemToolTip { get; private set; }
     public UI_SkillTree skillTreeUI { get; private set; }
@@ -10,6 +11,8 @@ public class UI : MonoBehaviour
     public UI_Storage storageUI { get; private set; }
     public UI_Craft craftUI { get; private set; }
     public UI_Merchant merchantUI { get; set; }
+    public UI_InGame ingameUI { get; set; }
+    #endregion
 
     private bool skillTreeEnabled;
     private bool inventoryEnabled;
@@ -27,9 +30,15 @@ public class UI : MonoBehaviour
         storageUI = GetComponentInChildren<UI_Storage>(true);
         craftUI = GetComponentInChildren<UI_Craft>(true);
         merchantUI = GetComponentInChildren<UI_Merchant>(true);
+        ingameUI = GetComponentInChildren<UI_InGame>(true);
 
         skillTreeEnabled = skillTreeUI.gameObject.activeSelf; // Prevent double toggle on start
         inventoryEnabled = inventoryUI.gameObject.activeSelf;
+    }
+
+    private void Start()
+    {
+        skillTreeUI.UnlockDefaultSkills();
     }
 
     public void SwitchOffAllToolTips()

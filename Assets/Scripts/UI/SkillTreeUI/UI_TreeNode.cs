@@ -36,26 +36,30 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         skillCost = skillData.cost;
         gameObject.name = $"UI_TreeNode - {skillData.displayName}";
     }
-
-    private void Awake()
-    {
-        ui = GetComponentInParent<UI>();
-        rectTransform = GetComponent<RectTransform>();
-        skillTree = GetComponentInParent<UI_SkillTree>();
-        connectionHandler = GetComponent<UI_TreeConnectionHandler>();
-
-        UpdateIconColor(GetColorByHex(lockedColorHex));
-
-    }
-
     private void Start()
     {
+        UpdateIconColor(GetColorByHex(lockedColorHex));
+        UnlockDefaultSkill();
+    }
+
+    public void UnlockDefaultSkill()
+    {
+        GetNeededComponents();
+
         if (skillData.unLockedByDefault)
         {
             Unlock();
         }
-        
     }
+
+    private void GetNeededComponents()
+    {
+        ui = GetComponentInParent<UI>();
+        rectTransform = GetComponent<RectTransform>();
+        skillTree = GetComponentInParent<UI_SkillTree>(true);
+        connectionHandler = GetComponent<UI_TreeConnectionHandler>();
+    }
+
 
     public void Refund()
     {
@@ -76,14 +80,21 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Unlock()
     {
+        if (isUnlocked)
+        {
+            Debug.Log("Skill already unlocked");
+            return;
+        }
+
         isUnlocked = true;
         UpdateIconColor(Color.white);
         LockConflictNodes();
+
         skillTree.RemoveSkillPoint(skillData.cost);
         connectionHandler.UnlockConnectionImage(true);
 
         // Find player mng skill --> unlock skill
-        skillTree.skillManager.GetSkillByType(skillData.skillType).SetSkillUpgrade(skillData.upgradeData);
+        skillTree.skillManager.GetSkillByType(skillData.skillType).SetSkillUpgrade(skillData);
     }
 
     private bool canBeUnlocked()
@@ -210,5 +221,12 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             UpdateIconColor(Color.white);
         }
+    }
+
+    private void ResetTreeNode()
+    {
+        isLocked = false;
+        isUnlocked = false;
+        UpdateIconColor(GetColorByHex(lockedColorHex));
     }
 }

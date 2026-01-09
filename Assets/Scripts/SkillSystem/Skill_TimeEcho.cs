@@ -83,6 +83,7 @@ public class Skill_TimeEcho : Skill_Base
         }
 
         CreateTimeEcho();
+        SetSkillOnCoolDown();
     }
 
     public void CreateTimeEcho(Vector3? targetPosition = null)
