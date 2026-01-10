@@ -141,15 +141,8 @@ public class Inventory_Storage : Inventory_Base
 
     public Inventory_Item stackableInStash(Inventory_Item itemToAdd)
     {
-        List<Inventory_Item> stackableItems = materialStash.FindAll(item => item.itemData == itemToAdd.itemData);
-        foreach (var stackableItem in stackableItems)
-        {
-            if (stackableItem.CanAddStack())
-            {
-                return stackableItem;
-            }
-        }
-        return null;
+        return materialStash.Find(item => item.itemData == itemToAdd.itemData && item.CanAddStack());
+        
     }
 
 
