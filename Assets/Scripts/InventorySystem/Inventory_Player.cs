@@ -6,6 +6,9 @@ using UnityEngine;
 public class Inventory_Player : Inventory_Base
 {
     public event Action<int> OnQuickSlotUsed;
+
+
+    [Header("GOLF INFO")]
     public int gold = 10000;
 
     public List<Inventory_EquipmentSlot> equipList;
@@ -128,13 +131,83 @@ public class Inventory_Player : Inventory_Base
 
 
     // SAVE AND LOAD SYSTEM
+    // Use saveID to identify items
+        // Load the data from item database to recreate items
+
     public override void SaveData(ref GameData data)
     {
         data.gold = gold;
+        data.inventory.Clear();
+        data.equippedItems.Clear();
+
+        foreach (var item in itemList)
+        {
+            if (item != null && item.itemData != null)
+            {
+                string saveID = item.itemData.saveID;
+
+                if (data.inventory.ContainsKey(saveID) == false)
+                {
+                    // New item, add it to the dictionary
+                    data.inventory[saveID] = 0;
+                }
+
+                data.inventory[saveID] += item.stackSize;
+            }
+        }
+
+        foreach (var slot in equipList)
+        {
+            if (slot.HasItem())
+            {
+                data.equippedItems[slot.equipedItem.itemData.saveID] = slot.slotType;
+            }
+        }
     }
 
     public override void LoadData(GameData data)
     {
         gold = data.gold;
+
+        // Load inventory items
+        foreach (var item in data.inventory)
+        {
+            string saveID = item.Key;
+            int stackSize = item.Value;
+
+            ItemDataSO itemData = itemDataBase.GetItemDataByID(saveID); // itemDataBase is ItemListDataSO reference to get ItemDataSO by saveID
+
+            if (itemData == null)
+            {
+                Debug.LogWarning($"ItemData with saveID {saveID} not found in database.");
+                continue;
+            }
+            
+            for (int i = 0; i < stackSize; i++)
+            {
+                Inventory_Item itemToLoad = new Inventory_Item(itemData); // Create new Inventory_Item instance everytime to avoid reference issues
+                // AddItem will handle stacking logic
+                itemList.Add(itemToLoad);
+            }
+
+        }
+
+        // Load equipped items
+        foreach (var slot in data.equippedItems)
+        {
+            string saveID = slot.Key;
+            ItemType loadedSlotType = slot.Value;
+
+            ItemDataSO itemData = itemDataBase.GetItemDataByID(saveID);
+            Inventory_Item itemToLoad = new Inventory_Item(itemData);
+
+            var equipSlot = equipList.Find(s => s.slotType == loadedSlotType && s.HasItem() == false);
+
+            equipSlot.equipedItem = itemToLoad;
+            equipSlot.equipedItem.AddModifiers(player.stats);
+            equipSlot.equipedItem.AddItemEffect(player);
+        }
+
+        TriggerUpdateUi();
     }
 }

@@ -187,4 +187,100 @@ public class Inventory_Storage : Inventory_Base
 
         TriggerUpdateUi();
     }
+
+
+    // SAVE AND LOAD SYSTEM
+    public override void SaveData(ref GameData data)
+    {
+        base.SaveData(ref data);
+
+        // Save storage items
+        data.storageItems.Clear();
+        foreach (var item in itemList)
+        {
+            if (item != null && item.itemData != null)
+            {
+                string saveID = item.itemData.saveID;
+
+                if (data.storageItems.ContainsKey(saveID) == false)
+                {
+                    // New item, add it to the dictionary
+                    data.storageItems[saveID] = 0;
+                }
+
+                data.storageItems[saveID] += item.stackSize;
+            }
+        }
+
+        // Save material stash
+        data.storageMaterials.Clear();
+        foreach (var item in materialStash)
+        {
+            if (item != null && item.itemData != null)
+            {
+                string saveID = item.itemData.saveID;
+
+                if (data.storageMaterials.ContainsKey(saveID) == false)
+                {
+                    // New item, add it to the dictionary
+                    data.storageMaterials[saveID] = 0;
+                }
+
+                data.storageMaterials[saveID] += item.stackSize;
+            }
+        }
+    }
+
+    public override void LoadData(GameData data)
+    {
+        // Clear current items
+        itemList.Clear();
+        materialStash.Clear();
+
+        // Load storage items
+        foreach (var item in data.storageItems)
+        {
+            string saveID = item.Key;
+            int stackSize = item.Value;
+
+            ItemDataSO itemData = itemDataBase.GetItemDataByID(saveID); // itemDataBase is ItemListDataSO reference to get ItemDataSO by saveID
+
+            if (itemData == null)
+            {
+                Debug.LogWarning($"ItemData with saveID {saveID} not found in database.");
+                continue;
+            }
+
+            for (int i = 0; i < stackSize; i++)
+            {
+                Inventory_Item itemToLoad = new Inventory_Item(itemData); // Create new Inventory_Item instance everytime to avoid reference issues
+                // AddItem will handle stacking logic
+                AddItem(itemToLoad);
+            }
+        }
+
+        // Load material stash
+        foreach (var item in data.storageMaterials)
+        {
+            string saveID = item.Key;
+            int stackSize = item.Value;
+
+            ItemDataSO itemData = itemDataBase.GetItemDataByID(saveID); // itemDataBase is ItemListDataSO reference to get ItemDataSO by saveID
+
+            if (itemData == null)
+            {
+                Debug.LogWarning($"ItemData with saveID {saveID} not found in database.");
+                continue;
+            }
+
+            for (int i = 0; i < stackSize; i++)
+            {
+                Inventory_Item itemToLoad = new Inventory_Item(itemData); // Create new Inventory_Item instance everytime to avoid reference issues
+                // AddItem will handle stacking logic
+                AddMaterialToStash(itemToLoad);
+            }
+        }
+
+        TriggerUpdateUi();
+    }
 }

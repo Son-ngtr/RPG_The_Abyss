@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 
@@ -5,6 +6,9 @@ using UnityEngine;
 
 public class ItemDataSO : ScriptableObject
 {
+    // Unique ID for saving and loading
+    public string saveID { get; private set; }
+
     [Header("MERCHANT DETAILS")]
     public int itemPrice = 100;
     public int minStackSizeAtShop = 1;
@@ -36,6 +40,13 @@ public class ItemDataSO : ScriptableObject
     private void OnValidate()
     {
         dropChance = GetDropChance();
+
+#if UNITY_EDITOR
+        // Ensure each item has a unique save ID
+        string path = AssetDatabase.GetAssetPath(this);
+        saveID = AssetDatabase.AssetPathToGUID(path);
+#endif
+
     }
 
 

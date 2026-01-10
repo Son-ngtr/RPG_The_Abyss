@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
+    public static SaveManager instance { get; private set; }
+
     private FileDataHandler dataHandler;
     private GameData gameData;
     private List<ISaveable> allSaveables;
@@ -12,6 +14,16 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private string fileName = "doantotnghiep.json";
     [SerializeField] private bool useEncryption = true;
 
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     // MAKE SURE ALL START METHODS ARE CALLED BEFORE LOADGAME
     private IEnumerator Start()
@@ -52,6 +64,12 @@ public class SaveManager : MonoBehaviour
 
         dataHandler.Save(gameData);
     }
+
+    public GameData GetGameData()
+    {
+        return gameData;
+    }
+
 
     [ContextMenu("### Delete Save Data ###")]
     public void DeleteSaveData()
