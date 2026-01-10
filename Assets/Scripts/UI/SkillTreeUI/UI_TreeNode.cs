@@ -38,7 +38,11 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
     private void Start()
     {
-        UpdateIconColor(GetColorByHex(lockedColorHex));
+        if (isUnlocked == false)
+        {
+            UpdateIconColor(GetColorByHex(lockedColorHex));         
+        }
+
         UnlockDefaultSkill();
     }
 
@@ -186,6 +190,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         ui.skillToolTip.ShowToolTip(false, rectTransform);
+        ui.skillToolTip.StopLockSkillEffect();
 
         if (isUnlocked || isLocked)
             return;

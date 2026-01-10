@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_Inventory : MonoBehaviour
@@ -8,6 +9,7 @@ public class UI_Inventory : MonoBehaviour
 
     [SerializeField] private UI_ItemSlotParent inventorySlotsarent;
     [SerializeField] private UI_EquipSlotParent equipSlotParent;
+    [SerializeField] private TextMeshProUGUI goldText;
 
     private void Awake()
     {
@@ -24,6 +26,8 @@ public class UI_Inventory : MonoBehaviour
             // Equipments - List of item that player wearing
         inventorySlotsarent.UpdateSlots(inventory.itemList);
         equipSlotParent.UpdateEquipmentSlots(inventory.equipList);
+
+        goldText.text = inventory.gold.ToString("N0") + "g.";
     }
 
 }
