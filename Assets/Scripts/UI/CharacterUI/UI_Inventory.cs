@@ -11,6 +11,16 @@ public class UI_Inventory : MonoBehaviour
     [SerializeField] private UI_EquipSlotParent equipSlotParent;
     [SerializeField] private TextMeshProUGUI goldText;
 
+    private void OnEnable()
+    {
+        if (inventory == null)
+        {
+            return;
+        }
+
+        UpdateUI();
+    }
+
     private void Awake()
     {
         inventory = FindFirstObjectByType<Inventory_Player>();

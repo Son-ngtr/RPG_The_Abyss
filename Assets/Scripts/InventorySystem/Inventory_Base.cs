@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class Inventory_Base : MonoBehaviour
+public class Inventory_Base : MonoBehaviour, ISaveable
 {
     public event Action OnInventoryChange;
 
@@ -116,5 +116,16 @@ public class Inventory_Base : MonoBehaviour
     public void TriggerUpdateUi()
     {
         OnInventoryChange?.Invoke();
+    }
+
+    // SAVE AND LOAD GAME DATA
+    public virtual void LoadData(GameData data)
+    {
+        
+    }
+
+    public virtual void SaveData(ref GameData data)
+    {
+        
     }
 }
