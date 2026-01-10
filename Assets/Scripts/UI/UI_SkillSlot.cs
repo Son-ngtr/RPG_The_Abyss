@@ -1,9 +1,10 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_SkillSlot : MonoBehaviour
+public class UI_SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private UI ui;
     private Image skillIcon;
@@ -16,6 +17,13 @@ public class UI_SkillSlot : MonoBehaviour
     [SerializeField] private Image cooldownImage;
     [SerializeField] private string inputKeyName;
     [SerializeField] private TextMeshProUGUI intputKeyText;
+    [SerializeField] private GameObject confictSlot;
+
+
+    private void OnValidate()
+    {
+        gameObject.name = $"UI_SkillSlot - {skillType}";
+    }
 
 
     private void Awake()
@@ -36,6 +44,11 @@ public class UI_SkillSlot : MonoBehaviour
 
         intputKeyText.text = inputKeyName;
         skillIcon.sprite = selectedSkill.icon;
+
+        if (confictSlot != null)
+        {
+            confictSlot.SetActive(false);
+        }
     }
 
     public void StartCooldown(float cooldownDuration)
@@ -62,5 +75,20 @@ public class UI_SkillSlot : MonoBehaviour
         }
 
         cooldownImage.fillAmount = 0f;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (skillData == null)
+        {
+            return;
+        }
+
+        ui.skillToolTip.ShowToolTip(true, rect, skillData, null);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ui.skillToolTip.ShowToolTip(false, null);
     }
 }

@@ -175,7 +175,7 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ui.skillToolTip.ShowToolTip(true, rectTransform, this);
+        ui.skillToolTip.ShowToolTip(true, rectTransform, skillData, this);
 
         if (isUnlocked || isLocked)
             return;
