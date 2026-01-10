@@ -35,7 +35,9 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
         bool active = data.savedCheckPoint == transform.position;
 
         ActiveCheckPoint(active);
-        Player.instance.TeleportPlayer(transform.position);
+
+        if (active)  
+            Player.instance.TeleportPlayer(transform.position);
     }
 
     public void SaveData(ref GameData data)

@@ -17,7 +17,6 @@ public class ParallaxBackground : MonoBehaviour
 
     private void Update()
     {
-        // Calculate how far the camera has moved since the last frame
         float currentCameraPositionX = mainCamera.transform.position.x;
         float distanceToMove = currentCameraPositionX - lastCameraPositionX;
         lastCameraPositionX = currentCameraPositionX;
@@ -35,8 +34,6 @@ public class ParallaxBackground : MonoBehaviour
     private void InitializeLayers()
     {
         foreach (ParallaxLayer layer in backgroundLayers)
-        {
             layer.CalculateImageWidth();
-        }
     }
 }
