@@ -67,8 +67,6 @@ public class Player : Entity
     {
         base.Awake();
 
-        inputSet = new Player_InputSet();
-
         ui = FindAnyObjectByType<UI>();
         vfx = GetComponent<Player_VFX>();
         health = GetComponent<Entity_Health>();
@@ -77,6 +75,9 @@ public class Player : Entity
         combat = GetComponent<Player_Combat>();
         inventory = GetComponent<Inventory_Player>();
         stats = GetComponent<Player_Stats>();
+
+        inputSet = new Player_InputSet();
+        ui.SetupControlUI(inputSet);
 
         idleState = new Player_IdleState(this, stateMachine, "idle");
         moveState = new Player_MoveState(this, stateMachine, "move");
@@ -105,8 +106,7 @@ public class Player : Entity
         inputSet.Player.Movement.canceled += ctx => movementInput = Vector2.zero;
 
         // UI Inputs
-        inputSet.Player.ToggleSkillTreeUI.performed += ctx => ui.ToggleSkillTreeUI();
-        inputSet.Player.ToggleInventoryUI.performed += ctx => ui.ToggleInventoryUI();
+
         inputSet.Player.QuickItemSlot_1.performed += ctx => inventory.TryUseQuickItemInSlot(1);
         inputSet.Player.QuickItemSlot_2.performed += ctx => inventory.TryUseQuickItemInSlot(2);
 

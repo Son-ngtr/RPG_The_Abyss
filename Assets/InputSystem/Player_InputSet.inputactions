@@ -52,15 +52,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleSkillTreeUI",
-                    "type": "Button",
-                    "id": "da073682-5850-4f18-98e9-349ddcac0827",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Spell",
                     "type": "Button",
                     "id": "b5989a3e-c16c-48e1-ab4d-f8c009cff407",
@@ -91,15 +82,6 @@
                     "name": "UltimateSpell",
                     "type": "Button",
                     "id": "d286e070-cfcf-4693-8b97-d0706ae3ecde",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ToggleInventoryUI",
-                    "type": "Button",
-                    "id": "84b109e9-f944-4231-be11-c1b21991e335",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -312,28 +294,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a84fb525-9374-47d5-a06e-78d529f2c715",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleSkillTreeUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "c123212f-d1b1-4209-ad19-7254e86deb16",
-                    "path": "<XInputController>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleSkillTreeUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2a9a0c2e-1971-4cf6-b273-33f35356ee39",
                     "path": "<Keyboard>/e",
                     "interactions": "",
@@ -378,17 +338,6 @@
                 },
                 {
                     "name": "",
-                    "id": "74e42150-5dc3-4fd5-bf5f-2b51aef2df73",
-                    "path": "<Keyboard>/c",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToggleInventoryUI",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d1567a6e-f308-4b9a-9df5-d842194ccdbe",
                     "path": "<Keyboard>/f",
                     "interactions": "",
@@ -417,6 +366,105 @@
                     "processors": "",
                     "groups": "",
                     "action": "QuickItemSlot_2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "71ceb347-3ec1-4c7d-ad60-3eae58ea75f9",
+            "actions": [
+                {
+                    "name": "ToggleOptionUI",
+                    "type": "Button",
+                    "id": "91ffccbe-4c6f-4593-a096-087684e91a0a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleSkillTreeUI",
+                    "type": "Button",
+                    "id": "12f82c3c-e791-4f73-a531-53a5432c9597",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleInventoryUI",
+                    "type": "Button",
+                    "id": "bf60cc2f-f1e8-464f-82ad-077447f4c0c9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AlternativeInput",
+                    "type": "Button",
+                    "id": "d1c790f8-9df9-4d28-bcdf-064629efbda2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d510fed3-b40a-486b-9c7f-48d8fd1313d2",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleOptionUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a26269eb-3d67-4007-ba1a-b8dde60b4bde",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleSkillTreeUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b71698c2-21e8-4fd1-ae68-c0094f0efc2b",
+                    "path": "<XInputController>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleSkillTreeUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3aafc938-d3f9-4246-adcd-2050baf26ae3",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleInventoryUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7c0114aa-35b4-411c-bd9f-fb6cd1913f36",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AlternativeInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

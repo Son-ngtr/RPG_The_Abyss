@@ -29,7 +29,7 @@ public class Object_Merchant : Object_NPC, IInteractable
     {
         Debug.Log("Interacting with Merchant");
         ui.merchantUI.SetupMerchantUI(merchant, inventory);
-        ui.merchantUI.gameObject.SetActive(true);
+        ui.OpenMerchantUI(true);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -45,6 +45,6 @@ public class Object_Merchant : Object_NPC, IInteractable
         base.OnTriggerExit2D(collision);
 
         ui.SwitchOffAllToolTips();
-        ui.merchantUI.gameObject.SetActive(false);
+        ui.OpenMerchantUI(false);
     }
 }
