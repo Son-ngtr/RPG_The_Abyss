@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    public Entity_Stats stats { get; set; }
+
     public Enemy_Health health {  get; private set; }
 
     // States for all enemies to access easily and switch between them in their own scripts like Enemy_Skeleton.cs
@@ -45,6 +47,8 @@ public class Enemy : Entity
         base.Awake();
 
         health = GetComponent<Enemy_Health>();
+        stats = GetComponent<Entity_Stats>();
+
     }
 
     public float GetMoveSpeed() => moveSpeed * activeSlowMultiplier;

@@ -11,11 +11,11 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     protected RectTransform rectTransform;
 
     [Header("UI SLOT SETUP")]
-    [SerializeField] private Image itemIcon;
-    [SerializeField] private TextMeshProUGUI itemStackSize;
+    [SerializeField] protected Image itemIcon;
+    [SerializeField] protected TextMeshProUGUI itemStackSize;
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         playerInventory = FindFirstObjectByType<Inventory_Player>();
         ui = GetComponentInParent<UI>();
@@ -39,10 +39,6 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
         {
             if (itemInSlot.itemData.itemType == ItemType.Comsumable)
             {
-                if (itemInSlot.itemEffect.CanBeUsed() == false)
-                {
-                    return;
-                }
 
                 playerInventory.TryUseItem(itemInSlot);
             }

@@ -1,21 +1,62 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 // INVENTORY OF PLAYER
 public class Inventory_Player : Inventory_Base
 {
+    public event Action<int> OnQuickSlotUsed;
     public int gold = 10000;
 
-    private Player player;
     public List<Inventory_EquipmentSlot> equipList;
     public Inventory_Storage storage { get; private set; }
+
+    [Header("QUICK ITEM SLOTS")]
+    public Inventory_Item[] quickItems = new Inventory_Item[2];
+
 
     protected override void Awake()
     {
         base.Awake();
 
-        player = GetComponent<Player>();
         storage = FindFirstObjectByType<Inventory_Storage>();
+    }
+
+
+    public void SetQuickItemsInSlot(int slotIndex, Inventory_Item itemToSet)
+    {
+        if (slotIndex < 0 || slotIndex >= quickItems.Length)
+        {
+            Debug.LogWarning("Invalid quick item slot index!");
+            return;
+        }
+
+        quickItems[slotIndex - 1] = itemToSet;
+        TriggerUpdateUi();
+    }
+
+    public void TryUseQuickItemInSlot(int passedSlotNumber)
+    {
+        if (passedSlotNumber < 0 || passedSlotNumber >= quickItems.Length)
+        {
+            Debug.LogWarning("Invalid quick item slot index!");
+            return;
+        }
+
+        int slotNumber = passedSlotNumber - 1;
+        var itemToUse = quickItems[slotNumber];
+
+        if (itemToUse == null)
+            return;
+
+        TryUseItem(itemToUse);
+        if (FindItem(itemToUse) == null)
+        {
+            quickItems[slotNumber] = FindSameItem(itemToUse);
+        }
+
+        TriggerUpdateUi();
+        OnQuickSlotUsed?.Invoke(slotNumber);
     }
 
     public void TryEquipItem(Inventory_Item item)
