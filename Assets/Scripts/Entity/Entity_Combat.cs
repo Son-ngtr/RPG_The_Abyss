@@ -6,6 +6,7 @@ public class Entity_Combat : MonoBehaviour
     // EVENT FOR UNIQUE ITEMS
     public event Action<float> OnDoingPhysicalDamage;
 
+    private Entity_SFX sfx;
     private Entity_VFX vfx;
     private Entity_Stats stats;
 
@@ -18,12 +19,15 @@ public class Entity_Combat : MonoBehaviour
 
     private void Awake()
     {
+        sfx = GetComponent<Entity_SFX>();
         vfx = GetComponent<Entity_VFX>();
         stats = GetComponent<Entity_Stats>();
     }
 
     public void PerformAttack()
     {
+        bool targetGotHit = false; // To check if at least one target got hit and play miss SFX if none got hit
+
         foreach (var target in GetDetectedColliders())
         {
             // Try to get IDamageable component from the target
@@ -42,7 +46,7 @@ public class Entity_Combat : MonoBehaviour
             float elementalDamage = attackData.elementalDamage;
             ElementType element = attackData.element;
 
-            bool targetGotHit = damageable.TakeDamage(physicalDamage, elementalDamage, element, transform);
+            targetGotHit = damageable.TakeDamage(physicalDamage, elementalDamage, element, transform);
 
             if (element != ElementType.None)
             {
@@ -55,7 +59,13 @@ public class Entity_Combat : MonoBehaviour
                 OnDoingPhysicalDamage?.Invoke(physicalDamage);
 
                 vfx.CreateOnHitVfx(target.transform, attackData.isCrit, element);   
-            }
+                sfx?.PlayAttackHitSFX();
+            }           
+        }
+
+        if (targetGotHit == false)
+        {
+            sfx?.PlayAttackMissSFX();
         }
     }
 
