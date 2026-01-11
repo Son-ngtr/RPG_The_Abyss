@@ -16,13 +16,13 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        /*if (instance != null)
         {
             Destroy(gameObject);
             return;
-        }
+        }*/
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     // MAKE SURE ALL START METHODS ARE CALLED BEFORE LOADGAME
@@ -34,7 +34,7 @@ public class SaveManager : MonoBehaviour
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);  
         allSaveables = FindAllSaveables();
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
         LoadGame();
     }
 
