@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
+    public static UI instance { get; private set; }
+
     [SerializeField] private GameObject[] uiElements;
     public bool alternativeInput { get; private set; }
     private Player_InputSet inputSet;
@@ -18,6 +20,7 @@ public class UI : MonoBehaviour
     public UI_InGame ingameUI { get; set; }
     public UI_Options optionUI { get; set; }
     public UI_DeathScreen deathScreenUI { get; set; }
+    public UI_FadeScreen fadeScreenUI { get; set; }
     #endregion
 
     private bool skillTreeEnabled;
@@ -25,6 +28,8 @@ public class UI : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         // TOOLTIPS
         skillToolTip = GetComponentInChildren<UI_SkillToolTip>();
         itemToolTip = GetComponentInChildren<UI_ItemToolTip>();
@@ -39,6 +44,7 @@ public class UI : MonoBehaviour
         ingameUI = GetComponentInChildren<UI_InGame>(true);
         optionUI = GetComponentInChildren<UI_Options>(true);
         deathScreenUI = GetComponentInChildren<UI_DeathScreen>(true);
+        fadeScreenUI = GetComponentInChildren<UI_FadeScreen>(true);
 
         skillTreeEnabled = skillTreeUI.gameObject.activeSelf; // Prevent double toggle on start
         inventoryEnabled = inventoryUI.gameObject.activeSelf;
@@ -147,6 +153,7 @@ public class UI : MonoBehaviour
     {
         skillTreeUI.transform.SetAsLastSibling(); // Bring skill tree UI to front
         SetToolTipsAboveOtherUIElements();
+        fadeScreenUI.transform.SetAsLastSibling(); // Bring fade screen above skill tree when toggling
 
         skillTreeEnabled = !skillTreeEnabled;
         skillTreeUI.gameObject.SetActive(skillTreeEnabled);
@@ -159,6 +166,7 @@ public class UI : MonoBehaviour
     {
         inventoryUI.transform.SetAsLastSibling(); // Bring inventory UI to front
         SetToolTipsAboveOtherUIElements();
+        fadeScreenUI.transform.SetAsLastSibling(); // Bring fade screen above skill tree when toggling
 
         inventoryEnabled = !inventoryEnabled;
         inventoryUI.gameObject.SetActive(inventoryEnabled);

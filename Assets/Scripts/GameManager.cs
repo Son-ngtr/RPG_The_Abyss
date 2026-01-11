@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour, ISaveable
 
     public string lastScenePlayedName;
 
+    private bool dataLoadCompleted = false;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -53,12 +55,22 @@ public class GameManager : MonoBehaviour, ISaveable
     private IEnumerator ChangeSceneCo(string sceneName, RespawnType respawnType)
     {
         // Fade Effect
+        UI_FadeScreen fadeScreenUI = FindFadeScreenUI();
 
-        yield return new WaitForSeconds(1f);
+        fadeScreenUI.DoFadeOut(1f);
+        yield return fadeScreenUI.fadeEffectCo;
 
         SceneManager.LoadScene(sceneName);
 
-        yield return new WaitForSeconds(0.2f);
+        dataLoadCompleted = false; // data loaded becomes true when you load game from savemanager
+        yield return null; // Wait one frame for scene to load, if not the fadein may happen before scene is loaded
+        while (dataLoadCompleted == false)
+        {
+            yield return null;
+        }
+
+        fadeScreenUI = FindFadeScreenUI();
+        fadeScreenUI.DoFadeIn(1f);
 
         Player player = Player.instance;
         if (player == null)
@@ -72,6 +84,16 @@ public class GameManager : MonoBehaviour, ISaveable
         {
             Player.instance.TeleportPlayer(position);
         }
+    }
+
+    private UI_FadeScreen FindFadeScreenUI()
+    {
+        if (UI.instance == null)
+        {
+            return FindFirstObjectByType<UI_FadeScreen>();
+        }
+
+        return UI.instance.fadeScreenUI;
     }
 
     // Determine new player position based on respawn type, if None, use last death position or closest checkpoint/enter waypoint
@@ -144,6 +166,8 @@ public class GameManager : MonoBehaviour, ISaveable
         {
             lastScenePlayedName = "Level_0";
         }
+
+        dataLoadCompleted = true;
     }
 
     public void SaveData(ref GameData data)
@@ -157,5 +181,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
         data.lastPlayerPosition = Player.instance.transform.position;
         data.lastScenePlayedName = currentSceneName;
+
+        dataLoadCompleted = false;
     }
 }

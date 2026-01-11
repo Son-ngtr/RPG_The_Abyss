@@ -34,7 +34,7 @@ public class SaveManager : MonoBehaviour
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);  
         allSaveables = FindAllSaveables();
 
-        yield return new WaitForSeconds(0.01f);
+        yield return null;
         LoadGame();
     }
 
@@ -74,10 +74,11 @@ public class SaveManager : MonoBehaviour
     [ContextMenu("### Delete Save Data ###")]
     public void DeleteSaveData()
     {
+        // This 2 lines of code ONLY delete the save file, but when enter play mode, the old data was loaded into memory, when u delete it, nothing happens :).
+            // So we need to also reset the in-memory data.
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         dataHandler.DeleteData();
 
-        GameManager.instance.lastScenePlayedName = "";
         LoadGame();
     }
 
