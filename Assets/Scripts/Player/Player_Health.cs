@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class Player_Health : Entity_Health
 {
+    private Player player;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        player = GetComponent<Player>();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
@@ -14,11 +22,6 @@ public class Player_Health : Entity_Health
     {
         base.Die();
         
-        // Trigger death ui
-        //GameManager.instance.SetLastPlayerPosition(transform.position);
-
-        // OPEN DEATH UI
-
-        GameManager.instance.RestartScene();
+        player.ui.OpenDeathScreenUI();
     }
 }

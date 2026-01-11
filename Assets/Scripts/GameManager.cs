@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour, ISaveable
     public void ChangeScene(string sceneName, RespawnType respawnType)
     {
         SaveManager.instance.SaveGame();
+        Time.timeScale = 1f; // Cause when open pause menu, time scale = 0
         StartCoroutine(ChangeSceneCo(sceneName, respawnType));
     }
 
@@ -58,6 +59,12 @@ public class GameManager : MonoBehaviour, ISaveable
         SceneManager.LoadScene(sceneName);
 
         yield return new WaitForSeconds(0.2f);
+
+        Player player = Player.instance;
+        if (player == null)
+        {
+            yield break;
+        }
 
         Vector3 position = GetNewPlayerPosition(respawnType);
 

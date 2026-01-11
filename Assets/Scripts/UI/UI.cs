@@ -17,6 +17,7 @@ public class UI : MonoBehaviour
     public UI_Merchant merchantUI { get; set; }
     public UI_InGame ingameUI { get; set; }
     public UI_Options optionUI { get; set; }
+    public UI_DeathScreen deathScreenUI { get; set; }
     #endregion
 
     private bool skillTreeEnabled;
@@ -37,6 +38,7 @@ public class UI : MonoBehaviour
         merchantUI = GetComponentInChildren<UI_Merchant>(true);
         ingameUI = GetComponentInChildren<UI_InGame>(true);
         optionUI = GetComponentInChildren<UI_Options>(true);
+        deathScreenUI = GetComponentInChildren<UI_DeathScreen>(true);
 
         skillTreeEnabled = skillTreeUI.gameObject.activeSelf; // Prevent double toggle on start
         inventoryEnabled = inventoryUI.gameObject.activeSelf;
@@ -195,5 +197,22 @@ public class UI : MonoBehaviour
         itemToolTip.transform.SetAsLastSibling();
         skillToolTip.transform.SetAsLastSibling();
         statToolTip.transform.SetAsLastSibling();
+    }
+
+    public void OpenDeathScreenUI()
+    {
+        SwitchTo(deathScreenUI.gameObject);
+
+        inputSet.Disable(); // pay attention when use gamepad in the future
+    }
+
+    private void SwitchTo(GameObject objectToSwitchOn)
+    {
+        foreach (var element in uiElements)
+        {
+            element.gameObject.SetActive(false);
+        }
+
+        objectToSwitchOn.SetActive(true);
     }
 }
