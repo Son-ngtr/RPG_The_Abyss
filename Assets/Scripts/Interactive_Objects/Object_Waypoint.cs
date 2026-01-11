@@ -57,10 +57,6 @@ public class Object_Waypoint : MonoBehaviour
     {
         if (canBeTriggered == false) return;
 
-        // Save manager - save game
-        SaveManager.instance.SaveGame();
-
-
         // Game manager - transfer scene
         GameManager.instance.ChangeScene(transferToSceneName, connnectedWaypointType);
     }

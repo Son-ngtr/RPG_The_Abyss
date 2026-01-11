@@ -76,6 +76,9 @@ public class SaveManager : MonoBehaviour
     {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         dataHandler.DeleteData();
+
+        GameManager.instance.lastScenePlayedName = "";
+        LoadGame();
     }
 
     private void OnApplicationQuit()

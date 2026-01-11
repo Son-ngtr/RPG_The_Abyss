@@ -15,7 +15,7 @@ public class Player_Health : Entity_Health
         base.Die();
         
         // Trigger death ui
-        GameManager.instance.SetLastDeathPosition(transform.position);
+        //GameManager.instance.SetLastPlayerPosition(transform.position);
 
         // OPEN DEATH UI
 

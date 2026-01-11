@@ -3,11 +3,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, ISaveable
 {
     public static GameManager instance { get; private set; }
 
-    private Vector3 lastDeathPosition;
+    private Vector3 lastPlayerPosition;
+
+    public string lastScenePlayedName;
 
     private void Awake()
     {
@@ -22,18 +24,28 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void SetLastDeathPosition(Vector3 position) => lastDeathPosition = position;
+    // public void SetLastPlayerPosition(Vector3 position) => lastPlayerPosition = position;
+
+
+    public void ContinuePlay()
+    {
+        if (string.IsNullOrEmpty(lastScenePlayedName)) lastScenePlayedName = "Level_0";
+
+        if (SaveManager.instance.GetGameData() == null) lastScenePlayedName = "Level_0";
+
+        ChangeScene(lastScenePlayedName, RespawnType.NonSpecific);
+    }
+
 
     public void RestartScene()
     {
-        SaveManager.instance.SaveGame();
-
         string currentSceneName = SceneManager.GetActiveScene().name;
-        ChangeScene(currentSceneName, RespawnType.None);
+        ChangeScene(currentSceneName, RespawnType.NonSpecific);
     }
 
     public void ChangeScene(string sceneName, RespawnType respawnType)
     {
+        SaveManager.instance.SaveGame();
         StartCoroutine(ChangeSceneCo(sceneName, respawnType));
     }
 
@@ -58,7 +70,19 @@ public class GameManager : MonoBehaviour
     // Determine new player position based on respawn type, if None, use last death position or closest checkpoint/enter waypoint
     private Vector3 GetNewPlayerPosition(RespawnType respawnType)
     {
-        if (respawnType == RespawnType.None)
+        if (respawnType == RespawnType.Portal)
+        {
+            Object_Portal portal = Object_Portal.instance;
+
+            Vector3 position = portal.GetPosition();
+
+            portal.SetTrigger(false);
+            portal.DisableIfNeed();
+
+            return position;
+        }
+
+        if (respawnType == RespawnType.NonSpecific)
         {
             var data = SaveManager.instance.GetGameData();
             var checkpoints = FindObjectsByType<Object_CheckPoint>(FindObjectsSortMode.None);
@@ -77,12 +101,12 @@ public class GameManager : MonoBehaviour
             if (selectedPositions.Count > 0)
             {
                 // Find the closest position to the last death position
-                return selectedPositions.OrderBy(position => Vector3.Distance(position, lastDeathPosition)).First();
+                return selectedPositions.OrderBy(position => Vector3.Distance(position, lastPlayerPosition)).First();
             }
             else
             {
                 // No unlocked checkpoints or enter waypoints found, return last death position
-                return lastDeathPosition;
+                return lastPlayerPosition;
             }
         }
 
@@ -102,5 +126,29 @@ public class GameManager : MonoBehaviour
         }
 
         return Vector3.zero;
+    }
+
+    public void LoadData(GameData data)
+    {
+        lastScenePlayedName = data.lastScenePlayedName;
+        lastPlayerPosition = data.lastPlayerPosition;
+
+        if (string.IsNullOrEmpty(lastScenePlayedName)) // First time playing the game Or no saved scene
+        {
+            lastScenePlayedName = "Level_0";
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+
+        if (currentSceneName == "MainMenu")
+        {
+            return;
+        }
+
+        data.lastPlayerPosition = Player.instance.transform.position;
+        data.lastScenePlayedName = currentSceneName;
     }
 }

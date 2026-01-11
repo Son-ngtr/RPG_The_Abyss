@@ -2,7 +2,8 @@ using UnityEngine;
 
 public enum RespawnType
 {
-    None,
+    NonSpecific,
     Enter,
-    Exit
+    Exit,
+    Portal
 }
