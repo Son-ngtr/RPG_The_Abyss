@@ -2,45 +2,60 @@ using UnityEngine;
 
 public class Object_CheckPoint : MonoBehaviour, ISaveable
 {
-    private Object_CheckPoint[] allCheckPoints;
+    [SerializeField] private string checkpointID;
+    [SerializeField] private Transform respawnPoint;
 
+    public bool isActive { get; private set; }
     private Animator animator;
+
+    private void OnValidate()
+    {
+#if UNITYEDITOR
+        if (string.IsNullOrEmpty(checkpointID))
+        {
+            checkpointID = System.Guid.NewGuid().ToString();
+        }
+#endif
+    }
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        allCheckPoints = FindObjectsByType<Object_CheckPoint>(FindObjectsSortMode.None);
     }
+
+    public string GetCheckPointID() => checkpointID;
+
+    public Vector3 GetPosition() => respawnPoint == null ? transform.position : respawnPoint.position;
 
 
     public void ActiveCheckPoint(bool activate)
     {
+        isActive = activate;
         animator.SetBool("isActive", activate);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        foreach (var point in allCheckPoints)
-        {
-            point.ActiveCheckPoint(false);
-        }
-
-        // Save position to save manager
-        SaveManager.instance.GetGameData().savedCheckPoint = transform.position;
         ActiveCheckPoint(true);
     }
 
     public void LoadData(GameData data)
     {
-        bool active = data.savedCheckPoint == transform.position;
+        bool active = data.unlockedCheckPoints.ContainsKey(checkpointID) && data.unlockedCheckPoints[checkpointID];
 
         ActiveCheckPoint(active);
-
-        if (active)  
-            Player.instance.TeleportPlayer(transform.position);
     }
 
     public void SaveData(ref GameData data)
     {
+        if (isActive == false)
+        {
+            return;
+        }
+
+        if (data.unlockedCheckPoints.ContainsKey(checkpointID) == false)
+        {
+            data.unlockedCheckPoints.Add(checkpointID, true);
+        }
     }
 }

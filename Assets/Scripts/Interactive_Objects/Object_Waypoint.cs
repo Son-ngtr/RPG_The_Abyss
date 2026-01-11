@@ -40,8 +40,9 @@ public class Object_Waypoint : MonoBehaviour
         return waypointType;
     }
 
-    public Vector3 GetPosition()
+    public Vector3 GetPositionAndSetTriggerFalse()
     {
+        canBeTriggered = false;
         if (respawnPoint != null)
         {
             return respawnPoint.position;
