@@ -46,7 +46,7 @@ public class AudioClipData
     public List<AudioClip> clips = new List<AudioClip>();
 
     [Range(0f, 1f)] 
-    public float volume = 1f;
+    public float maxVolume = 1f;
 
     public AudioClip GetRandomClip()
     {

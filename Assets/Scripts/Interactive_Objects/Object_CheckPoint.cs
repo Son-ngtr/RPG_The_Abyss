@@ -7,20 +7,22 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
 
     public bool isActive { get; private set; }
     private Animator animator;
+    private AudioSource audioSource;
 
     private void OnValidate()
     {
-#if UNITYEDITOR
+//#if UNITYEDITOR
         if (string.IsNullOrEmpty(checkpointID))
         {
             checkpointID = System.Guid.NewGuid().ToString();
         }
-#endif
+//#endif
     }
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public string GetCheckPointID() => checkpointID;
@@ -32,6 +34,16 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
     {
         isActive = activate;
         animator.SetBool("isActive", activate);
+
+        if (isActive && audioSource.isPlaying == false)
+        {
+            audioSource.Play();
+        }
+
+        if (isActive == false)
+        {
+            audioSource.Stop();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
