@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ___ AUDIO MANAGER ___
       objectReference: {fileID: 0}
+    - target: {fileID: 3344485767221392013, guid: 141bb28d2296ea14ba059897a1b4d657, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -190667375899809388, guid: 100b6c8de5cbfa54baeaaefa4c7928e1, type: 2}
     - target: {fileID: 3856527404763179585, guid: 141bb28d2296ea14ba059897a1b4d657, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.93843
@@ -307,6 +311,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4587341328348515478, guid: 141bb28d2296ea14ba059897a1b4d657, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -1250698419930828707, guid: 100b6c8de5cbfa54baeaaefa4c7928e1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2332,6 +2340,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Options
   healthBarToggle: {fileID: 1167488944494962836}
+  audioMixer: {fileID: 24100000, guid: 100b6c8de5cbfa54baeaaefa4c7928e1, type: 2}
+  mixerMultiplier: 25
+  bgmVolumeSlider: {fileID: 5528002642955542871}
+  bgmVolumeParameter: bgmMixer
+  sfxVolumeSlider: {fileID: 6905978179901123575}
+  sfxVolumeParameter: sfxMixer
 --- !u!114 &168428471554355495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4002,13 +4016,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 5763304702882070108}
   m_HandleRect: {fileID: 57714514810126883}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.54
+  m_Value: 0.75
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 141219939479678218}
+        m_TargetAssemblyTypeName: UI_Options, Assembly-CSharp
+        m_MethodName: BGMSliderValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5530348843124693448
 GameObject:
   m_ObjectHideFlags: 0
@@ -4390,13 +4416,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 8955812733307824606}
   m_HandleRect: {fileID: 2674345084918254106}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.54
+  m_Value: 0.75
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 141219939479678218}
+        m_TargetAssemblyTypeName: UI_Options, Assembly-CSharp
+        m_MethodName: SFXSliderValue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6931717922722679899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4552,7 +4590,7 @@ GameObject:
   - component: {fileID: 1428190684770768740}
   - component: {fileID: 6905978179901123575}
   m_Layer: 5
-  m_Name: SFX_Volume
+  m_Name: SFX - Volume - Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4670,7 +4708,7 @@ GameObject:
   - component: {fileID: 7525253959261071568}
   - component: {fileID: 5528002642955542871}
   m_Layer: 5
-  m_Name: SFX_Volume
+  m_Name: BGM - Volume - Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

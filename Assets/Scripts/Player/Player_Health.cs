@@ -10,6 +10,14 @@ public class Player_Health : Entity_Health
         player = GetComponent<Player>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+
+        bool show = PlayerPrefs.GetInt("ShowHealthBar", 1) == 1;
+        EnableHealthBar(show);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
