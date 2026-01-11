@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Controls the volume of an AudioSource based on the player's distance.
 public class AudioRangeControler : MonoBehaviour
 {
     private AudioSource audioSource;

@@ -8,6 +8,9 @@ public class AudioDataBaseSO : ScriptableObject
     public List<AudioClipData> playerAudio;
     public List<AudioClipData> uiAudio;
 
+    [Header("MUSCI LISTS")]
+    public List<AudioClipData> mainMenuMusic;
+    public List<AudioClipData> levelMusic;
 
     private Dictionary<string, AudioClipData> clipCollection;
 
@@ -18,6 +21,8 @@ public class AudioDataBaseSO : ScriptableObject
 
         AddToCollection(playerAudio);
         AddToCollection(uiAudio);
+        AddToCollection(mainMenuMusic);
+        AddToCollection(levelMusic);
     }
 
     public AudioClipData Get(string groupName)

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -8,7 +9,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource sfxSource;
 
+    [Space]
+    private AudioClip lastMusicPlayed;
     private Transform player;
+    private string currentBgmGroupName;
+    private Coroutine currentBgmCo;
+    [SerializeField] private bool bgmShoudPlay;
 
     private void Awake()
     {
@@ -22,12 +28,103 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        if (bgmShoudPlay 
+            && bgmSource.isPlaying == false 
+            && string.IsNullOrEmpty(currentBgmGroupName) == false)
+        {
+            NextBGM(currentBgmGroupName);
+        }
+
+        if (bgmSource.isPlaying && bgmShoudPlay == false)
+        {
+            StopBGM();
+        }
+    }
+
+    public void StartBGM(string musicGroup)
+    {
+        bgmShoudPlay = true;
+
+        if (musicGroup == currentBgmGroupName)
+        {
+            return;
+        }
+
+        NextBGM(musicGroup);
+    }
+
+    public void NextBGM(string musicGroup)
+    {
+        bgmShoudPlay = true;
+        currentBgmGroupName = musicGroup;
+
+        if (currentBgmCo != null)
+        {
+            StopCoroutine(currentBgmCo);
+        }
+
+        currentBgmCo = StartCoroutine(SwitchMusicCo(musicGroup));
+    }
+
+    public void StopBGM()
+    {
+        bgmShoudPlay = false;
+        StartCoroutine(FadeVolumeCo(bgmSource, 0f, 2f));
+
+        if (currentBgmCo != null)
+        {
+            StopCoroutine(currentBgmCo);
+        }
+    }
+
+    private IEnumerator SwitchMusicCo(string musicGroup)
+    {
+        AudioClipData data = audioDataBaseSO.Get(musicGroup);
+        AudioClip nextMusic = data.GetRandomClip();
+
+        if (nextMusic == null || data.clips.Count == 0)
+        {
+            Debug.LogWarning($"No music clips found for group: {musicGroup}");
+            yield break;
+        }
+
+        while (nextMusic == lastMusicPlayed && data.clips.Count > 1)
+        {
+            nextMusic = data.GetRandomClip();
+        }
+
+        if (bgmSource.isPlaying)
+        {
+            yield return FadeVolumeCo(bgmSource, 0f, 2f);
+        }
+
+        lastMusicPlayed = nextMusic;
+        bgmSource.clip = nextMusic;
+        bgmSource.volume = 0f;
+        bgmSource.Play();
+
+        StartCoroutine(FadeVolumeCo(bgmSource, data.maxVolume, 2f));
+    }
+
+    private IEnumerator FadeVolumeCo(AudioSource sfxSource, float targetVolume, float duration)
+    {
+        float startVolume = sfxSource.volume;
+        float time = 0f;
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            sfxSource.volume = Mathf.Lerp(startVolume, targetVolume, time / duration);
+            yield return null;
+        }
+        sfxSource.volume = targetVolume;
+    }
+
     public void PlaySFX(string audioName, AudioSource sfxSource, float minDistanceToHearSound = 5f)
     {
         if (player == null)
-        {
             player = Player.instance.transform;
-        }
 
         var data = audioDataBaseSO.Get(audioName);
 
@@ -39,9 +136,7 @@ public class AudioManager : MonoBehaviour
 
         var clip = data.GetRandomClip();
         if (clip == null)
-        {
             return;
-        }
 
         float maxVolume = data.maxVolume;
         float distanceToPlayer = Vector2.Distance(sfxSource.transform.position, player.position);

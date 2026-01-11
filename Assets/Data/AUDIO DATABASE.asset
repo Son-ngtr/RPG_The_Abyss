@@ -18,15 +18,25 @@ MonoBehaviour:
     - {fileID: 8300000, guid: e4e20056fdd83214d9ad64c3057185cc, type: 3}
     - {fileID: 8300000, guid: f27fa51da7377424db14f211454f0cd9, type: 3}
     - {fileID: 8300000, guid: 2740212e011138c469908d777143ae70, type: 3}
-    volume: 1
+    maxVolume: 1
   - audioName: player_attackMiss
     clips:
     - {fileID: 8300000, guid: e75886e1f2b36f04b9cbd0e75dc07b65, type: 3}
     - {fileID: 8300000, guid: 1dca02ef052b7d84ca16ad64a65dccc2, type: 3}
     - {fileID: 8300000, guid: 6a17d444e1e408b4c80bf877fdb3e9fc, type: 3}
-    volume: 1
+    maxVolume: 1
   uiAudio:
   - audioName: button_click
     clips:
     - {fileID: 8300000, guid: 654d5a58da6512d41b3af6183a76f28a, type: 3}
-    volume: 1
+    maxVolume: 0.6
+  mainMenuMusic:
+  - audioName: playlist_mainMenu
+    clips:
+    - {fileID: 8300000, guid: 15f179202bfb8ce45b707cda952e2808, type: 3}
+    maxVolume: 1
+  levelMusic:
+  - audioName: playlist_levels
+    clips:
+    - {fileID: 8300000, guid: 08a15c0a789310c478c38680162d0da2, type: 3}
+    maxVolume: 0.6
