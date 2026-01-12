@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
+    [Header("QUEST INFO")]
+    public QuestTargetID questTargetID; // Used for quest tracking
+
     public Entity_Stats stats { get; set; }
 
     public Enemy_Health health {  get; private set; }

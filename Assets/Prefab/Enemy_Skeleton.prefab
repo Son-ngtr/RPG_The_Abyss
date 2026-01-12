@@ -268,7 +268,7 @@ AudioSource:
   m_GameObject: {fileID: 4169906767451724749}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1250698419930828707, guid: 100b6c8de5cbfa54baeaaefa4c7928e1, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -1256,6 +1256,7 @@ MonoBehaviour:
   groundCheck: {fileID: 8455116358725404492}
   primaryWallCheck: {fileID: 6030903440633930275}
   secondaryWallCheck: {fileID: 0}
+  questTargetID: 0
   battleMoveSpeed: 3
   attackDistance: 2
   battleTimeDuration: 5
@@ -1523,6 +1524,7 @@ MonoBehaviour:
   attackHit: player_attackHit
   attackMiss: player_attackMiss
   soundDistance: 15
+  showGizmo: 1
 --- !u!1 &8497993895946962492
 GameObject:
   m_ObjectHideFlags: 0

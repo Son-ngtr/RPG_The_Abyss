@@ -21,6 +21,7 @@ public class UI : MonoBehaviour
     public UI_Options optionUI { get; set; }
     public UI_DeathScreen deathScreenUI { get; set; }
     public UI_FadeScreen fadeScreenUI { get; set; }
+    public UI_Quest questUI { get; set; }
     #endregion
 
     private bool skillTreeEnabled;
@@ -45,6 +46,7 @@ public class UI : MonoBehaviour
         optionUI = GetComponentInChildren<UI_Options>(true);
         deathScreenUI = GetComponentInChildren<UI_DeathScreen>(true);
         fadeScreenUI = GetComponentInChildren<UI_FadeScreen>(true);
+        questUI = GetComponentInChildren<UI_Quest>(true);
 
         skillTreeEnabled = skillTreeUI.gameObject.activeSelf; // Prevent double toggle on start
         inventoryEnabled = inventoryUI.gameObject.activeSelf;
@@ -200,6 +202,14 @@ public class UI : MonoBehaviour
         }
     }
 
+    public void OpenQuestUI(QuestDataSO[] questsToShow)
+    {
+        StopPlayerControls(true);
+        SwitchOffAllToolTips();
+
+        questUI.gameObject.SetActive(true);
+        questUI.SetupQuestUI(questsToShow);
+    }
     private void SetToolTipsAboveOtherUIElements()
     {
         itemToolTip.transform.SetAsLastSibling();

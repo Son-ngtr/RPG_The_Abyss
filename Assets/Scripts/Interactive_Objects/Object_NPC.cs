@@ -5,6 +5,7 @@ public class Object_NPC : MonoBehaviour
     protected Transform player;
     protected UI ui;
 
+    [SerializeField] private QuestTargetID npcTargetQuestID;
     [SerializeField] private Transform npc;
     [SerializeField] private GameObject interactToolTip;
 
