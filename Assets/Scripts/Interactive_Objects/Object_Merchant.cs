@@ -28,8 +28,10 @@ public class Object_Merchant : Object_NPC, IInteractable
 
 
 
-    public void Interact()
+    public override void Interact()
     {
+        base.Interact();
+
         Debug.Log("Interacting with Merchant");
 
         ui.OpenQuestUI(quests);

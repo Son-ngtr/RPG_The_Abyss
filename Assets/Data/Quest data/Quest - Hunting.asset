@@ -18,7 +18,7 @@ MonoBehaviour:
     the leaves, hunting with razor claws. Follow the blood trail, slay it before
     it claims you. Its secret awaits...
   questGoal: '- Slay 2 the Skeleton'
-  questTargetID: enemy_skeleton
+  questTargetID: 0
   requiredAmount: 2
   rewardType: 0
   rewardItems:

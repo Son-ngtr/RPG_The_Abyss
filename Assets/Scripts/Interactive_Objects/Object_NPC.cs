@@ -1,11 +1,16 @@
 using UnityEngine;
 
-public class Object_NPC : MonoBehaviour
+public class Object_NPC : MonoBehaviour, IInteractable
 {
     protected Transform player;
     protected UI ui;
+    protected Player_QuestManager playerQuestManager;
 
+    [Header("QUEST INFO")]
     [SerializeField] private QuestTargetID npcTargetQuestID;
+    [SerializeField] private RewardType npcRewardType;
+
+    [Space]
     [SerializeField] private Transform npc;
     [SerializeField] private GameObject interactToolTip;
 
@@ -21,6 +26,11 @@ public class Object_NPC : MonoBehaviour
         ui = FindFirstObjectByType<UI>();
         startPosition = interactToolTip.transform.position;
         interactToolTip.SetActive(false);
+    }
+
+    protected virtual void Start()
+    {
+        playerQuestManager = Player.instance.questManager; // Player created in Awake, so safe to access in Start
     }
 
     protected virtual void Update()
@@ -67,5 +77,11 @@ public class Object_NPC : MonoBehaviour
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
         interactToolTip.SetActive(false);
+    }
+
+    public virtual void Interact()
+    {
+        playerQuestManager.AddProgress(npcTargetQuestID.ToString());
+        playerQuestManager.TryGetRewardFrom(npcRewardType);
     }
 }

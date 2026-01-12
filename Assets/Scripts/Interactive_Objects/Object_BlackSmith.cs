@@ -18,8 +18,10 @@ public class Object_BlackSmith : Object_NPC, IInteractable
     }
 
 
-    public void Interact()
+    public override void Interact()
     {
+        base.Interact();
+
         SwitchStorageAndCraftUI();
         if (switchBlackSmithUI == false)
         {

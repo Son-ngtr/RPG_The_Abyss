@@ -37,7 +37,7 @@ public class Entity_DropManager : MonoBehaviour
         }
     }
 
-    protected void CreateItemDrop(ItemDataSO itemToDrop)
+    public void CreateItemDrop(ItemDataSO itemToDrop)
     {
         GameObject newItem = Instantiate(itemDropPrefab, transform.position, Quaternion.identity);
         newItem.GetComponent<Object_ItemPickup>().SetupItem(itemToDrop);
