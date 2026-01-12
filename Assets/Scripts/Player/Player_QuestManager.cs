@@ -64,7 +64,10 @@ public class Player_QuestManager : MonoBehaviour, ISaveable
                 continue;
             }
 
-            quest.AddQuestProgress(amount);
+            if (quest.CanGetReward() == false)
+            {
+                quest.AddQuestProgress(amount);                
+            }
 
             if (quest.questDataSO.rewardType == RewardType.None && quest.CanGetReward())
             {
@@ -78,6 +81,13 @@ public class Player_QuestManager : MonoBehaviour, ISaveable
             CompleteQuest(quest);
 
         }
+    }
+
+    public int GetQuestProgress(QuestData questToCheck)
+    {
+        QuestData quest = activeQuests.Find(q => q == questToCheck);
+
+        return quest != null ? quest.currentAmount : 0;
     }
 
     public void AcceptQuest(QuestDataSO questDataSO)

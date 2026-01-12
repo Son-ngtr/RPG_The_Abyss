@@ -17,7 +17,7 @@ MonoBehaviour:
   questDescription: Whispers echo through the ancient woods. A shadow stalks amid
     the leaves, hunting with razor claws. Follow the blood trail, slay it before
     it claims you. Its secret awaits...
-  questGoal: '- Slay 2 the Skeleton'
+  questGoal: '- Eleminate skeletons:'
   questTargetID: 0
   requiredAmount: 2
   rewardType: 0

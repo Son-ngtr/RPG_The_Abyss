@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 1725555048436396182}
   - component: {fileID: 4226231499628676795}
   - component: {fileID: 7724659415176128923}
+  - component: {fileID: 7560932149919837547}
+  - component: {fileID: 569548907430654037}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -402,6 +404,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity_SFX
   attackHit: player_attackHit
   attackMiss: player_attackMiss
+  soundDistance: 15
+  showGizmo: 1
+--- !u!114 &7560932149919837547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10565542615583735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da9a9f9663ec284390523aaea5e419e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_Health
+  currentHealth: 0
+  regenInterval: 1
+  canRegenHealth: 1
+  knockbackForce: {x: 1.5, y: 2.5}
+  heavyKnockbackForce: {x: 7, y: 7}
+  knockbackDuration: 0.2
+  heavyKnockbackDuration: 0.5
+  heavyDamageThreshold: 0.3
+--- !u!114 &569548907430654037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10565542615583735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929b229d59140fb468322d97de3c8b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_QuestManager
+  activeQuests: []
+  completedQuests: []
+  questDatabase: {fileID: 11400000, guid: 314b2251cd9b52f46a6508f0a041af81, type: 2}
 --- !u!1 &2281411371982910184
 GameObject:
   m_ObjectHideFlags: 0
