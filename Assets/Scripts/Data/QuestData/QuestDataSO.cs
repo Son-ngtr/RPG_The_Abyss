@@ -13,7 +13,14 @@ public enum QuestTargetID
     Enemy_Skeleton,
     BlackSmithWokang,
     Merchant_Galim,
+    None
+}
 
+public enum QuestType
+{
+    Kill,
+    Talk,
+    Deliver
 }
 
 [CreateAssetMenu(menuName = "RPG Setup/Quest Data/New Quest", fileName = "Quest - ")]
@@ -22,12 +29,14 @@ public class QuestDataSO : ScriptableObject
     public string questSaveID;
 
     [Space]
+    public QuestType questType;
     public string questName;
     [TextArea] public string questDescription;
     [TextArea] public string questGoal;
 
     public QuestTargetID questTargetID; // Enemy name, item name, location name, etc.
     public int requiredAmount;
+    public ItemDataSO deliverItem; // Only for deliver quests
 
     [Header("Rewards")]
     public RewardType rewardType;

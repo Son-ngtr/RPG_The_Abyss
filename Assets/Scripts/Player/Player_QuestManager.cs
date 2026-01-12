@@ -8,6 +8,7 @@ public class Player_QuestManager : MonoBehaviour, ISaveable
     public List<QuestData> completedQuests;
 
     private Entity_DropManager dropManager;
+    private Inventory_Player playerInventory;
 
     [Header("QUEST DATABASE")]
     [SerializeField] private QuestDatabaseSO questDatabase;
@@ -16,6 +17,7 @@ public class Player_QuestManager : MonoBehaviour, ISaveable
     private void Awake()
     {
         dropManager = GetComponent<Entity_DropManager>();
+        playerInventory = GetComponent<Inventory_Player>();
     }
 
     public void TryGetRewardFrom(RewardType npcType)
@@ -24,6 +26,20 @@ public class Player_QuestManager : MonoBehaviour, ISaveable
 
         foreach (var quest in activeQuests)
         {
+            // DELIVER ITEMS IF CAN
+            if (quest.questDataSO.questType == QuestType.Deliver)
+            {
+                var requiredItem = quest.questDataSO.deliverItem;
+                var requiredAmount = quest.questDataSO.requiredAmount;
+
+                if (playerInventory.HadItemAmount(requiredItem, requiredAmount) == true)
+                {
+                    playerInventory.RemoveItemAmount(requiredItem, requiredAmount);
+                    quest.AddQuestProgress(requiredAmount);
+                }
+            }
+
+            // CHECK IF CAN GET REWARD
             if (quest.CanGetReward() && quest.questDataSO.rewardType == npcType)
             {
                 getRewardQuests.Add(quest);
