@@ -23983,6 +23983,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_QuestManager
   activeQuests: []
+  completedQuests: []
+  questDatabase: {fileID: 11400000, guid: 314b2251cd9b52f46a6508f0a041af81, type: 2}
 --- !u!1 &1531645868
 GameObject:
   m_ObjectHideFlags: 0

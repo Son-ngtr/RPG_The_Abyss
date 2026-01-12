@@ -2,12 +2,16 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_QuestManager : MonoBehaviour
+public class Player_QuestManager : MonoBehaviour, ISaveable
 {
     public List<QuestData> activeQuests;
     public List<QuestData> completedQuests;
 
     private Entity_DropManager dropManager;
+
+    [Header("QUEST DATABASE")]
+    [SerializeField] private QuestDatabaseSO questDatabase;
+
 
     private void Awake()
     {
@@ -100,5 +104,46 @@ public class Player_QuestManager : MonoBehaviour
         }
 
         return activeQuests.Exists(q => q.questDataSO == questToCheck);
+    }
+
+
+    // SAVE AND LOAD SYSTEM
+    public void LoadData(GameData data)
+    {
+        activeQuests.Clear();
+
+        foreach (var quest in data.activeQuests)
+        {
+            string questSaveId = quest.Key;
+            int progressAmount = quest.Value;
+
+            QuestDataSO questDataSo = questDatabase.GetQuestByID(questSaveId);
+
+            if (questDataSo == null)
+            {
+                Debug.LogWarning($"Quest with ID {questSaveId} not found in database.");
+                continue;
+            }
+
+            QuestData questToLoad = new QuestData(questDataSo);
+            questToLoad.currentAmount = progressAmount;
+
+            activeQuests.Add(questToLoad);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.activeQuests.Clear();
+
+        foreach (var quest in activeQuests)
+        {
+            data.activeQuests.Add(quest.questDataSO.questSaveID, quest.currentAmount);
+        }
+
+        foreach (var quest in completedQuests)
+        {
+            data.completedQuests.Add(quest.questDataSO.questSaveID, true);
+        }
     }
 }

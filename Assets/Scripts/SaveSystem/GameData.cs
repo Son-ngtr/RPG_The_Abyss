@@ -28,6 +28,10 @@ public class GameData
     public string lastScenePlayedName;
     public Vector3 lastPlayerPosition;
 
+    // QUEST
+    public SerializableDictionary<string, bool> completedQuests; // questsaveID -> completed status
+    public SerializableDictionary<string, int> activeQuests; // questsaveID -> progressAmount
+
     public GameData()
     {
         inventory = new SerializableDictionary<string, int>();
@@ -41,5 +45,8 @@ public class GameData
         unlockedCheckPoints = new SerializableDictionary<string, bool>();
 
         inScenePortals = new SerializableDictionary<string, Vector3>();
+
+        completedQuests = new SerializableDictionary<string, bool>();
+        activeQuests = new SerializableDictionary<string, int>();
     }
 }

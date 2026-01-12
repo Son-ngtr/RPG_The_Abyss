@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class UI_Quest : MonoBehaviour
+public class UI_Quest : MonoBehaviour, ISaveable
 {
+    private GameData currentGameData;
     private UI_QuestSlot[] questSlots;
 
     [SerializeField] private UI_ItemSlotParent inventorySlots;
@@ -55,11 +56,30 @@ public class UI_Quest : MonoBehaviour
     {
         bool questActive = playerQuestManager.HasActiveQuest(questToCheck);
 
+        if (currentGameData != null) // Sometime, the game data is null (like in the beginning of the game)
+        {
+            bool questTaken = currentGameData.activeQuests.ContainsKey(questToCheck.questSaveID);
+            bool questCompleted = currentGameData.completedQuests.TryGetValue(questToCheck.questSaveID, out bool isCompleted) && isCompleted;
+            bool canDisplayQuest = questTaken == true || questCompleted == true;
+
+            return questActive == false && canDisplayQuest == false;
+        }
+
         return questActive == false;
     }
 
     public UI_QuestPreview GetQuestPreview()
     {
         return questPreview;
+    }
+
+    public void LoadData(GameData data)
+    {
+        currentGameData = data;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        
     }
 }
