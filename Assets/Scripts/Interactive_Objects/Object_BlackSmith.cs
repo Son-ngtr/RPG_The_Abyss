@@ -8,6 +8,10 @@ public class Object_BlackSmith : Object_NPC, IInteractable
 
     private bool switchBlackSmithUI = false;
 
+    [Header("QUEST AND DIALOGUE")]
+    [SerializeField] private DialogueLineSO firstDialogueLine;
+    [SerializeField] private QuestDataSO[] quests;
+
     protected override void Awake()
     {
         base.Awake();
@@ -35,7 +39,8 @@ public class Object_BlackSmith : Object_NPC, IInteractable
         ui.storageUI.SetupStorage(storage);
         ui.craftUI.SetupCraftUI(storage);
 
-        ui.OpenStorageUI(true);
+        ui.OpenDialogueUI(firstDialogueLine, new DialogueNpcData(npcRewardType, quests));
+        //ui.OpenStorageUI(true);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

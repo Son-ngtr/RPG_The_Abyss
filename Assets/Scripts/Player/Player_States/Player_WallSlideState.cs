@@ -22,7 +22,7 @@ public class Player_WallSlideState : PlayerState
             stateMachine.ChangeState(player.wallJumpState);
         }
 
-        if (!player.isTouchingWall)
+        if (player.isTouchingWall == false)
         {
             stateMachine.ChangeState(player.fallState);
         }
@@ -31,11 +31,11 @@ public class Player_WallSlideState : PlayerState
         {
             stateMachine.ChangeState(player.idleState);
 
-            /*if (player.facingDirection != player.movementInput.x)
+            if (player.facingDirection != player.movementInput.x)
             {
                 player.Flip();
 
-            }*/
+            }
         }
     }
 

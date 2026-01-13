@@ -63,6 +63,7 @@ public class UI_Dialogue : MonoBehaviour
         ui = GetComponentInParent<UI>();
         playerQuestManager = Player.instance.questManager;
         ClearTexts();
+        canInteract = true;
     }
 
     public void SetupNpcData(DialogueNpcData npcData) => this.npcData = npcData;
@@ -82,7 +83,9 @@ public class UI_Dialogue : MonoBehaviour
         if (speakerPortrait != null) speakerPortrait.sprite = line.speaker.speakerPortrait;
         if (speakerName != null) speakerName.text = line.speaker.speakerName;
 
-        fullTextToShow = line.actionType == DialogueActionType.None || line.actionType == DialogueActionType.PlayerMakeChoice ? 
+        fullTextToShow = line.actionType == DialogueActionType.None 
+            || line.actionType == DialogueActionType.PlayerMakeChoice 
+            || line.actionType == DialogueActionType.OpenCraft ? 
             line.GetRandomLine() :
             line.actionLine;
 
@@ -315,5 +318,10 @@ public class UI_Dialogue : MonoBehaviour
         if (dialogueText != null) dialogueText.text = "";
         if (speakerName != null) speakerName.text = "";
         if (speakerPortrait != null) speakerPortrait.sprite = null;
+    }
+
+    private void SetInteractUIDialogue(bool value)
+    {
+        canInteract = value;
     }
 }

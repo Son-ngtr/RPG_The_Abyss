@@ -30,6 +30,7 @@ public class DialogueLineSO : ScriptableObject
     public string GetRandomLine()
     {
         if (textLine.Length == 0) return string.Empty;
+        
         int randIndex = Random.Range(0, textLine.Length);
         return textLine[randIndex];
     }

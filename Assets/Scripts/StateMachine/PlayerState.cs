@@ -23,7 +23,7 @@ public abstract class PlayerState : EntityState
     {
         base.Update();
 
-        if (input.Player.Dash.WasCompletedThisFrame() && CanDash())
+        if (input.Player.Dash.WasPressedThisFrame() && CanDash())
         {
             skillManager.dash.SetSkillOnCoolDown();
             stateMachine.ChangeState(player.dashState);

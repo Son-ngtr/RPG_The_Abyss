@@ -6,11 +6,6 @@ public class Player_FallState : Player_AirState
     {
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-        // Any specific logic when entering the fall state can be added here
-    }
 
     public override void Update()
     {

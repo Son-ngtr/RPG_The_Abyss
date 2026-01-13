@@ -33,10 +33,11 @@ MonoBehaviour:
   mainMenuMusic:
   - audioName: playlist_mainMenu
     clips:
-    - {fileID: 8300000, guid: 15f179202bfb8ce45b707cda952e2808, type: 3}
-    maxVolume: 1
+    - {fileID: 8300000, guid: ce6676316ca143847a7821b98911aa39, type: 3}
+    maxVolume: 0.6
   levelMusic:
   - audioName: playlist_levels
     clips:
+    - {fileID: 8300000, guid: ce6676316ca143847a7821b98911aa39, type: 3}
     - {fileID: 8300000, guid: 08a15c0a789310c478c38680162d0da2, type: 3}
     maxVolume: 0.6
