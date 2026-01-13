@@ -410,6 +410,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DialogueUI_Interaction",
+                    "type": "Button",
+                    "id": "b3fc0fab-c636-442b-ba07-389e5b31c69a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -465,6 +474,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "AlternativeInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cdc5f105-0639-491f-924c-de912ef84446",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DialogueUI_Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

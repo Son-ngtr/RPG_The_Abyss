@@ -22,6 +22,7 @@ public class UI : MonoBehaviour
     public UI_DeathScreen deathScreenUI { get; set; }
     public UI_FadeScreen fadeScreenUI { get; set; }
     public UI_Quest questUI { get; set; }
+    public UI_Dialogue dialogueUI { get; set; }
     #endregion
 
     private bool skillTreeEnabled;
@@ -47,6 +48,7 @@ public class UI : MonoBehaviour
         deathScreenUI = GetComponentInChildren<UI_DeathScreen>(true);
         fadeScreenUI = GetComponentInChildren<UI_FadeScreen>(true);
         questUI = GetComponentInChildren<UI_Quest>(true);
+        dialogueUI = GetComponentInChildren<UI_Dialogue>(true);
 
         skillTreeEnabled = skillTreeUI.gameObject.activeSelf; // Prevent double toggle on start
         inventoryEnabled = inventoryUI.gameObject.activeSelf;
@@ -81,6 +83,14 @@ public class UI : MonoBehaviour
 
             Time.timeScale = 0f; // Pause the game when opening options menu
             OpenOptionsUI();
+        };
+
+        inputSet.UI.DialogueUI_Interaction.performed += ctx =>
+        {
+            if (dialogueUI.gameObject.activeInHierarchy)
+            {
+                dialogueUI.DialogueInteraction();
+            }
         };
     }
 
@@ -222,6 +232,15 @@ public class UI : MonoBehaviour
         SwitchTo(deathScreenUI.gameObject);
 
         inputSet.Disable(); // pay attention when use gamepad in the future
+    }
+
+    public void OpenDialogueUI(DialogueLineSO firstLine)
+    {
+        StopPlayerControls(true);
+        SwitchOffAllToolTips();
+
+        dialogueUI.gameObject.SetActive(true);
+        dialogueUI.PlayDialogueLine(firstLine);
     }
 
     private void SwitchTo(GameObject objectToSwitchOn)
