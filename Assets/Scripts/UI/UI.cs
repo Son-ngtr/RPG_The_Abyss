@@ -92,6 +92,15 @@ public class UI : MonoBehaviour
                 dialogueUI.DialogueInteraction();
             }
         };
+
+        inputSet.UI.DialogueUI_Navigation.performed += ctx =>
+        {
+            int direction = (int)ctx.ReadValue<float>();
+            if (dialogueUI.gameObject.activeInHierarchy)
+            {
+                dialogueUI.NavigateChoice(direction);
+            }
+        };
     }
 
     public void OpenOptionsUI()
@@ -200,6 +209,19 @@ public class UI : MonoBehaviour
         }
     }
 
+    public void OpenCraftUI(bool openStorageUI)
+    {
+        craftUI.gameObject.SetActive(craftUI);
+
+        StopPlayerControls(openStorageUI);
+
+        if (openStorageUI == false)
+        {
+            storageUI.gameObject.SetActive(false);
+            SwitchOffAllToolTips();
+        }
+    }
+
     public void OpenMerchantUI(bool openMerchantUI)
     {
         merchantUI.gameObject.SetActive(openMerchantUI);
@@ -234,12 +256,13 @@ public class UI : MonoBehaviour
         inputSet.Disable(); // pay attention when use gamepad in the future
     }
 
-    public void OpenDialogueUI(DialogueLineSO firstLine)
+    public void OpenDialogueUI(DialogueLineSO firstLine, DialogueNpcData npcData)
     {
         StopPlayerControls(true);
         SwitchOffAllToolTips();
 
         dialogueUI.gameObject.SetActive(true);
+        dialogueUI.SetupNpcData(npcData);
         dialogueUI.PlayDialogueLine(firstLine);
     }
 

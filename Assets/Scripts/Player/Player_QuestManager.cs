@@ -69,6 +69,32 @@ public class Player_QuestManager : MonoBehaviour, ISaveable
         }
     }
 
+    public bool HadCompletedQuest()
+    {
+        for (int i = 0; i < activeQuests.Count; i++)
+        {
+            QuestData quest = activeQuests[i];
+
+            if (quest.questDataSO.questType == QuestType.Deliver)
+            {
+                var requiredItem = quest.questDataSO.deliverItem;
+                var requiredAmount = quest.questDataSO.requiredAmount;
+
+                if (playerInventory.HadItemAmount(requiredItem, requiredAmount) == true)
+                {
+                    return true;
+                }
+            }
+
+            if (quest.CanGetReward())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void AddProgress(string questTargetID, int amount = 1)
     {
         List<QuestData> getRewardQuests = new List<QuestData>();

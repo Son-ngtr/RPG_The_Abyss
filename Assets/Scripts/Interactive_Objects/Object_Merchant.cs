@@ -34,11 +34,11 @@ public class Object_Merchant : Object_NPC, IInteractable
         base.Interact();
         Debug.Log("Interacting with Merchant");
 
-        ui.OpenDialogueUI(firstDialogueLine);
-        //ui.OpenQuestUI(quests);
+        ui.merchantUI.SetupMerchantUI(merchant, inventory);
+        ui.OpenDialogueUI(firstDialogueLine, new DialogueNpcData(npcRewardType, quests));
 
-       /* ui.merchantUI.SetupMerchantUI(merchant, inventory);
-        ui.OpenMerchantUI(true);*/
+        //ui.OpenQuestUI(quests);
+        //ui.OpenMerchantUI(true);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

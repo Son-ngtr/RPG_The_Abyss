@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c72b2659511908c4d90499c51a378407, type: 3}
-  m_Name: Line - Merchant_1
+  m_Name: Line - Merchant_2_2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueLineSO
   dialogueGroupName: Merchaint Galim
   speaker: {fileID: 11400000, guid: e2d7c3702f732094e806dc96e60c6bd3, type: 2}
   textLine:
-  - if this takes longer than a pint, i'm busy.
-  - Ah, good to see an old friend - though yer barley outta diapers. What can i get
-    ye.
-  - Pimpi took me tools again. I'm swear, i'll busy with that bastard...
-  - If ye brake it, you buy it. If i brake it ... Well, that's a tradition.
+  - You came to the right place!
+  playerChoiceAnswer: About the job?
+  choiceLines:
+  - {fileID: 11400000, guid: ab69366a632f135469e14406e0b0c635, type: 2}
+  - {fileID: 11400000, guid: 82f4881bb090dcd41a3fa8171e0610ba, type: 2}
+  - {fileID: 11400000, guid: b4542f3964da6984ba64c1a27fd3a057, type: 2}
   actionLine: 
   actionType: 5
-  choiceLines:
-  - {fileID: 11400000, guid: 850b895f0632e3346a1654880e193175, type: 2}
-  - {fileID: 11400000, guid: 3c81958c756e1394c827000bf5487398, type: 2}
-  - {fileID: 11400000, guid: fbdf449998a2bea4ea1e1052ee59937a, type: 2}

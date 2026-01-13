@@ -9,14 +9,23 @@ public class DialogueLineSO : ScriptableObject
     public string dialogueGroupName;
     public DialogueSpeakerSO speaker;
 
-
     [Header("Text options")]
-    [TextArea] public string[] textLine;
+    [TextArea] public string[] textLine; // What npc says
 
-    [Header("Answer setup")]
-    public bool playerCanAnswer; // If true, the player can choose a response after this line
-    public DialogueLineSO[] answerLine;
+    [Header("Choice Info")]
+    [TextArea] public string playerChoiceAnswer; // What player says when making this choice
+    public DialogueLineSO[] choiceLines;
 
+    [Header("Dialogue Action")]
+    [TextArea] public string actionLine; // What npc says when performing action
+    public DialogueActionType actionType;
+
+
+    public string GetFirstLine()
+    {
+        if (textLine.Length == 0) return string.Empty;
+        return textLine[0];
+    }
 
     public string GetRandomLine()
     {
