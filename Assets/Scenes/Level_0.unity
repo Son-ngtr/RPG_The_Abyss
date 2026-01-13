@@ -2170,7 +2170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2620144898558039638, guid: c07b16397345c4147a6a9e488c331554, type: 3}
       propertyPath: transferToSceneName
-      value: Level_2
+      value: Level_1
       objectReference: {fileID: 0}
     - target: {fileID: 2620144898558039638, guid: c07b16397345c4147a6a9e488c331554, type: 3}
       propertyPath: connnectedWaypointType
@@ -2178,11 +2178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4021439069274760679, guid: c07b16397345c4147a6a9e488c331554, type: 3}
       propertyPath: m_Name
-      value: Object_Waypoint - Exit - Level_2
+      value: Object_Waypoint - Exit - Level_1
       objectReference: {fileID: 0}
     - target: {fileID: 8497461734735784691, guid: c07b16397345c4147a6a9e488c331554, type: 3}
       propertyPath: m_text
-      value: level 2
+      value: level 1
       objectReference: {fileID: 0}
     - target: {fileID: 8497461734735784691, guid: c07b16397345c4147a6a9e488c331554, type: 3}
       propertyPath: m_fontSize

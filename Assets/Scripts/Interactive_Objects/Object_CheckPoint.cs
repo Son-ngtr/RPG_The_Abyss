@@ -11,12 +11,12 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
 
     private void OnValidate()
     {
-//#if UNITYEDITOR
+#if UNITYEDITOR
         if (string.IsNullOrEmpty(checkpointID))
         {
             checkpointID = System.Guid.NewGuid().ToString();
         }
-//#endif
+#endif
     }
 
     private void Awake()
@@ -53,7 +53,7 @@ public class Object_CheckPoint : MonoBehaviour, ISaveable
 
     public void LoadData(GameData data)
     {
-        bool active = data.unlockedCheckPoints.ContainsKey(checkpointID) && data.unlockedCheckPoints[checkpointID];
+        bool active = data.unlockedCheckPoints.TryGetValue(checkpointID, out active);
 
         ActiveCheckPoint(active);
     }
