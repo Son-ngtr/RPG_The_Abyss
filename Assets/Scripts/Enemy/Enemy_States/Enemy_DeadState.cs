@@ -18,5 +18,8 @@ public class Enemy_DeadState : EnemyState
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 15f);
 
         stateMachine.LockStateChanges(); // Prevent any further state changes
+
+        enemy.DestroyGameObjectWithDelay(5f); // Destroy the enemy game object after 5 seconds
     }
+
 }
