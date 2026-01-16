@@ -23,5 +23,10 @@ public class Enemy_AnimationTrigger : Entity_AnimationTriggers
         enemy.EnableCounterWindow(false);
         enemy_VFX.EnableAttackAlert(false);
     }
+
+    private void SpecialAttackTrigger()
+    {
+        enemy.SpecialAttack();
+    }
 }
 

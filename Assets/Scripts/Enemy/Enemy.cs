@@ -9,6 +9,7 @@ public class Enemy : Entity
     public Entity_Stats stats { get; set; }
 
     public Enemy_Health health {  get; private set; }
+    public Entity_Combat combat { get; private set; }
 
     // States for all enemies to access easily and switch between them in their own scripts like Enemy_Skeleton.cs
     public Enemy_IdleState idleState;
@@ -21,6 +22,10 @@ public class Enemy : Entity
     [Header("BATTLE DETAILS")]
     public float battleMoveSpeed = 3f;
     public float attackDistance = 2f;
+
+    public float attackCooldown = 1f;
+    public bool canChasePlayer = true;
+    [Space]
     public float battleTimeDuration = 5f;
     public float minimumRetreatDistance = 1f;
     public Vector2 retreatVelocity;
@@ -51,6 +56,11 @@ public class Enemy : Entity
 
         health = GetComponent<Enemy_Health>();
         stats = GetComponent<Entity_Stats>();
+        combat = GetComponent<Entity_Combat>();
+    }
+
+    public virtual void SpecialAttack()
+    {
 
     }
 

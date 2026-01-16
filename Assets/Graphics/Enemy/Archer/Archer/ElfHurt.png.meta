@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,177 +121,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ElfHurt001-Sheet-export_0
+      name: ElfHurt_1
       rect:
         serializedVersion: 2
-        x: 68
-        y: 47
-        width: 24
-        height: 45
+        x: 160
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e664d17179182fa50800000000000000
-      internalID: 6553442893705332334
+      spriteID: e6293e4549de4864fa70fc57e8f4903f
+      internalID: -138562497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfHurt001-Sheet-export_1
+      name: ElfHurt_2
       rect:
         serializedVersion: 2
-        x: 89
-        y: 85
-        width: 6
-        height: 6
+        x: 320
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8a7886f6ed747f4c0800000000000000
-      internalID: -4253852302350710872
+      spriteID: fc135edb732a43c46955199943396ee9
+      internalID: 1557311934
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfHurt001-Sheet-export_2
+      name: ElfHurt_3
       rect:
         serializedVersion: 2
-        x: 218
-        y: 47
-        width: 44
-        height: 46
+        x: 480
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 090e45ad3e86d80b0800000000000000
-      internalID: -5724804223488171888
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ElfHurt001-Sheet-export_3
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 47
-        width: 49
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 91892f0cdadcd8ff0800000000000000
-      internalID: -32143476171565031
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ElfHurt001-Sheet-export_4
-      rect:
-        serializedVersion: 2
-        x: 548
-        y: 47
-        width: 22
-        height: 45
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0415dd27c49e820b0800000000000000
-      internalID: -5753092009411915456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ElfHurt001-Sheet-export_5
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 76
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ae4858d8a74cec320800000000000000
-      internalID: 2580215667169264874
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ElfHurt001-Sheet-export_6
-      rect:
-        serializedVersion: 2
-        x: 92
-        y: 69
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9155b6e31a72f91d0800000000000000
-      internalID: -3341908824995179239
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ElfHurt001-Sheet-export_7
-      rect:
-        serializedVersion: 2
-        x: 61
-        y: 60
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5e9c82b1b280abd40800000000000000
-      internalID: 5600798067820906981
+      spriteID: 5c3a8ac0d36cc264587a8f7b5d040f7f
+      internalID: -1403559136
       vertices: []
       indices: 
       edges: []
@@ -300,7 +190,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: eefbbf248d4a7414a972ec94b81cd5ff
     internalID: 0
     vertices: []
     indices: 
@@ -308,16 +198,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":144.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      ElfHurt001-Sheet-export_0: 6553442893705332334
-      ElfHurt001-Sheet-export_1: -4253852302350710872
-      ElfHurt001-Sheet-export_2: -5724804223488171888
-      ElfHurt001-Sheet-export_3: -32143476171565031
-      ElfHurt001-Sheet-export_4: -5753092009411915456
-      ElfHurt001-Sheet-export_5: 2580215667169264874
-      ElfHurt001-Sheet-export_6: -3341908824995179239
-      ElfHurt001-Sheet-export_7: 5600798067820906981
+      ElfHurt_0: 154788796
+      ElfHurt_1: -138562497
+      ElfHurt_2: 1557311934
+      ElfHurt_3: -1403559136
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -4,12 +4,13 @@ public class Player_Combat : Entity_Combat
 {
     [Header("Counter Attack Settings")]
     [SerializeField] private float counterRecovery = 0.2f;
+    [SerializeField] private LayerMask whatIsCounterable;
 
     public bool CounterAttackPerformed()
     {
         bool hasPerformedCounter = false;
 
-        foreach (var target in GetDetectedColliders())
+        foreach (var target in GetDetectedColliders(whatIsCounterable))
         {
             // Try to get ICounterable component from the target
             ICounterable counterable = target.GetComponent<ICounterable>();

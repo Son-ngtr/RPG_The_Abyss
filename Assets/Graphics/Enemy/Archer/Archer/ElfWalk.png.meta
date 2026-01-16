@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,177 +121,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ElfWalk001-Sheet-export_0
+      name: ElfWalk_0
       rect:
         serializedVersion: 2
-        x: 67
-        y: 47
-        width: 22
-        height: 45
+        x: 0
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e8e8ed411e1795a60800000000000000
-      internalID: 7663281452479319694
+      spriteID: aaf2a29367e23624f9008317c1384900
+      internalID: -1969350141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfWalk001-Sheet-export_1
+      name: ElfWalk_1
       rect:
         serializedVersion: 2
-        x: 226
-        y: 47
-        width: 23
-        height: 44
+        x: 160
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: d8fc68f17468f1df0800000000000000
-      internalID: -207299417806024819
+      spriteID: 67e19395852bb864cb5a3d09320b320b
+      internalID: 2047418249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfWalk001-Sheet-export_2
+      name: ElfWalk_2
       rect:
         serializedVersion: 2
-        x: 385
-        y: 47
-        width: 24
-        height: 45
+        x: 320
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8fa5553462cf1c620800000000000000
-      internalID: 2792790485215042296
+      spriteID: 0cb2b7022ffc46641ba2d5279598ce93
+      internalID: 1225690150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfWalk001-Sheet-export_3
+      name: ElfWalk_3
       rect:
         serializedVersion: 2
-        x: 547
-        y: 47
-        width: 22
-        height: 45
+        x: 480
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0009bc864dc6bab20800000000000000
-      internalID: 3146728424195461120
+      spriteID: c62426f03d0a55b4baa6d5b162bf8b4e
+      internalID: 1158475534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfWalk001-Sheet-export_4
+      name: ElfWalk_4
       rect:
         serializedVersion: 2
-        x: 707
-        y: 47
-        width: 24
-        height: 45
+        x: 640
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6d49265c13cd7f430800000000000000
-      internalID: 3816761315542865110
+      spriteID: 1f1fa4dc41ea16b48b49d815f817a1c9
+      internalID: 2025868230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfWalk001-Sheet-export_5
+      name: ElfWalk_5
       rect:
         serializedVersion: 2
-        x: 866
-        y: 47
-        width: 24
-        height: 44
+        x: 800
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 44107fb8b19426b40800000000000000
-      internalID: 5431984483223404868
+      spriteID: ff3659062b9b0974a815131cf200ec7a
+      internalID: -398244940
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfWalk001-Sheet-export_6
+      name: ElfWalk_6
       rect:
         serializedVersion: 2
-        x: 1025
-        y: 47
-        width: 24
-        height: 45
+        x: 960
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 519d12a36e7fb42d0800000000000000
-      internalID: -3293266134301550315
+      spriteID: 3938538e4b4d245409c56551fd229dd5
+      internalID: 1895192404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ElfWalk001-Sheet-export_7
+      name: ElfWalk_7
       rect:
         serializedVersion: 2
-        x: 1187
-        y: 47
-        width: 22
-        height: 45
+        x: 1120
+        y: 0
+        width: 160
+        height: 144
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 217af9faf44fd0010800000000000000
-      internalID: 1156849302390155026
+      spriteID: 9b48636cee9a574478f2df12579a4361
+      internalID: -2035946339
       vertices: []
       indices: 
       edges: []
@@ -300,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e1627d9d32f5f6c4480d589933749a1e
     internalID: 0
     vertices: []
     indices: 
@@ -308,16 +308,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":160.0,"y":144.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      ElfWalk001-Sheet-export_0: 7663281452479319694
-      ElfWalk001-Sheet-export_1: -207299417806024819
-      ElfWalk001-Sheet-export_2: 2792790485215042296
-      ElfWalk001-Sheet-export_3: 3146728424195461120
-      ElfWalk001-Sheet-export_4: 3816761315542865110
-      ElfWalk001-Sheet-export_5: 5431984483223404868
-      ElfWalk001-Sheet-export_6: -3293266134301550315
-      ElfWalk001-Sheet-export_7: 1156849302390155026
+      ElfWalk_0: -1969350141
+      ElfWalk_1: 2047418249
+      ElfWalk_2: 1225690150
+      ElfWalk_3: 1158475534
+      ElfWalk_4: 2025868230
+      ElfWalk_5: -398244940
+      ElfWalk_6: 1895192404
+      ElfWalk_7: -2035946339
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
