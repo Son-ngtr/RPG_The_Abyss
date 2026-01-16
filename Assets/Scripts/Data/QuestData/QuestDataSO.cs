@@ -13,7 +13,11 @@ public enum QuestTargetID
     Enemy_Skeleton,
     BlackSmithWokang,
     Merchant_Galim,
-    None
+    None,
+    Enemy_Slime,
+    Enemy_Archer,
+    Enemy_Mage,
+    Enemy_Boss_Reaper
 }
 
 public enum QuestType

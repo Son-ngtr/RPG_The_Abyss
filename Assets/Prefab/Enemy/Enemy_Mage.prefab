@@ -842,7 +842,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7954019526733293073}
   primaryWallCheck: {fileID: 2763283011732144004}
   secondaryWallCheck: {fileID: 0}
-  questTargetID: 0
+  questTargetID: 6
   battleMoveSpeed: 3
   attackDistance: 1.3
   attackCooldown: 0.5

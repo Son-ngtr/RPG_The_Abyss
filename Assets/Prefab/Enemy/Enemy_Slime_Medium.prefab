@@ -1442,6 +1442,8 @@ MonoBehaviour:
   chillVfx: {r: 0, g: 1, b: 1, a: 1}
   burnVfx: {r: 1, g: 0, b: 0, a: 1}
   shockVfx: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  imageEchoInterval: 0.05
+  imageEchoPrefab: {fileID: 0}
   attackAlert: {fileID: 2330655646441499659}
 --- !u!114 &5048474646610729196
 MonoBehaviour:
@@ -1584,9 +1586,11 @@ MonoBehaviour:
   groundCheck: {fileID: 2567062540348156135}
   primaryWallCheck: {fileID: 6128977648480773314}
   secondaryWallCheck: {fileID: 0}
-  questTargetID: 0
+  questTargetID: 4
   battleMoveSpeed: 3
   attackDistance: 1.12
+  attackCooldown: 1
+  canChasePlayer: 1
   battleTimeDuration: 5
   minimumRetreatDistance: 1
   retreatVelocity: {x: 4, y: 3}
