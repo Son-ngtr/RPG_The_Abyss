@@ -10,6 +10,7 @@ public class Enemy : Entity
 
     public Enemy_Health health {  get; private set; }
     public Entity_Combat combat { get; private set; }
+    public Entity_VFX vfx { get; private set; }
 
     // States for all enemies to access easily and switch between them in their own scripts like Enemy_Skeleton.cs
     public Enemy_IdleState idleState;
@@ -57,6 +58,7 @@ public class Enemy : Entity
         health = GetComponent<Enemy_Health>();
         stats = GetComponent<Entity_Stats>();
         combat = GetComponent<Entity_Combat>();
+        vfx = GetComponent<Entity_VFX>();
     }
 
     public virtual void SpecialAttack()
