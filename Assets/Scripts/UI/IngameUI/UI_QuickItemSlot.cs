@@ -8,6 +8,8 @@ public class UI_QuickItemSlot : UI_ItemSlot
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private int slotNumber;
     
+    public int SlotNumber => slotNumber;
+    
     protected override void Awake()
     {
         base.Awake();

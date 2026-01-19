@@ -79,7 +79,38 @@ public class UI_TreeNode : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         skillTree.AddSkillPoints(skillData.cost);
         connectionHandler.UnlockConnectionImage(false);
 
-        // skill mng and reset skill
+        // Reset runtime skill only if this node is the currently active upgrade for that skill type.
+        // This avoids accidentally resetting a default upgrade (e.g. Dash) when refunding other nodes of the same skill.
+        var runtimeSkill = skillTree.skillManager.GetSkillByType(skillData.skillType);
+        if (runtimeSkill != null && runtimeSkill.GetCurrentUpgradeType() == skillData.upgradeData.upgradeType)
+        {
+            runtimeSkill.ResetSkillToDefault();
+        }
+    }
+
+    /// <summary>
+    /// Used after a full skill-tree refund to clear any conflict locks that were applied by previously chosen paths.
+    /// Keeps default skills unlocked for UI, but does NOT re-apply conflict locks.
+    /// </summary>
+    public void ClearLocksAfterFullRefund()
+    {
+        GetNeededComponents();
+
+        isLocked = false;
+
+        // Keep default skills unlocked visually after a full reset.
+        if (skillData != null && skillData.unLockedByDefault)
+        {
+            isUnlocked = true;
+            UpdateIconColor(Color.white);
+            connectionHandler.UnlockConnectionImage(true);
+            return;
+        }
+
+        // Non-default nodes become locked visually (but not "path-locked").
+        isUnlocked = false;
+        UpdateIconColor(GetColorByHex(lockedColorHex));
+        connectionHandler.UnlockConnectionImage(false);
     }
 
     private void Unlock()

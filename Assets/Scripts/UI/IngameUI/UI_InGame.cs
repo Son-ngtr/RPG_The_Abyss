@@ -45,17 +45,47 @@ public class UI_InGame : MonoBehaviour
 
     public void PlayQuickSlotFeedback(int slotNumber)
     {
-        quickItemSlots[slotNumber].SimulateButtonFeedback();
+        // slotNumber from event is 0-based (0 or 1), but UI slots use 1-based slotNumber (1 or 2)
+        int slotIndex = slotNumber + 1;
+        var slot = FindQuickItemSlotByNumber(slotIndex);
+        if (slot != null)
+        {
+            slot.SimulateButtonFeedback();
+        }
     }
 
     public void UpdateQuickSlotsUI()
     {
         Inventory_Item[] quickItems = inventory.quickItems;
 
+        // Map inventory quickItems array (0-based) to UI slots (1-based slotNumber)
         for (int i = 0; i < quickItems.Length; i++)
         {
-            quickItemSlots[i].UpdateQuickSlotUI(quickItems[i]);
+            int slotNumber = i + 1; // Convert to 1-based
+            var slot = FindQuickItemSlotByNumber(slotNumber);
+            if (slot != null)
+            {
+                slot.UpdateQuickSlotUI(quickItems[i]);
+            }
         }
+    }
+
+    private UI_QuickItemSlot FindQuickItemSlotByNumber(int slotNumber)
+    {
+        if (quickItemSlots == null)
+        {
+            quickItemSlots = GetComponentsInChildren<UI_QuickItemSlot>();
+        }
+
+        foreach (var slot in quickItemSlots)
+        {
+            if (slot.SlotNumber == slotNumber)
+            {
+                return slot;
+            }
+        }
+
+        return null;
     }
 
     public void OpenQuickItemOptions(UI_QuickItemSlot quickItemSlot, RectTransform targetRect)

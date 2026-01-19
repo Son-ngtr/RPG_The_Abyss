@@ -37,11 +37,46 @@ public class UI_SkillTree : MonoBehaviour, ISaveable
     [ContextMenu("Reset Skill Tree")]
     public void RefundAllSkills()
     {
-        UI_TreeNode[] skillNodes = GetComponentsInChildren<UI_TreeNode>();
+        if (allTreeNodes == null)
+        {
+            allTreeNodes = GetComponentsInChildren<UI_TreeNode>(true);
+        }
+        if (skillManager == null)
+        {
+            skillManager = FindAnyObjectByType<Player_SkillManager>();
+        }
 
+        UI_TreeNode[] skillNodes = allTreeNodes ?? GetComponentsInChildren<UI_TreeNode>(true);
+
+        // Step 1: Refund all non-default skills
         foreach (var node in skillNodes)
         {
             node.Refund();
+        }
+
+        // Step 2: Clear any conflict locks left over from the previous path.
+        foreach (var node in skillNodes)
+        {
+            node.ClearLocksAfterFullRefund();
+        }
+
+        // Step 3: Restore default skills (unLockedByDefault) on runtime skills
+        // (UnlockWithSaveData does not apply runtime upgrade; we do it here.)
+        foreach (var node in skillNodes)
+        {
+            if (node.skillData != null && node.skillData.unLockedByDefault)
+            {
+                node.UnlockWithSaveData();
+
+                if (skillManager != null)
+                {
+                    var runtimeSkill = skillManager.GetSkillByType(node.skillData.skillType);
+                    if (runtimeSkill != null)
+                    {
+                        runtimeSkill.SetSkillUpgrade(node.skillData);
+                    }
+                }
+            }
         }
     }
 

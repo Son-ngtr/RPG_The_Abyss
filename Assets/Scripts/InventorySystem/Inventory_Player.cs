@@ -28,7 +28,8 @@ public class Inventory_Player : Inventory_Base
 
     public void SetQuickItemsInSlot(int slotIndex, Inventory_Item itemToSet)
     {
-        if (slotIndex < 0 || slotIndex >= quickItems.Length)
+        // slotIndex is 1-based (1 or 2), but quickItems array is 0-based (indices 0 and 1)
+        if (slotIndex < 1 || slotIndex > quickItems.Length)
         {
             Debug.LogWarning("Invalid quick item slot index!");
             return;
@@ -40,7 +41,8 @@ public class Inventory_Player : Inventory_Base
 
     public void TryUseQuickItemInSlot(int passedSlotNumber)
     {
-        if (passedSlotNumber < 0 || passedSlotNumber >= quickItems.Length)
+        // passedSlotNumber is 1-based (1 or 2), but quickItems array is 0-based (indices 0 and 1)
+        if (passedSlotNumber < 1 || passedSlotNumber > quickItems.Length)
         {
             Debug.LogWarning("Invalid quick item slot index!");
             return;

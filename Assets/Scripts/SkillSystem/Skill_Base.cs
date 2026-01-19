@@ -80,4 +80,17 @@ public class Skill_Base : MonoBehaviour
         player.ui.ingameUI.GetSkillSlot(skillType).ResetCooldown();
         lastTimeUsed = Time.time - cooldown;
     }
+
+    /// <summary>
+    /// Reset this skill back to its default (locked) state.
+    /// NOTE: Intentionally does NOT touch any UI (UI_SkillSlot) to keep reset logic isolated.
+    /// </summary>
+    public void ResetSkillToDefault()
+    {
+        upgradeType = SkillUpgradeType.None;
+        damageScaleData = new DamageScaleData();
+
+        // Put cooldown in a "ready" state logically.
+        lastTimeUsed = Time.time - cooldown;
+    }
 }
