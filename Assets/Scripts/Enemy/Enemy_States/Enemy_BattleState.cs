@@ -40,9 +40,18 @@ public class Enemy_BattleState : EnemyState
         base.Update();
 
 
+        // IMPORTANT: only refresh battle timer when the player is actually detected (line of sight).
         if (enemy.PlayerDetected())
+        {
             UpdateTargetIfNeeded();
             UpdateBattleTimer();
+        }
+
+        // Keep a valid target reference for chasing even when raycast doesn't hit (e.g. player above/below).
+        if (player == null && Player.instance != null)
+        {
+            player = Player.instance.transform;
+        }
 
         if (BattleTimeOver())
             stateMachine.ChangeState(enemy.idleState);
@@ -54,7 +63,10 @@ public class Enemy_BattleState : EnemyState
         }
         else
         {
-            float xVeloicty = enemy.canChasePlayer ? enemy.GetBattleMoveSpeed() : 0.001f;
+            if (player == null)
+                return;
+
+            float xVeloicty = enemy.GetBattleMoveSpeed();
             enemy.SetVelocity(xVeloicty * DirectionToPlayer(), rb.linearVelocity.y);
         }
     }

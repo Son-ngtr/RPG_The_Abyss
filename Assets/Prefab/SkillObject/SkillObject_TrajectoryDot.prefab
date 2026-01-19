@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5953027624539924942}
   - component: {fileID: 5481080743030900983}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SkillObject_TrajectoryDot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

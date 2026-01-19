@@ -75,7 +75,7 @@ public class Skill_DomainExpansion : Skill_Base
     private Transform FindTargetInDomain()
     {
         // Make sure when target is selected, it's not null or dead
-        trappedTargets.RemoveAll(target => target != null || target.health.isDead);
+        trappedTargets.RemoveAll(target => target == null || target.health.isDead);
 
         if (trappedTargets.Count == 0)
         {

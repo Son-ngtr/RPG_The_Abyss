@@ -169,6 +169,10 @@ public class Inventory_Player : Inventory_Base
     {
         gold = data.gold;
 
+        // Preserve current health percentage while rebuilding stats (e.g., max health changes from equipped items).
+        // This avoids the health bar "dropping" after loading a scene due to max health increasing.
+        float savedHealthPercent = player != null && player.health != null ? player.health.GetHealthPercent() : 1f;
+
         // Load inventory items
         foreach (var item in data.inventory)
         {
@@ -206,6 +210,12 @@ public class Inventory_Player : Inventory_Base
             equipSlot.equipedItem = itemToLoad;
             equipSlot.equipedItem.AddModifiers(player.stats);
             equipSlot.equipedItem.AddItemEffect(player);
+        }
+
+        // Re-apply the preserved health percentage after max health has potentially changed.
+        if (player != null && player.health != null)
+        {
+            player.health.SetHealthToPercent(savedHealthPercent);
         }
 
         TriggerUpdateUi();

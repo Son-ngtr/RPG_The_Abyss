@@ -822,7 +822,7 @@ MonoBehaviour:
   player: {fileID: 0}
   skillType: 2
   upgradeType: 0
-  cooldown: 1
+  cooldown: 2
   shardPrefab: {fileID: 5284931793353451397, guid: 619f151a52edabd47a35514cb2be623c, type: 3}
   detonationTime: 2
   shardMoveSpeed: 3
@@ -846,7 +846,7 @@ MonoBehaviour:
   player: {fileID: 0}
   skillType: 3
   upgradeType: 0
-  cooldown: 0
+  cooldown: 2
   swordPrefab: {fileID: 7887289685702174468, guid: 3426367f417fea948a4a01972202ff6b, type: 3}
   regularThrowForce: 6
   pierceSwordPrefab: {fileID: 8350568217092845861, guid: be8a05ab654d90147b25b066825e2a38, type: 3}
@@ -879,7 +879,7 @@ MonoBehaviour:
   player: {fileID: 0}
   skillType: 1
   upgradeType: 0
-  cooldown: 0
+  cooldown: 2
   timeEchoPrefab: {fileID: 409984124090549021, guid: a713b8d28edce924084a435069036fa3, type: 3}
   timeEchoDuration: 10
   maxAttacks: 3
@@ -901,7 +901,7 @@ MonoBehaviour:
   player: {fileID: 0}
   skillType: 4
   upgradeType: 0
-  cooldown: 0
+  cooldown: 2
   domainPrefab: {fileID: 9137695560243410493, guid: 8613b9e662a835542abba66dfee21f12, type: 3}
   slowdownPercent: 0.8
   slowdownDomainDuration: 10
