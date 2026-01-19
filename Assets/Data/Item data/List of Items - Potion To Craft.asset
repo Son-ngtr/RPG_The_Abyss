@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c621e0c706eac394e9b9868811a23b2d, type: 3}
-  m_Name: List of Items - Weapon To Craft
+  m_Name: List of Items - Potion To Craft
   m_EditorClassIdentifier: Assembly-CSharp::ItemListDataSO
   itemDataList:
-  - {fileID: 11400000, guid: 3cc7a3e9a8ff28748b9fd6318ea77e7c, type: 2}
-  - {fileID: 11400000, guid: 6477bbc9094b8fa48915222e677b368c, type: 2}
-  - {fileID: 11400000, guid: 1865f8c422a6c9745af472ced67073e6, type: 2}
-  - {fileID: 11400000, guid: 6226a769546bddf4ba1396d3b826e2ee, type: 2}
+  - {fileID: 11400000, guid: 0abcba261b17408429237697b06147f9, type: 2}
+  - {fileID: 11400000, guid: d800bbbe255ee96448d45731697f08f6, type: 2}
+  - {fileID: 11400000, guid: 4cb8e81414d69b0428e5d80d66cf7dea, type: 2}
+  - {fileID: 11400000, guid: 937ea14067f02d44ebb490cda68df658, type: 2}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Item effect data - Grant Skill Points
   m_EditorClassIdentifier: Assembly-CSharp::ItemEffect_GrantSkillPoints
   effectDescription: Grants 1 skill point.
-  skillPointsToGrant: 1
+  skillPointsToGrant: 100

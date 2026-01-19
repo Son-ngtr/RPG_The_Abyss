@@ -10,34 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02a384432db04a742a79eeba60d4ab7b, type: 3}
-  m_Name: Equipment data - Winter's Touch
+  m_Name: Equipment data - Amulet of Abyssal Frost
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentDataSO
-  itemPrice: 160
+  itemPrice: 100
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 1
-  itemRarity: 100
-  dropChance: 65
+  itemRarity: 475
+  dropChance: 52.6
   maxDropChance: 65
-  itemName: Winter's Touch
-  itemIcon: {fileID: 964983541, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
-  itemType: 2
+  itemName: Amulet of Abyssal Frost
+  itemIcon: {fileID: 96549380, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  itemType: 3
   maxStackSize: 1
-  itemEffect: {fileID: 11400000, guid: 56c4a861f85bd4b4bac4713fe7269fcf, type: 2}
+  itemEffect: {fileID: 0}
   craftRecipe:
-  - itemData: {fileID: 11400000, guid: d800bbbe255ee96448d45731697f08f6, type: 2}
-    stackSize: 1
-    itemEffect: {fileID: 0}
-    depreciationRate: 0
-  - itemData: {fileID: 11400000, guid: f8145cc70b151954db3c7cd8130ca359, type: 2}
+  - itemData: {fileID: 11400000, guid: db9b15dd43b93ab4d9aedb1e9fdc82fd, type: 2}
     stackSize: 2
     itemEffect: {fileID: 0}
     depreciationRate: 0
+  - itemData: {fileID: 11400000, guid: 86b51e9d9d470aa41beec38f33b286f3, type: 2}
+    stackSize: 1
+    itemEffect: {fileID: 0}
+    depreciationRate: 0
   modifiers:
-  - statType: 0
-    value: 250
-  - statType: 14
-    value: 20
-  - statType: 2
-    value: 14
   - statType: 16
-    value: 36
+    value: 20
+  - statType: 17
+    value: 20
+  - statType: 18
+    value: 20
+  - statType: 10
+    value: 10

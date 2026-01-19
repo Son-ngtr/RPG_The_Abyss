@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a384432db04a742a79eeba60d4ab7b, type: 3}
   m_Name: Equipment data - Wooden Sword
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentDataSO
-  itemPrice: 100
+  itemPrice: 80
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 1
   itemRarity: 290
@@ -36,4 +36,4 @@ MonoBehaviour:
   - statType: 3
     value: 3
   - statType: 6
-    value: 20
+    value: 2

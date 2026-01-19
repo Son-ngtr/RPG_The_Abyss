@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,11 +16,16 @@ public class UI_InGame : MonoBehaviour
     [Header("QUICK ITEM SLOTS")]
     [SerializeField] private float yOffSetQuickItemParent = 200f;
     [SerializeField] private Transform quickItemOptionsParent;
+    // Scale yOffSetQuickItemParent theo CanvasScaler để hiển thị đúng tỉ lệ trên các độ phân giải
+    [SerializeField] private bool scaleOffsetWithCanvas = true;
+
     // Display all options to select for a specific quick item slot
     private UI_QuickItemSlotSelectOption[] quickItemOptions;
     // Display the current quick item slots
     private UI_QuickItemSlot[] quickItemSlots;
 
+    // Canvas để lấy scaleFactor (không thay đổi logic, chỉ cấu hình offset)
+    private Canvas parentCanvas;
 
     // player reference setup call when awake so other scripts can use it in their start methods
     private void Start()
@@ -33,8 +38,10 @@ public class UI_InGame : MonoBehaviour
         inventory = player.inventory;
         inventory.OnInventoryChange += UpdateQuickSlotsUI;
         inventory.OnQuickSlotUsed += PlayQuickSlotFeedback;
-    }
 
+        // Lấy Canvas để dùng scaleFactor cho offset (nếu có)
+        parentCanvas = GetComponentInParent<Canvas>();
+    }
 
     public void PlayQuickSlotFeedback(int slotNumber)
     {
@@ -50,7 +57,6 @@ public class UI_InGame : MonoBehaviour
             quickItemSlots[i].UpdateQuickSlotUI(quickItems[i]);
         }
     }
-
 
     public void OpenQuickItemOptions(UI_QuickItemSlot quickItemSlot, RectTransform targetRect)
     {
@@ -74,7 +80,11 @@ public class UI_InGame : MonoBehaviour
             }
         }
 
-        quickItemOptionsParent.position = targetRect.position + Vector3.up * yOffSetQuickItemParent;
+        // Cấu hình: scale offset theo CanvasScaler nếu bật, không thay đổi logic sắp xếp hiển thị
+        float scale = (scaleOffsetWithCanvas && parentCanvas != null) ? parentCanvas.scaleFactor : 1f;
+        float actualYOffset = yOffSetQuickItemParent * scale;
+
+        quickItemOptionsParent.position = targetRect.position + Vector3.up * actualYOffset;
     }
 
     public void HideQuickItemSelectOptions()

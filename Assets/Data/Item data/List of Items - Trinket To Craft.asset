@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c621e0c706eac394e9b9868811a23b2d, type: 3}
-  m_Name: List of Items - Weapon To Craft
+  m_Name: List of Items - Trinket To Craft
   m_EditorClassIdentifier: Assembly-CSharp::ItemListDataSO
   itemDataList:
-  - {fileID: 11400000, guid: 3cc7a3e9a8ff28748b9fd6318ea77e7c, type: 2}
-  - {fileID: 11400000, guid: 6477bbc9094b8fa48915222e677b368c, type: 2}
-  - {fileID: 11400000, guid: 1865f8c422a6c9745af472ced67073e6, type: 2}
-  - {fileID: 11400000, guid: 6226a769546bddf4ba1396d3b826e2ee, type: 2}
+  - {fileID: 11400000, guid: 9a79d2c1ab5ba1d48a4c380228ca8c80, type: 2}
+  - {fileID: 11400000, guid: a2ceec23fbf9bc94298386accbb4d153, type: 2}
+  - {fileID: 11400000, guid: 433e51155c190f044815f7cc12dfd71c, type: 2}

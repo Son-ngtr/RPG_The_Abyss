@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a384432db04a742a79eeba60d4ab7b, type: 3}
   m_Name: Equipment data - Ring Of Luck
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentDataSO
-  itemPrice: 100
+  itemPrice: 110
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 1
   itemRarity: 822
@@ -23,7 +23,15 @@ MonoBehaviour:
   itemType: 3
   maxStackSize: 1
   itemEffect: {fileID: 0}
-  craftRecipe: []
+  craftRecipe:
+  - itemData: {fileID: 11400000, guid: 86b51e9d9d470aa41beec38f33b286f3, type: 2}
+    stackSize: 1
+    itemEffect: {fileID: 0}
+    depreciationRate: 0
+  - itemData: {fileID: 11400000, guid: db9b15dd43b93ab4d9aedb1e9fdc82fd, type: 2}
+    stackSize: 1
+    itemEffect: {fileID: 0}
+    depreciationRate: 0
   modifiers:
   - statType: 8
     value: 15

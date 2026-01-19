@@ -10,34 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02a384432db04a742a79eeba60d4ab7b, type: 3}
-  m_Name: Equipment data - Winter's Touch
+  m_Name: Equipment data - Wraithbone Greaves
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentDataSO
-  itemPrice: 160
+  itemPrice: 300
   minStackSizeAtShop: 1
   maxStackSizeAtShop: 1
   itemRarity: 100
   dropChance: 65
   maxDropChance: 65
-  itemName: Winter's Touch
-  itemIcon: {fileID: 964983541, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
+  itemName: Wraithbone Greaves
+  itemIcon: {fileID: -1064868011, guid: d1f8386c67ea03445ad39323ac6297f1, type: 3}
   itemType: 2
   maxStackSize: 1
-  itemEffect: {fileID: 11400000, guid: 56c4a861f85bd4b4bac4713fe7269fcf, type: 2}
+  itemEffect: {fileID: 0}
   craftRecipe:
-  - itemData: {fileID: 11400000, guid: d800bbbe255ee96448d45731697f08f6, type: 2}
+  - itemData: {fileID: 11400000, guid: f8145cc70b151954db3c7cd8130ca359, type: 2}
     stackSize: 1
     itemEffect: {fileID: 0}
     depreciationRate: 0
-  - itemData: {fileID: 11400000, guid: f8145cc70b151954db3c7cd8130ca359, type: 2}
-    stackSize: 2
+  - itemData: {fileID: 11400000, guid: a91a73a9dfb0c6f4ebe824fe711d8af2, type: 2}
+    stackSize: 0
     itemEffect: {fileID: 0}
     depreciationRate: 0
   modifiers:
-  - statType: 0
-    value: 250
-  - statType: 14
+  - statType: 1
     value: 20
-  - statType: 2
-    value: 14
-  - statType: 16
-    value: 36
+  - statType: 15
+    value: 12
+  - statType: 3
+    value: 10
