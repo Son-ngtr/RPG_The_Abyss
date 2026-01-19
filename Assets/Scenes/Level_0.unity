@@ -3371,11 +3371,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1730264045916405054, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1730264045916405054, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4923699413688793606, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: maxItemDrops
@@ -3453,11 +3453,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1730264045916405054, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1730264045916405054, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4923699413688793606, guid: caa789c42c959e445b81e29feaed6e14, type: 3}
       propertyPath: maxItemDrops
@@ -9938,7 +9938,7 @@ SpriteRenderer:
   m_SortingLayerID: 2080641147
   m_SortingLayer: -1
   m_SortingOrder: -1
-  m_Sprite: {fileID: -166776703, guid: 865aba9c6019f464188fb0b5654f993b, type: 3}
+  m_Sprite: {fileID: 2007345857, guid: 865aba9c6019f464188fb0b5654f993b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11229,7 +11229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1680985858
 Transform:
   m_ObjectHideFlags: 0
@@ -13708,6 +13708,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -398.62036
       objectReference: {fileID: 0}
+    - target: {fileID: 4566992846964227199, guid: 58a779737dd3b7444a418778663fc068, type: 3}
+      propertyPath: offset.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4566992846964227199, guid: 58a779737dd3b7444a418778663fc068, type: 3}
+      propertyPath: offset.y
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4631553423804820778, guid: 58a779737dd3b7444a418778663fc068, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13995,7 +14003,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 197154532079947322, guid: 5217da246faf4f84c9e625e9db5e78a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.19
+      value: -19.1
       objectReference: {fileID: 0}
     - target: {fileID: 197154532079947322, guid: 5217da246faf4f84c9e625e9db5e78a4, type: 3}
       propertyPath: m_LocalPosition.y
