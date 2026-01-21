@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
   fileName: doantotnghiep.json
-  useEncryption: 1
+  useEncryption: 0
 --- !u!4 &1129026647
 Transform:
   m_ObjectHideFlags: 0

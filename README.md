@@ -40,7 +40,7 @@ Your warrior comes equipped with a vast array of abilities:
 
 ## 🔧 Technical Architecture
 
-Built with **Unity 2022.3+ LTS** using modern game development patterns:
+Built with **Unity 6.0.2.13f1** using modern game development patterns:
 
 ### 🏗️ Core Systems
 - **State Machine Pattern**: Modular character state management
@@ -70,11 +70,17 @@ Assets/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- **Unity 2022.3 LTS** or newer
+- **Unity 6.0.2.13f1** or compatible version
 - **Git** for version control
 - **Visual Studio** or **VS Code** for scripting
 
 ### Installation
+
+📖 **Installation Guides**
+- **English**: [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)
+- **Tiếng Việt**: [HUONG_DAN_CAI_DAT.md](HUONG_DAN_CAI_DAT.md)
+
+Quick Start:
 1. **Clone the repository**
    ```bash
    git clone https://github.com/yourusername/RPG_The_Abyss.git
@@ -82,14 +88,14 @@ Assets/
 
 2. **Open in Unity Hub**
    - Add the project folder to Unity Hub
-   - Ensure you're using Unity 2022.3 LTS or compatible version
+   - Ensure you're using Unity 6.0.2.13f1 or compatible version
 
 3. **Configure Input System**
    - The project uses Unity's new Input System
    - Input mappings are pre-configured in `Assets/InputSystem/`
 
 4. **Play & Develop**
-   - Open `Assets/Scenes/SampleScene.unity`
+   - Open `Assets/Scenes/MainMenu.unity` or `Assets/Scenes/Level_0.unity`
    - Press Play to start your adventure!
 
 ### 🎮 Controls

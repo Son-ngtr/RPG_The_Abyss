@@ -39,5 +39,4 @@ MonoBehaviour:
   - audioName: playlist_levels
     clips:
     - {fileID: 8300000, guid: ce6676316ca143847a7821b98911aa39, type: 3}
-    - {fileID: 8300000, guid: 08a15c0a789310c478c38680162d0da2, type: 3}
     maxVolume: 0.6
