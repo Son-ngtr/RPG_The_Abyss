@@ -7,6 +7,8 @@ public class Entity_SFX : MonoBehaviour
     [Header("SFX NAMES")]
     [SerializeField] private string attackHit;
     [SerializeField] private string attackMiss;
+    [SerializeField] private string deathSFX;
+    [SerializeField] private string dischargeSFX;
 
     [Space]
     [SerializeField] private float soundDistance = 15f;
@@ -27,6 +29,16 @@ public class Entity_SFX : MonoBehaviour
     public void PlayAttackMissSFX()
     {
         AudioManager.instance.PlaySFX(attackMiss, audioSource, soundDistance);
+    }
+
+    public void PlayDeathSFX()
+    {
+        AudioManager.instance.PlaySFX(deathSFX, audioSource, soundDistance);
+    }
+
+    public void PlayElectricDischargeSFX()
+    {
+        AudioManager.instance.PlaySFX(dischargeSFX, audioSource, soundDistance);
     }
 
     private void OnDrawGizmos()

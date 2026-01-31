@@ -7,6 +7,7 @@ public class Entity_StatusHandler : MonoBehaviour
     private Entity_VFX entityVfx;
     private Entity_Stats entityStats;
     private Entity_Health entityHealth;
+    private Entity_SFX sfx;
     private ElementType currentEffect = ElementType.None;
 
     [Header("SHOCK EFFECT DETAILS")]
@@ -22,6 +23,7 @@ public class Entity_StatusHandler : MonoBehaviour
         entity = GetComponent<Entity>();
         entityVfx = GetComponent<Entity_VFX>();
         entityHealth = GetComponent<Entity_Health>();
+        sfx = GetComponent<Entity_SFX>();
     }
 
     public void RemoveAllNegativeEffects()
@@ -113,6 +115,7 @@ public class Entity_StatusHandler : MonoBehaviour
         if (currentCharge >= maximumCharge)
         {
             DoLightningStrike(damage);
+            sfx?.PlayElectricDischargeSFX();
             StopShockEffect();
             return;
         }

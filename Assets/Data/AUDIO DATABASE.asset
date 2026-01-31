@@ -30,6 +30,15 @@ MonoBehaviour:
     clips:
     - {fileID: 8300000, guid: 654d5a58da6512d41b3af6183a76f28a, type: 3}
     maxVolume: 0.6
+  enemyAudio:
+  - audioName: death
+    clips:
+    - {fileID: 8300000, guid: 342a9bef2583f1b4c889bc7a7c96a431, type: 3}
+    maxVolume: 1
+  - audioName: discharge
+    clips:
+    - {fileID: 8300000, guid: ee654561104dc894293ee70f1482ca3d, type: 3}
+    maxVolume: 1
   mainMenuMusic:
   - audioName: playlist_mainMenu
     clips:

@@ -8,6 +8,9 @@ public class AudioDataBaseSO : ScriptableObject
     public List<AudioClipData> playerAudio;
     public List<AudioClipData> uiAudio;
 
+    [Header("ENEMY LISTS")]
+    public List<AudioClipData> enemyAudio;
+
     [Header("MUSCI LISTS")]
     public List<AudioClipData> mainMenuMusic;
     public List<AudioClipData> levelMusic;
@@ -23,6 +26,7 @@ public class AudioDataBaseSO : ScriptableObject
         AddToCollection(uiAudio);
         AddToCollection(mainMenuMusic);
         AddToCollection(levelMusic);
+        AddToCollection(enemyAudio);
     }
 
     public AudioClipData Get(string groupName)

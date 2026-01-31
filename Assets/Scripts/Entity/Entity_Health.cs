@@ -13,6 +13,7 @@ public class Entity_Health : MonoBehaviour, IDamageable
     private Entity_VFX entityVFX;
     private Entity_Stats entityStats;
     private Entity_DropManager dropManager;
+    private Entity_SFX sfx;
 
     // HEALTH BAR
     private bool miniHealthBarActive ;
@@ -41,7 +42,7 @@ public class Entity_Health : MonoBehaviour, IDamageable
         entityStats = GetComponent<Entity_Stats>();
         healthBar = GetComponentInChildren<Slider>();
         dropManager = GetComponent<Entity_DropManager>();
-
+        sfx = GetComponent<Entity_SFX>();
     }
 
     protected virtual void Start()
@@ -201,8 +202,10 @@ public class Entity_Health : MonoBehaviour, IDamageable
     protected virtual void Die()
     {
         isDead = true;
+        sfx?.PlayDeathSFX();
         entity?.EntityDeath();
 
         dropManager?.DropItems();
+
     }
 }

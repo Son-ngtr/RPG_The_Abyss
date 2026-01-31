@@ -1559,6 +1559,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity_SFX
   attackHit: player_attackHit
   attackMiss: player_attackMiss
+  deathSFX: death
+  dischargeSFX: discharge
   soundDistance: 15
   showGizmo: 1
 --- !u!1 &8497993895946962492
