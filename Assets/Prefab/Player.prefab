@@ -294,42 +294,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d5aae464cd9ad4fa96b543ae410d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Stats
-  defaultStatSetup: {fileID: 11400000, guid: 8c0e887a9d40c364c9093b564f06f94b, type: 2}
+  defaultStatSetup: {fileID: 11400000, guid: cc6e3f36c55240a41b0049f68ac0da2e, type: 2}
   major:
     strength:
-      baseValue: 0
+      baseValue: 8
       modifiers: []
     agility:
-      baseValue: 0
+      baseValue: 4
       modifiers: []
     intelligence:
-      baseValue: 0
+      baseValue: 2
       modifiers: []
     vitality:
-      baseValue: 0
+      baseValue: 10
       modifiers: []
   resources:
     maxHealth:
-      baseValue: 1000
+      baseValue: 1300
       modifiers: []
     healthRegen:
-      baseValue: 0
+      baseValue: 1.5
       modifiers: []
   offense:
     attackSpeed:
-      baseValue: 1
+      baseValue: 0.9
       modifiers: []
     damage:
-      baseValue: 50
+      baseValue: 14
       modifiers: []
     critChance:
-      baseValue: 0
+      baseValue: 5
       modifiers: []
     critDamage:
       baseValue: 150
       modifiers: []
     armorReduction:
-      baseValue: 0
+      baseValue: 5
       modifiers: []
     fireDamage:
       baseValue: 0
@@ -342,19 +342,19 @@ MonoBehaviour:
       modifiers: []
   defend:
     armor:
-      baseValue: 0
+      baseValue: 10
       modifiers: []
     evasion:
-      baseValue: 0
+      baseValue: 5
       modifiers: []
     fireResist:
-      baseValue: 0
+      baseValue: 5
       modifiers: []
     iceResist:
-      baseValue: 0
+      baseValue: 5
       modifiers: []
     lightningResist:
-      baseValue: 0
+      baseValue: 5
       modifiers: []
 --- !u!114 &1725555048436396182
 MonoBehaviour:
