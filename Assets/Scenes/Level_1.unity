@@ -938,7 +938,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1917240169}
@@ -46233,6 +46233,18 @@ PrefabInstance:
     - target: {fileID: 2023356240226334186, guid: c7623f4ea66a8bb468994d1c9423c681, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324476301715386657, guid: c7623f4ea66a8bb468994d1c9423c681, type: 3}
+      propertyPath: cooldown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324476301715386657, guid: c7623f4ea66a8bb468994d1c9423c681, type: 3}
+      propertyPath: echosToCast
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324476301715386657, guid: c7623f4ea66a8bb468994d1c9423c681, type: 3}
+      propertyPath: shardsToCast
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7724659415176128923, guid: c7623f4ea66a8bb468994d1c9423c681, type: 3}
       propertyPath: showGizmo

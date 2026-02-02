@@ -61,7 +61,7 @@ public class Skill_DomainExpansion : Skill_Base
     {
         if (upgradeType == SkillUpgradeType.Domain_EchoSpam)
         {
-            Vector3 offset = Random.value < 0.5f ? new Vector2(1, 0) : new Vector2(-1, 0);
+            Vector3 offset = Random.value < 0.5f ? new Vector2(1.5f, 0) : new Vector2(-1.5f, 0);
 
             skillManager.timeEcho.CreateTimeEcho(target.position + offset);
         }
