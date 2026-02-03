@@ -21,6 +21,7 @@ MonoBehaviour:
   - That merchant brother o' mine swiped me tongs again. I'm swear, i'll melt that
     greedy bastard...
   - If ye brake it, ye buy it twice. If i brake it... Well, that's blacksmith tradition.
+  - "Slay what stalks the dark, and sometimes\u2026 their souls crack open."
   playerChoiceAnswer: 
   choiceLines:
   - {fileID: 0}

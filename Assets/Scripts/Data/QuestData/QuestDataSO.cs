@@ -24,7 +24,8 @@ public enum QuestType
 {
     Kill,
     Talk,
-    Deliver
+    Deliver,
+    FindItem,
 }
 
 [CreateAssetMenu(menuName = "RPG Setup/Quest Data/New Quest", fileName = "Quest - ")]
